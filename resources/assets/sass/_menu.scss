@@ -1,0 +1,345 @@
+#btn-menu
+{
+    display: none;
+}
+.submenu{
+  .glyphicon-chevron-down{
+    display: none;
+  }
+}
+
+.container-menu
+{
+    top:0px;
+    z-index: 1000;
+  	width: 100%;
+  	background-color: #1B2631;
+    margin: 0px;
+    padding: 0px;
+
+    color:white;
+    label{
+        margin: 0px;
+        display: none;
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        //border-right: 1px solid #0088cc;
+        :hover{
+            cursor: pointer;
+            //cambiar background y agregar transicion de esto mismo.
+        }
+    }
+}
+.flex-item{
+  flex-basis: 15%;
+  align-self: flex-end;
+  float: left !important;
+}
+.menu
+{
+    transition: all 1s;
+    -webkit-transition: all 1s;
+      font-family: 'Bellefair', serif;
+    ul{
+        list-style: none;
+        margin:0px;
+        padding:0px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content:flex-end;
+    }
+    li {
+        width: 10%;
+        >ul{
+            box-shadow: 10px 10px 5px #888888;
+            position:absolute;
+            display: none;
+            transition: all .5s;
+            flex-wrap: wrap;
+            background-color:white;
+            z-index: 10000;
+            flex-direction: row;
+            width: 80%;
+            left:10%;
+            margin:0px;
+            li{
+                width: 25%;
+                //height: 50px;
+                margin: 0px !important;
+            }
+        }
+        >ul li a {
+            color:#1a1a1a;
+            height: 100%;
+            font-size: .9em;
+            font-weight:bold;
+        }
+        a{
+            display: block;
+            text-decoration: none;
+            padding: 15px 20px;
+            color: white;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+    }
+
+}
+.menu > ul > li > a:hover
+{
+    background-color:rgba(0,0,0,0.3);
+}
+.menu li:hover > ul
+{
+    display:flex;
+}
+.menu ul li ul >li >a:hover
+{
+    background-color: rgba(0,0,0,.2);
+}
+.menu ul li {
+    ul  li
+    {
+        margin:0px!important;
+        padding: 0px;
+        border-right: 1px solid #d9d9d9;
+        margin-top:1px;
+    }
+}
+.menu ul li ul li a {
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+   // border-bottom: 1px solid #d9d9d9;
+}
+.fixed{
+	position: fixed;
+}
+.zheight{
+    height: 150px;
+}
+ #viewShoppingCart{
+    display: none;
+    }
+/*Boton de menu, en el inicio. para crear efecto de transformicons**************************/
+.tcon {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 40px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 40px;
+  background: transparent;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent; }
+  .tcon > * {
+    display: block; }
+  .tcon:hover, .tcon:focus {
+    outline: none; }
+  .tcon::-moz-focus-inner {
+    border: 0; }
+
+.tcon-menu__lines {
+  display: inline-block;
+  height: 5.71429px;
+  width: 40px;
+  border-radius: 2.85714px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background: black;
+  position: relative; }
+  .tcon-menu__lines::before, .tcon-menu__lines::after {
+    display: inline-block;
+    height: 5.71429px;
+    width: 40px;
+    border-radius: 2.85714px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    background: black;
+    content: '';
+    position: absolute;
+    left: 0;
+    -webkit-transform-origin: 2.85714px center;
+    transform-origin: 2.85714px center;
+    width: 100%; }
+  .tcon-menu__lines::before {
+    top: 10px; }
+  .tcon-menu__lines::after {
+    top: -10px; }
+  .tcon-transform .tcon-menu__lines {
+    -webkit-transform: scale3d(0.8, 0.8, 0.8);
+    transform: scale3d(0.8, 0.8, 0.8); }
+
+.tcon-menu--xcross {
+  width: auto; }
+  .tcon-menu--xcross.tcon-transform .tcon-menu__lines {
+    background: transparent; }
+    .tcon-menu--xcross.tcon-transform .tcon-menu__lines::before, .tcon-menu--xcross.tcon-transform .tcon-menu__lines::after {
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      top: 0;
+      width: 40px; }
+    .tcon-menu--xcross.tcon-transform .tcon-menu__lines::before {
+      -webkit-transform: rotate3d(0, 0, 1, 45deg);
+      transform: rotate3d(0, 0, 1, 45deg); }
+    .tcon-menu--xcross.tcon-transform .tcon-menu__lines::after {
+      -webkit-transform: rotate3d(0, 0, 1, -45deg);
+      transform: rotate3d(0, 0, 1, -45deg); }
+
+.tcon-visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+  .tcon-visuallyhidden:active, .tcon-visuallyhidden:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto; }
+
+
+
+
+/*aqui termina los estilos para transformicons*****************************/
+
+
+@media(max-width:768px){
+  .container-menu{
+    background-color:white;
+    z-index: 1;
+  }
+  .submenu{
+    .glyphicon-chevron-down{
+      display: inline-block;
+    }
+}
+  .icon-menu-fa{
+    z-index: 1000;
+    @include center-vertical-horizontal;
+
+    position: fixed;
+    top:15px;
+    right: 25px;
+    height: 40px;
+       border-radius: 50%;
+    width: 40px;
+    border: solid 2px  black;
+    cursor: pointer;
+
+  }
+  .menu{
+    top:-101vh;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 1000;
+    padding-left: 0px;
+    transition: all .5s;
+    z-index: 1000;
+    &.active{
+      top:0;
+    }
+
+  }
+   .close{
+      display: block;
+      position: absolute;
+      background-color: white;
+      top:25px;
+      right: 25px;
+      height: 40px;
+      @include center-vertical-horizontal;
+      border-radius: 50%;
+      width: 40px;
+      border: solid 1px  black;
+      cursor: pointer;
+      color:black !important;
+      img{
+        color: black;
+
+      }
+    }
+  .menu li a {
+    color:#1a1a1a;
+    padding-left: 0px;
+    padding-right: 0px;
+    display: block;
+  }
+  .menu ul{
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    @include center-vertical-horizontal;
+    flex-direction:column;
+    li{
+      padding: 0px;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  //submenus .................................
+
+  .menu ul li > ul{
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    position: absolute;
+    left: 0px;
+    top:-101vh;
+    overflow: scroll;;
+    box-shadow: 0px 0px 0px black;
+    transition: all 0.5s;
+    li{
+      width: 50%;
+      a{
+        text-align: center;
+        display: block;
+      }
+
+    }
+    &.active{
+      top:0;
+    }
+  }
+
+  .submenu span{
+    top:5px;
+  }
+  .atras{
+    width: 100% !important;
+    background-color: #f2f2f2;
+    color:black;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 2px;
+  }
+}

@@ -1,0 +1,128 @@
+.add-article{
+    width: 30%;
+
+}
+.article-description
+{
+    .description{
+        text-decoration: none;
+        color:inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 5px;
+        //align-items: center;
+        min-height:170px;
+        p:nth-child(3){
+            font-size: 1.5em;
+            text-align: right;
+        }
+    }
+}
+.article-image{
+    width: 40%;
+
+}
+.container-article{
+    background-color: white;
+    display: flex;
+    flex-wrap:wrap;
+    .article-description  // este es el del producto INDIVIDUAL del webservice
+    {
+        border-left: 1px solid #d9d9d9;
+        width: 30%;
+        padding: 0px 14px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        p{
+            margin-top:0px;
+            font-size: 1.1em;
+            border-bottom: 1px solid  #d9d9d9;
+            padding: 10px;
+        }
+        p:nth-child(3)
+        {
+            font-size: 2em;
+            margin-top:0px;
+            text-align: right;
+            color:#595959;
+            font-weight: bold;
+        }
+    }
+}
+.container-articles
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color:#EEEEEE;
+    .article{
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+        border-top: 3px solid #248f8f;
+        width: 30%;
+        margin: 1.1%;
+        border-right:1px solid #EEEEEE;
+        background-color: white;
+    }
+}
+.details{
+    p{
+        &:nth-child(1){
+            margin-right: 1em;
+        }
+    }
+}
+
+.products-home{
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+    flex-wrap:wrap;
+    justify-content: center;
+    .product{
+        width:32%;
+        background-color: white;
+        margin-bottom: 3px;
+        padding: .5em;
+        box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+        margin-left: 1.5px;
+        margin-right: 1.5px;
+        min-height: 300px;
+    }
+}
+.series{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    a{
+        width: 20%;
+        text-decoration: none;
+        color:inherit;
+    }
+}
+//     // .container-article{
+//     //     display: flex;
+//     // }
+//     .container-article< div{
+//         width: 100%;
+//     }
+// }
+@media screen and (max-width:760px){
+   .container-article{
+        display: flex;
+        //flex-direction: column-reverse;
+        .article-description{
+            width: 100%;
+            border-left: none;
+            margin-bottom: 1.5em;
+        }
+    
+    }
+
+    .container-article > div{
+        width: 100%;
+    }
+}
+

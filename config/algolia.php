@@ -1,0 +1,58 @@
+<?php
+
+/*
+ * This file is part of Laravel Algolia.
+ *
+ * (c) Vincent Klaiber <hello@vinkla.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which of the connections below you wish to use as
+    | your default connection for all work. Of course, you may use many
+    | connections at once using the manager class.
+    |
+    */
+
+    'default' => 'main',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Algolia Connections
+    |--------------------------------------------------------------------------
+    |
+    | Here are each of the connections setup for your application. Example
+    | configuration has been included, but you may add as many connections as
+    | you would like.
+    |
+    */
+
+    'connections' => [
+
+        // 'main' => [
+        //     'id' => 'C8GSD4FVWT',
+        //     'key' => '53abb5c41598da06526b5edf069cb5d1',
+        // ],
+        'main' => [
+            'id' => 'LV3VV7C90E',
+            'key' => 'ebab37d3ace195cd9841a7339fcd64a9',
+        ],
+
+        'alternative' => [
+            'id' => '5H0TJZPMHF',
+            'key' => 'ee123cd2ccef89cadc4c3850849ab164',
+        ],
+
+    ],
+
+];
