@@ -43,7 +43,7 @@ return [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'iscosite_pch'),
+            'database' => env('DB_DATABASE', 'iscosite_store'),
             'username' => env('DB_USERNAME', 'iscosite_santi'),
             'password' => env('DB_PASSWORD', 'san10mar'),
             'unix_socket' => env('DB_SOCKET', ''),
