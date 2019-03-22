@@ -123,6 +123,7 @@ class Soap extends Model
     }
     public static function updating($items)
     {
+      $dolar=Dolar::priceDolar();
       foreach ($items as $item) {
         // code...
         if($item->moneda=='USD'){
