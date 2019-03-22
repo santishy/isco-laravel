@@ -150,7 +150,7 @@ class Soap extends Model
         $data['article']=$product;
         $data['categoria']=$item->seccion;
         $data['precio']=$item->precio;
-        $utilidad=addUtilidad($data);
+        $utilidad=$this->addUtilidad($data);
         $inventario=Inventory::updateOrCreate(['almacen'=>$item->inventario[0]->almacen]);
         $detinvart=Detinvart::updateOrCreate(['id_articulo'=>$product->id_articulo],['id_inventario'=>$inventario->id_inventario],$item->inventario[0]->existencia);
 
