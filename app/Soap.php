@@ -156,7 +156,7 @@ class Soap extends Model
         $detinvart=Detinvart::updateOrCreate(['id_articulo'=>$product->id_articulo],['id_inventario'=>$inventario->id_inventario],$item->inventario[0]->existencia);
 
       }
-      return;
+      return 'actualizado';
     }
     public static function addUtilidad($data)
     {
