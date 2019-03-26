@@ -28,9 +28,9 @@ class ArticlesController extends Controller
         $webservice = new Soap(new SoapWrapper);
         $data = collect($webservice->consume());
         // $webservice->obtenerListaArticulos();
-        foreach($data->chunk(40) as $chunk)
+        foreach($data->chunk(400) as $chunk)
         {
-          
+
           UpdatingWebservice::dispatch($chunk)->delay(now()->addSeconds(10));
         }
         return "Actualizado";
