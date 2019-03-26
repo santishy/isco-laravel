@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\Role;
 use Illuminate\Support\Facades\Auth;
+use Mail;
+use Mail\OrderShipped;
+
 class OrdersController extends Controller
 {
     /**
@@ -57,6 +60,7 @@ class OrdersController extends Controller
         $arr = $request->all();
         $arr['shopping_cart_id'] = $request->shopping_cart->id;
         $order = Order::create($arr);
+        Mail::to(Auth::user()->email)->send(new OrderShipped($request));
         return redirect(url('pagos/'.$request->session()->get("shopping_cart_id")));
     }
 

@@ -16,6 +16,7 @@ use App\Remision;
 use Laravel\Scout\Searchable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Arr;
 // use Artisaninweb\SoapWrapper\Facades\SoapWrapper;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 
@@ -148,17 +149,21 @@ class Soap extends Model
         $product->precio=$item->precio;
         $product->save();
         /*hasta aqui articulo guardado--------------------------------------*/
-        $data['article']=$product;
+        ///$data['article']=$product;
+      //  dd($item->seccion
+      $data = array();
         $data['categoria']=$item->seccion;
         $data['precio']=$item->precio;
-        $utilidad=Soap::addUtilidad($data);
-        $inventario=Inventory::updateOrCreate(['almacen'=>$item->inventario[0]->almacen]);
-        $detinvart=Detinvart::updateOrCreate(['id_articulo'=>$product->id_articulo],['id_inventario'=>$inventario->id_inventario],$item->inventario[0]->existencia);
-
+        $utilidad=Soap::addUtilidad($data,$product);
+        foreach($item->inventario as $data){
+          $inventario=Inventory::firstOrCreate(['almacen'=>$data->almacen]);
+          $det = Detinvart::updateOrCreate(['id_inventario'=>$inventario->id_inventario,'id_articulo'=>$product->id_articulo],
+          ['existencia'=>$data->existencia]);
+        }
       }
       return 'actualizado';
     }
-    public static function addUtilidad($data)
+    public static function addUtilidad($data,$product)
     {
         $utilidad=Utility::where('hasta','>=',$data['precio'])
                             ->where('desde','<=',$data['precio'])
@@ -166,9 +171,9 @@ class Soap extends Model
                             ->first();
         if($utilidad != null)//if(count($utilidad)>0)
         {
-            $data['article']->id_utilidad=$utilidad->id_utilidad;
-            $data['article']->precio = $data['article']->price();
-            $data['article']->save();
+            $product->id_utilidad=$utilidad->id_utilidad;
+            $product->precio = $product->price();
+            $product->save();
         }
         return $utilidad;
     }
