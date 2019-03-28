@@ -14,6 +14,7 @@ use Artisaninweb\SoapWrapper\SoapWrapper;
 use App\Http\Resources\ProductsCollection;
 use Validator;
 use App\Jobs\UpdatingWebservice;
+use Illuminate\Support\Facades\Cache;
 
 class ArticlesController extends Controller
 {
@@ -25,15 +26,22 @@ class ArticlesController extends Controller
     public function index()
     {
 
-        $webservice = new Soap(new SoapWrapper);
-        $data = collect($webservice->consume());
-        // $webservice->obtenerListaArticulos();
-        foreach($data->chunk(400) as $chunk)
-        {
+        // $webservice = new Soap(new SoapWrapper);
+        // $data = collect($webservice->consume());
+        // 
+        // $data = cache::forever('data',$data);
 
+        //$webservice->obtenerListaArticulos();
+
+        foreach(cache::get('data')->chunk(400) as $chunk)
+        {
           UpdatingWebservice::dispatch($chunk)->delay(now()->addSeconds(10));
         }
         return "Actualizado";
+    }
+    public function cache(){
+
+        dd(cache::get('data','hola'));
     }
     public function obtenerParidad(){
         $webservice=new Soap(new SoapWrapper);

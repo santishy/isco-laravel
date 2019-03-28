@@ -76,9 +76,6 @@ Route::resource('users','UserController');
    	Route::resource('products','ProductsController');
    	Route::get('another-provider','ProductsController@anotherProvider');
  });
- Route::get('collection',function(){
-   $collection = collect(
-         ['sku'=>'lkjfasl','price' => '299' , 'peso' => '32kg',
-         'inventario'=>[['almacen'=>1,'existencia'=>4],['almacen'=>2,'existencia' =>7],['almacen'=>3,'existencia'=>9]]]);
-   dd($collection->only('inventario')->only('almacen'));
- });
+
+ Route::get('collection','ArticlesController@cache');
+ use Illuminate\Support\Facades\Cache;

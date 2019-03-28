@@ -20,7 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Articulo::orderBy('id_articulo','desc')->paginate(25);
-        dd($products);    
+            
     }
 
     /**
@@ -55,7 +55,7 @@ class ProductsController extends Controller
 
         $messages=['unique'=>'El :attribute ya existe en la base de datos','required'=>'El campo  :attribute  requerido ','integer'=>'Error en :attribute, con el ID debe ser un entero','create_product'=>'Este :attribute ya existe con este mismo proveedor','numeric'=>'El campo :attribute debe ser un número','image'=>'El :attribute debe ser una imagen'];
         $validator = Validator::make($request->all(),$rules,$messages);
-      
+
          if(!$validator->fails()){
 
             if($request->hasFile('image'))
@@ -65,16 +65,16 @@ class ProductsController extends Controller
                     $existencia=$request->existencia;
                     $data = $request->except('image','_token','existencia');
                     $data['extension'] =  $request->extension ;
-                    $product=Articulo::create($data);  
-// mejor agregar en el soap                    Utility::addUtilidad($product->toArray());   
+                    $product=Articulo::create($data);
+// mejor agregar en el soap                    Utility::addUtilidad($product->toArray());
                     $inventory=Inventory::where('almacen',1)->first();
                     $dt = new Detinvart;
                     $dt->existencia=$existencia;
                     $dt->id_inventario=$inventory->id_inventario;
-                    $dt->id_articulo = $product->id_articulo;  
-                    $dt->save(); 
+                    $dt->id_articulo = $product->id_articulo;
+                    $dt->save();
                     \Storage::disk('public')->putFileAs('images/imgsPCH',$request->file('image'),$product->sku.''.$request->image->extension());
-                }  
+                }
         }
          return view('admin.products.create')->withErrors($validator);
     }
@@ -91,7 +91,7 @@ class ProductsController extends Controller
     }
     function anotherProvider(){
          $products = Articulo::with('section')->where('proveedor','!=','pchmayoreo');
-         
+
          foreach ($products->get() as $product) {
             $utilidad=Utility::where('hasta','>=',$product->precio)
                             ->where('desde','<=',$product->precio)
@@ -102,10 +102,10 @@ class ProductsController extends Controller
                 $product->id_utilidad=$utilidad->id_utilidad;
                 $product->save();
             }
-             
+
          }
         dd($products->get());
-        return; 
+        return;
     }
     /**
      * Show the form for editing the specified resource.

@@ -171,7 +171,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -226,7 +226,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'SoapWrapper' => Artisaninweb\SoapWrapper\Facade\SoapWrapper::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        //'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

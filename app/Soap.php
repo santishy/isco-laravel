@@ -124,6 +124,7 @@ class Soap extends Model
     }
     public static function updating($items)
     {
+      ini_set('max_execution_time', -1);
       $dolar=Dolar::priceDolar();
       foreach ($items as $item) {
         // code...
@@ -135,26 +136,32 @@ class Soap extends Model
         $line=Line::firstOrCreate(['linea'=>$item->linea]);
         $serie=Serie::firstOrCreate(['name'=>$item->serie]);
         $section=Section::firstOrCreate(['seccion'=>$item->seccion]);
-        $product = Articulo::firstOrNew(['sku'=>$item->sku]);
-        $product->proveedor='pchmayoreo';
-        $product->sku=$item->sku;
-        $product->descripcion=$item->descripcion;
-        $product->id_serie=$serie->id;
-        $product->skuFabricante=$item->skuFabricante;
-        $product->id_marca=$brand->id_marca;
-        $product->id_seccion=$section->id_seccion;
-        $product->id_linea=$line->id_linea;
-        $product->moneda=$item->moneda;
-        $product->activo=1;
-        $product->precio=$item->precio;
-        $product->save();
+        $product = Articulo::firstOrCreate(['sku'=>$item->sku],
+        ['proveedor'=>'pchmayoreo','sku'=>$item->sku,'descripcion'=>$item->descripcion,
+        'id_serie'=>$serie->id,'skuFabricante'=>$item->skuFabricante,'id_marca'=>$brand->id_marca,
+        'id_seccion'=>$section->id_seccion,'id_linea' => $line->id_linea,'moneda' => $item->moneda,
+        'activo'=>1,'precio'=>$item->precio]);
+        // $product->proveedor='pchmayoreo';
+        // $product->sku=$item->sku;
+        // $product->descripcion=$item->descripcion;
+        // $product->id_serie=$serie->id;
+        // $product->skuFabricante=$item->skuFabricante;
+        // $product->id_marca=$brand->id_marca;
+        // $product->id_seccion=$section->id_seccion;
+        // $product->id_linea=$line->id_linea;
+        // $product->moneda=$item->moneda;
+        // $product->activo=1;
+        // $product->precio=$item->precio;
+        // $product->save();
         /*hasta aqui articulo guardado--------------------------------------*/
         ///$data['article']=$product;
       //  dd($item->seccion
-      $data = array();
+
+        $data = array();
         $data['categoria']=$item->seccion;
         $data['precio']=$item->precio;
-        $utilidad=Soap::addUtilidad($data,$product);
+        $data['product'] = $product;
+        $utilidad=Soap::addUtilidad($data);
         foreach($item->inventario as $data){
           $inventario=Inventory::firstOrCreate(['almacen'=>$data->almacen]);
           $det = Detinvart::updateOrCreate(['id_inventario'=>$inventario->id_inventario,'id_articulo'=>$product->id_articulo],
@@ -163,7 +170,7 @@ class Soap extends Model
       }
       return 'actualizado';
     }
-    public static function addUtilidad($data,$product)
+    public static function addUtilidad($data)
     {
         $utilidad=Utility::where('hasta','>=',$data['precio'])
                             ->where('desde','<=',$data['precio'])
@@ -171,9 +178,9 @@ class Soap extends Model
                             ->first();
         if($utilidad != null)//if(count($utilidad)>0)
         {
-            $product->id_utilidad=$utilidad->id_utilidad;
-            $product->precio = $product->price();
-            $product->save();
+            $data['product']->id_utilidad=$utilidad->id_utilidad;
+            $data['product']->precio = $data['product']->price();
+            $data['product']->save();
         }
         return $utilidad;
     }
