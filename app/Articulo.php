@@ -13,7 +13,7 @@ class Articulo extends Model
     protected $ip;
     protected $table="articulos";
     protected $primaryKey="id_articulo";
-    protected $fillable=['proveedor','sku','descripcion','skuFabricante','id_marca','id_serie','id_seccion','id_linea','moneda','precio'];
+    protected $fillable=['proveedor','activo','sku','descripcion','skuFabricante','id_marca','id_serie','id_seccion','id_linea','moneda','precio'];
     public function searchableAs()
     {
         return 'articulos';

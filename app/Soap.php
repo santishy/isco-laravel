@@ -140,8 +140,8 @@ class Soap extends Model
         ['proveedor'=>'pchmayoreo','sku'=>$item->sku,'descripcion'=>$item->descripcion,
         'id_serie'=>$serie->id,'skuFabricante'=>$item->skuFabricante,'id_marca'=>$brand->id_marca,
         'id_seccion'=>$section->id_seccion,'id_linea' => $line->id_linea,'moneda' => $item->moneda,
-        'activo'=>1,'precio'=>$item->precio]);
-        dd($product);
+        'activo' => 1,'precio'=>$item->precio]);
+      
         // $product->proveedor='pchmayoreo';
         // $product->sku=$item->sku;
         // $product->descripcion=$item->descripcion;
