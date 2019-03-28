@@ -136,7 +136,7 @@ class Soap extends Model
         $line=Line::firstOrCreate(['linea'=>$item->linea]);
         $serie=Serie::firstOrCreate(['name'=>$item->serie]);
         $section=Section::firstOrCreate(['seccion'=>$item->seccion]);
-        $product = Articulo::firstOrCreate(['sku'=>$item->sku],
+        $product = Articulo::updateOrCreate(['sku'=>$item->sku],
         ['proveedor'=>'pchmayoreo','sku'=>$item->sku,'descripcion'=>$item->descripcion,
         'id_serie'=>$serie->id,'skuFabricante'=>$item->skuFabricante,'id_marca'=>$brand->id_marca,
         'id_seccion'=>$section->id_seccion,'id_linea' => $line->id_linea,'moneda' => $item->moneda,
