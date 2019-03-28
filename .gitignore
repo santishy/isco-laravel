@@ -1,4 +1,5 @@
 /public/hot
+/config/cache.php
 /public/storage
 /storage/*.key
 /vendor

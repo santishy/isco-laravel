@@ -35,7 +35,8 @@ class ArticlesController extends Controller
 
         foreach($data->chunk(400) as $chunk)
         {
-          UpdatingWebservice::dispatch($chunk)->delay(now()->addSeconds(10));
+        //  UpdatingWebservice::dispatch($chunk)->delay(now()->addSeconds(10));
+          UpdatingWebservice::dispatch($chunk);
         }
         return "Actualizado";
     }
