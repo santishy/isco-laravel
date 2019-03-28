@@ -28,11 +28,10 @@ class ArticlesController extends Controller
 
         $webservice = new Soap(new SoapWrapper);
         $data = collect($webservice->consume());
-
-      //  $data = cache::forever('data',$data);
+        cache::forever('data',$data);
 
         //$webservice->obtenerListaArticulos();
-
+        $data = cache::get('data');
         foreach($data->chunk(400) as $chunk)
         {
         //  UpdatingWebservice::dispatch($chunk)->delay(now()->addSeconds(10));
