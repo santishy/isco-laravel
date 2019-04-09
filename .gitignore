@@ -1,5 +1,6 @@
 /public/hot
 /config/cache.php
+/config/queue.php
 /public/storage
 /storage/*.key
 /vendor
