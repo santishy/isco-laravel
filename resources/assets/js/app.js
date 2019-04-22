@@ -61,6 +61,8 @@ Vue.component('search-items-component',require('./components/search/SearchItemsC
 Vue.component('btn-add-to-cart',require('./components/products/AddToCartComponent.vue'));
 Vue.component('counter-products-component',require('./components/shopping_cart/CounterComponent.vue'));
 Vue.component('cart-component',require('./components/shopping_cart/CartComponent.vue'));
+Vue.component('quote-button-component',require('./components/shopping_cart/QuoteButtonComponent.vue'));
+Vue.component('quotation-header',require('./components/shopping_cart/QuotationHeaderComponent.vue'));
 const app = new Vue({
     el: '#app'
 });
