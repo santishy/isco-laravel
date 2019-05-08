@@ -87,13 +87,13 @@ class SectionsController extends Controller
     {
         //
     }
-    public function articles(Request $request,$id){   
+    public function articles(Request $request,$id){
         \Session::put('id_seccion',$id);
         $section=Section::with(['lines','series','articles'])->find($id);
         $series=$section->series;
         $articles=$section->articles()->orderBy('precio','asc')->paginate(20);
+        //dd($articles);
         if($request->isJson()){
-           
             return response()->json(new ProductsCollection($articles));
         }
         $lines=$section->lines;
@@ -109,16 +109,19 @@ class SectionsController extends Controller
     }
     public function series(Request $request)
     {
-        $section=Section::with(['lines','series'])->find(\Session::get('id_seccion'));
-        $products=$section->seriesProducts($request);
+        $section=Section::with(['lines','series','articles'])->find(\Session::get('id_seccion'));
+        $products=$section->seriesProducts($request)->paginate(20);
+        //dd($products);
+        if(request()->wantsJson()){
+            //return $request;
+            return response()->json(new ProductsCollection($products));;
+        }
         $ruta = url()->full();
-        if($request->wantsJson())
-             return new ProductsCollection($products->get());
         $array=$request->except('_token');
         $series=$section->series;
         $lines=$section->lines;
         $method = "POST";
-        return view('sections.articles',['products'=>$products->orderBy('precio','asc')->paginate(16),
+        return view('sections.series.products',['products'=>$products,
                                             'series'=>$series,
                                             'name'=>$this->name,
                                             'lines'=>$lines,'array'=>$array,
@@ -135,7 +138,7 @@ class SectionsController extends Controller
         $section=Section::with(['lines','series'])->find(\Session::get('id_seccion'));
         $lines=$section->lines;
         $series=$section->series;
-        $products=Articulo::with('utilidade')->where('id_linea',$id_linea)->where('id_seccion',\Session::get('id_seccion'))->where('activo','=',1)->orderBy('precio','asc')->paginate(16);
+        $products=Articulo::with('utilidade')->where('id_linea',$id_linea)->where('id_seccion',\Session::get('id_seccion'))->where('activo','=',1)->orderBy('precio','asc')->paginate(20);
         $ruta = url()->full();
         $method = 'GET';
         if($request->wantsJson())

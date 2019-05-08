@@ -35,7 +35,7 @@ Route::get('pagar/completado','PaymentsController@execute')->name('execute');
  Route::get('/home', 'HomeController@index');
  //NUEVAS RUTAS*****************************************************************
  Route::post('search/','ArticlesController@searching');
- Route::get('productos/{section_id}','SectionsController@articles');
+ // Route::get('productos/{section_id}','SectionsController@articles');
  Route::get('productos/serie/{id}','SectionsController@serie');
 // //MARCAS .......
  Route::get('marca/{id_marca}','BrandsController@articles'); // ver productos por una marca
@@ -47,6 +47,7 @@ Route::get('pagar/completado','PaymentsController@execute')->name('execute');
  Route::get('lineas/{id}','LinesController@products');
  //productos - articulos
  Route::get('products/list','SectionsController@listProducts');
+ Route::get('productos/{section_id}','SectionsController@articles');
  Route::get('productos/linea/{id_linea}','SectionsController@productsLine');
  Route::post('productos/series/','SectionsController@series');
  Auth::routes();
@@ -54,7 +55,7 @@ Route::get('pagar/completado','PaymentsController@execute')->name('execute');
  //Route::post('buscar/','ArticlesController@searching');
  //PDF--------------PDF--------------------PDF------------------------------PDF----
  Route::get('cotizacion/','PDFController@quotation');
- Route::get('prueba/','ServiceController@pdf');
+ //Route::get('prueba/','ServiceController@pdf');
  //soap
  Route::get('soap/obtenerParidad','ArticlesController@obtenerParidad');
 

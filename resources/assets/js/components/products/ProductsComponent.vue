@@ -1,81 +1,62 @@
 <template>
 	<section>
-		<material-transition-component 
+		<div class="container-products">
+			<product-card-component :key="product.id" :data-index="index" v-bind:product="product" v-for="(product,index) in products"></product-card-component>
+		</div>
+		<!-- <material-transition-component
 		:css="false"
 		name="fadeIn"
 		tag="div"
 		class="container-products">
 			<product-card-component :key="product.id" :data-index="index" v-bind:product="product" v-for="(product,index) in products"></product-card-component>
-		</material-transition-component>
+		</material-transition-component> -->
+
+		<infinite-loading spinner="waveDots" @infinite="infiniteHandler">
+			<div slot="no-more">No hay mas resultados</div>
+  		<div slot="no-results">No hay resultados :( </div>
+		</infinite-loading>
 	</section>
-	
 </template>
 <script>
 	export default{
 		data(){
 			return {
-				products :[],
-				endpoint:this.ruta
+				products:[],
+				endpoint:this.ruta,
+				page:1
 			}
 		},
-		
+
 		props:['ruta','method'],
-		created(){
-			if(this.method == 'GET')
-				return this.fetchProducts();
-			return this.productsLine();
-		},
+		// created(){
+		// 	if(this.method == 'GET')
+		// 		return this.fetchProducts();
+		// 	return this.productsLine();
+		// },
 		methods:{
-			fetchProducts(){
-				// axios.get(this.endpoint).then((response)=>{
-				// 	console.log(response.data);
-				// 	this.products = response.data.data;
-				// })
+			infiniteHandler($state){
+				let ruta = this.endpoint+'?page='+this.page;
 				axios({
-					method:this.method,
-					url:this.endpoint+"&ajax=1",
-					data:{ajax:'1'},
+					method:'get',
+					url:ruta,
+					data:{ajax:this.page},
 					headers:{
 					'Accept':'application/json',
 					'Content-Type':'application/json'
 					},
 				}).then((response)=>{
-					console.log(response.data);
-					this.products = response.data.data;
-				})
-			},
-			productsLine(){
-				var formData = new FormData(document.getElementById("frmSeries"));
-				axios({
-					method:this.method,
-					url:this.endpoint,
-					data:formData,
-					headers:{
-					'Accept':'application/json',
-					'Content-Type':'application/json'
-					},
-				}).then((response)=>{
-					console.log(response.data+"/n"+formData.values());
-					for (var value of formData.values()) {
-					   console.log(value); 
+					console.log(response.data.data)
+					if(response.data.data.length)
+					{
+						this.page +=1;
+						this.products = this.products.concat(response.data.data);
+						$state.loaded()
 					}
-					this.products = response.data.data;
+					else {
+						$state.complete();
+					}
 				})
 			}
-			// searchSeries(){
-			// 	axios({
-			// 		method:'GET',
-			// 		url:this.endpoint,
-			// 		data:{document.querySelector("#frmSeries").serialize()},
-			// 		headers:{
-			// 		'Accept':'application/json',
-			// 		'Content-Type':'application/json'
-			// 		},
-			// 	}).then((response)=>{
-			// 		console.log(response.data);
-			// 		this.products = response.data.data;
-			// 	})
-			// }
 		}
 	}
 </script>

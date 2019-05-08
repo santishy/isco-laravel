@@ -29,7 +29,7 @@
       <div>
         <p>¿Necesitas ayuda?, llamanos y te atenderemos a la brevedad</p>
         <a href="tel:+5235327373"><span class="glyphicon glyphicon-earphone earphone"></span> 01 800 001 ISCO </a>
-      </div>     
+      </div>
     </div>
   </div>
   <div class="empresa">
@@ -50,14 +50,14 @@
             }
         });
     </script>
-    <script>
-      $.material.init();
+    {{-- <script>
+    $.material.init();
 	  $.material.ripples();
 	  $.material.input();
-  	</script>
-  	<script>
+  	</script> --}}
+  	{{-- <script>
   		$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-  	</script>
+  	</script> --}}
 	<script src="{{url('/js/app.js')}}"></script>
 </body>
 </html>

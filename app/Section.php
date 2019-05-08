@@ -15,7 +15,7 @@ class Section extends Model
 
     // public static  function articles()
     // {
-    //     $query = DB::table('secciones')    
+    //     $query = DB::table('secciones')
     //             ->join('articulos','articulos.id_seccion','=','secciones.id_seccion')
     //             ->join('detinvart','detinvart.id_articulo','=','articulos.id_articulo')
     //             ->where('id_utilidad','!=',0)
@@ -31,7 +31,7 @@ class Section extends Model
     }
     public function series()
     {
-           
+
         return $this->belongsToMany('App\Serie','articulos','id_seccion','id_serie')
             ->distinct()->where('articulos.activo','=',1);
     }
@@ -40,21 +40,27 @@ class Section extends Model
         return $this->belongsToMany('App\Line','articulos','id_seccion','id_linea')
             ->distinct()->where('articulos.activo','=',1)->orderby('precio','asc');;
     }
-
+    // public function scopeProductsSeries($query,$series){
+    //   return $query->where(\DB::raw(''))
+    // }
     public function scopeSerie($query,$id)
     {
         return $query->where('id_serie','=',$id);
     }
     public function seriesProducts($data){
-        $array=$data->except('_token');
+        $array=$data->except(['_token','page']);
         $sql=array();
         foreach($array as $value)
         {
-            array_push($this->sql,['id_serie','=',$value]);
+            array_push($this->sql,['id_serie'=>$value]);
         }
-        //dd($this->sql);
-        return $this->hasMany('App\Articulo','id_seccion','id_seccion')->where('activo',1)->where(function($query){
-            $query->orWhere($this->sql);
+        $array=array();
+        $array=$this->sql;
+      //  dd($array);
+        return $this->hasMany('App\Articulo','id_seccion','id_seccion')->where('activo','=',1)->where(function($query) use($array){
+            foreach ($array as $value) {
+              $query->orWhere('id_serie','=',$value);
+            }
         });
         // if(count($sql)==1)
         //     return $this->hasMany('App\Articulo','id_seccion','id_seccion')->where($sql)->orderby('precio','asc');

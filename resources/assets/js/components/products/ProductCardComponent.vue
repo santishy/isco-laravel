@@ -28,10 +28,6 @@ export default{
 
 			}
 		},
-
-		created(){
-
-		},
 		methods:{
 			onerror(event){
 				 event.target.src = this.product.noimg;

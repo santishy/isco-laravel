@@ -53,6 +53,7 @@ window.store = new Vuex.Store({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 // var variable = require('./frontend');
+Vue.component('InfiniteLoading',require('vue-infinite-loading'));
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('product-card-component', require('./components/products/ProductCardComponent.vue'));
 Vue.component('products-component', require('./components/products/ProductsComponent.vue'));
@@ -63,6 +64,7 @@ Vue.component('counter-products-component',require('./components/shopping_cart/C
 Vue.component('cart-component',require('./components/shopping_cart/CartComponent.vue'));
 Vue.component('quote-button-component',require('./components/shopping_cart/QuoteButtonComponent.vue'));
 Vue.component('quotation-header',require('./components/shopping_cart/QuotationHeaderComponent.vue'));
+Vue.component('section-series-products-component',require('./components/sections/SeriesProductsComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
@@ -141,13 +143,13 @@ class Slider{
 	}
 }
 /*****************************SCROLL PARA MENU***************************/
-var menu=document.querySelector('#container-menu');
-if(menu!=null)
-	var heightScroll=menu.offsetTop;
-var menuNave=document.querySelector('.menu');
-var menuSections=document.querySelector('.menu-sections');
-var body=document.querySelector('body');
-var heightBody=body.getBoundingClientRect().height;
+// var menu=document.querySelector('#container-menu');
+// if(menu!=null)
+// 	var heightScroll=menu.offsetTop;
+// var menuNave=document.querySelector('.menu');
+// var menuSections=document.querySelector('.menu-sections');
+// var body=document.querySelector('body');
+// var heightBody=body.getBoundingClientRect().height;
 (()=>{
 
 	if($("#sliderProducts").length>0){
@@ -181,30 +183,30 @@ var heightBody=body.getBoundingClientRect().height;
 
 })();
 
-if($('.menu-sections').length)
-	var menuSectionsTop=document.querySelector('.menu-sections').getBoundingClientRect().top;
-if(body.scrollHeight>heightBody){
-	// if($.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))){
- //    alert('Hola! Entras desde un dispositivo móvil o tablet!');
-	// }
-	if(screen.width > 1024)
-		window.addEventListener('scroll',function(){
-
-			if(window.pageYOffset > heightScroll)
-			{
-				menu.classList.add('fixed');
-			}
-			else {
-
-				menu.classList.remove('fixed');
-
-				if($('.menu-sections').length)
-				{
-					menuSections.classList.add('margin-top');//cambio el sidebar con esta y la ultima linea de este bloke
-					menuSections.style.top=menuSectionsTop-window.pageYOffset+'px';
-				}
-			}
-		})}
+// if($('.menu-sections').length)
+// 	var menuSectionsTop=document.querySelector('.menu-sections').getBoundingClientRect().top;
+// if(body.scrollHeight>heightBody){
+// 	// if($.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))){
+//  //    alert('Hola! Entras desde un dispositivo móvil o tablet!');
+// 	// }
+// 	if(screen.width > 1024)
+// 		window.addEventListener('scroll',function(){
+//
+// 			if(window.pageYOffset > heightScroll)
+// 			{
+// 				menu.classList.add('fixed');
+// 			}
+// 			else {
+//
+// 				menu.classList.remove('fixed');
+//
+// 				if($('.menu-sections').length)
+// 				{
+// 					menuSections.classList.add('margin-top');//cambio el sidebar con esta y la ultima linea de este bloke
+// 					menuSections.style.top=menuSectionsTop-window.pageYOffset+'px';
+// 				}
+// 			}
+// 		})}
 //-----------------------------------------------------------------------------
 $(document).ready(function(){
 	//new inputMD('.input-form input');
@@ -301,38 +303,38 @@ $(".suprInShoppingCart").on('click',destroyInShoppingCart);
 /*****************************************************************/
 // Edicion de cantidad de productos (qty) en el carrito
 	alerta.hide();
-	$('.set-qty').editable({
-			dataType:'json',
-			type:'PUT',
-			success: function(response, newValue) {
-		    	if(!response.success)
-		    	{
-		    		return 'Excede las existencias';
-		    	}
-			}
-		});
+	// $('.set-qty').editable({
+	// 		dataType:'json',
+	// 		type:'PUT',
+	// 		success: function(response, newValue) {
+	// 	    	if(!response.success)
+	// 	    	{
+	// 	    		return 'Excede las existencias';
+	// 	    	}
+	// 		}
+	// 	});
 /***************************************************************/
 //Datos de las ordenes , como administrador... modificaciones dashboard
-	$('.set-guide-number').editable(
-		{
-			dataType:'json',
-			success: function(response, newValue) {
-		    	if(!response.success)
-		    		alert('revasa las existencias');
-			}
-		});
-	$('.select-status').editable({
-		source:[
-			{value:'creado',text:'Creado'},
-			{value:'enviado',text:'Enviado'},
-			{value:'recibido',text:'Recibido'}
-		]
-	});
-	$('.set-recipient-name').editable();
-	$('.set-email').editable();
-	$('.set-address').editable();
-	$('.set-city').editable();
-	$('.set-state').editable();
+	// $('.set-guide-number').editable(
+	// 	{
+	// 		dataType:'json',
+	// 		success: function(response, newValue) {
+	// 	    	if(!response.success)
+	// 	    		alert('revasa las existencias');
+	// 		}
+	// 	});
+	// $('.select-status').editable({
+	// 	source:[
+	// 		{value:'creado',text:'Creado'},
+	// 		{value:'enviado',text:'Enviado'},
+	// 		{value:'recibido',text:'Recibido'}
+	// 	]
+	// });
+	// $('.set-recipient-name').editable();
+	// $('.set-email').editable();
+	// $('.set-address').editable();
+	// $('.set-city').editable();
+	// $('.set-state').editable();
 /**************************************************************/
 //paypal...
 $('#formCardPago').submit(function(event){
