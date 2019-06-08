@@ -57,6 +57,10 @@
 		</div>
 	</header>
 	<h3 class="text-right title">Cotización</h3>
+	{{-- @if($shopping_cart->cliente) --}}
+		<h4><strong>Cliente</strong></h4>
+		<h4>{{$shopping_cart->cliente}}</h4>
+	{{-- @endif --}}
 	<table class="table">
 		<thead>
 			<tr>

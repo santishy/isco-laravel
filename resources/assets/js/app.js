@@ -35,7 +35,9 @@ window.Vue = require('vue');
 const Vuex = require('vuex');
 window.store = new Vuex.Store({
 	state:{
-		productsCount:0
+		productsCount:0,
+    product:{},
+    products:[]
 	},
 	mutations:{
 		increment(state){
@@ -43,7 +45,19 @@ window.store = new Vuex.Store({
 		},
 		set(state,value){
 			return state.productsCount=value;
-		}
+		},
+    setProduct(state,product){
+      return state.product = product;
+    },
+    setProducts(state,products){
+      state.products=products;
+    },
+    getProducts(state){
+      return state.products;
+    },
+    addProducts(state,products){
+       state.products = state.products.concat(products);
+    }
 	}
 })
 
@@ -53,6 +67,12 @@ window.store = new Vuex.Store({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 // var variable = require('./frontend');
+Vue.component('app-component',require('./components/AppComponent.vue'));
+Vue.component('quotation-component',require('./components/dashboard/quotation/QuotationComponent.vue'));
+Vue.component('search-component',require('./components/dashboard/SearchComponent.vue'));
+
+Vue.component('form-quotation-component',require('./components/dashboard/quotation/FormQuotationComponent.vue'))
+Vue.component('dashboard-products-component',require('./components/dashboard/ProductsComponent.vue'))
 Vue.component('InfiniteLoading',require('vue-infinite-loading'));
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('product-card-component', require('./components/products/ProductCardComponent.vue'));
@@ -66,7 +86,8 @@ Vue.component('quote-button-component',require('./components/shopping_cart/Quote
 Vue.component('quotation-header',require('./components/shopping_cart/QuotationHeaderComponent.vue'));
 Vue.component('section-series-products-component',require('./components/sections/SeriesProductsComponent.vue'))
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store: window.store
 });
 /************************************************************************************************************/
 
@@ -294,7 +315,7 @@ $(".suprInShoppingCart").on('click',destroyInShoppingCart);
 /******************************************************************************/
 // boton superior derecho, Mostrar el carrito
 	$(".viewShoppingCart").on('click',function(event){
-		event.preventDefault();
+	//	event.preventDefault();
 		modalCart.modal("show");
 	});
 /************************************************************/
@@ -403,70 +424,6 @@ $('input:radio[name="almacen"]').change(function(){
 		$("#existencia").val($(this).data('existencia'));
 	}
 });
-// agregar al carrito
-// btn_add_product.on('click',function(){
-
-// 	$.ajax({
-// 		url:$("#form-add-product").attr('action'),
-// 		beforeSend:function(){
-// 			btn_add_product.attr('disabled',true);
-// 			btn_add_product.text('Cargando...');
-// 		},
-// 		type:'post',
-// 		data:$("#form-add-product").serialize(),
-// 		dataType:'JSON',
-// 		success:function(resp){
-// 			if(resp.success)
-// 			{
-// 				$(".container-right a span").text(resp.productsCount);
-// 				addCart(resp.article,resp.inShoppingCart);
-// 				modalCart.modal('show');
-// 			}
-// 		},
-// 		error:function(error,xhr,a)
-// 		{
-// 			console.log(error+" "+xhr+" "+a );
-// 		},
-// 		complete:function(){
-// 			btn_add_product.attr('disabled',false);
-// 			btn_add_product.text('Agregar al carrito');
-// 		}
-
-// 	});
-// });
-// function addCart(article,inShoppingCart)
-// {
-// 	var tbody=document.querySelector('#tbody-cart');
-// 	tr=document.createElement('tr');
-// 	tr.classList.add('tr-cart');
-// 	td=document.createElement('td');
-// 	img=document.createElement('img');
-// 	img.classList.add('img-responsive');
-// 	img.setAttribute('src',"http://www.pchmayoreo.com/media/catalog/product/"+article.sku.substr(0,1)+"/"+article.sku.substr(1,1)+"/"+article.sku+".jpg" );
-// 	td.appendChild(img);
-// 	tr.appendChild(td);
-// 	td=document.createElement('td');
-// 	td.innerHTML=article.descripcion;
-// 	tr.appendChild(td);
-// 	td=document.createElement('td');
-// 	td.innerHTML=inShoppingCart.qty;
-// 	tr.appendChild(td);
-// 	td=document.createElement('td');
-// 	button=document.createElement('button');
-// 	button.dataset.id=inShoppingCart.id;
-// 	button.classList.add('btn');
-// 	button.classList.add('btn-danger');
-// 	button.classList.add('btn-xs');
-// 	button.classList.add('suprInShoppingCart');
-// 	button.addEventListener('click',destroyInShoppingCart)
-// 	span=document.createElement('span');
-// 	span.classList.add('glyphicon-trash');
-// 	span.classList.add('glyphicon');
-// 	button.appendChild(span);
-// 	td.appendChild(button);
-// 	tr.appendChild(td);
-// 	tbody.appendChild(tr);
-// }
 function destroyInShoppingCart()// trucha!!! se manda el id en la uri
 {
 	button=$(this);

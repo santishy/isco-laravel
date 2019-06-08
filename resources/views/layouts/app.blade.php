@@ -44,10 +44,20 @@
                             <a class="nav-link" href="{{url('products/create')}}">Productos</a>
                         </li>
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                          <a href="{{url('/quotations/create')}}" style="z-index:100000 !important;" class="nav-link">
+                          @if($shopping_cart->productsCount[0]['cantidad'])
+                            <counter-products-component :count="{{$shopping_cart->productsCount[0]['cantidad']}}">
+                            </counter-products-component>
+                          @else
+                            <counter-products-component :count="{{0}}">
+                            </counter-products-component>
+                          @endif
+                          </a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -78,7 +88,6 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

@@ -76,7 +76,6 @@ Route::resource('users','UserController');
    	Route::resource('utilities','UtilityController');
    	Route::resource('products','ProductsController');
    	Route::get('another-provider','ProductsController@anotherProvider');
+    Route::resource('quotations','QuotationController');
+    Route::get('correo','QuotationController@email');
  });
-
- Route::get('collection','ArticlesController@cache');
- use Illuminate\Support\Facades\Cache;

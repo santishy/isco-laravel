@@ -48,7 +48,7 @@
 					console.log(response.data.data)
 					if(response.data.data.length)
 					{
-						this.page +=1;
+						this.page += 1;
 						this.products = this.products.concat(response.data.data);
 						$state.loaded()
 					}

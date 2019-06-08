@@ -81,7 +81,7 @@
 				    		</div>
 				    	{!! Form::close() !!}
 				    </p>
-				   
+
 				  </div>
 				</div>
 				@if ($errors->any())
@@ -93,8 +93,8 @@
 				        </ul>
 				    </div>
 				@endif
-			</div>	
+			</div>
 		</div>
 	</div>
-	
+
 @endsection

@@ -75,6 +75,9 @@ class Articulo extends Model
                 ->join('inventario','inventario.id_inventario','=','inventario.id_inventario');*/
         return $this->belongsToMany('App\Inventory','detinvart','id_articulo','id_inventario')->withPivot('existencia');
     }
+    public function existence(){
+      return $this->hasMany('App\Detinvart','id_articulo','id_articulo')->sum('existencia');
+    }
     // public static function desactivar($sku)
     // {
     //     $article=Articulo::find(1);

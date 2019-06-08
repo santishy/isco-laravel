@@ -8,6 +8,8 @@ use App\Articulo;
 use App\Detinvart;
 use App\Inventory;
 use App\Utility;
+use App\Http\Resources\Product;
+use App\Http\Resources\ProductsCollection;
 use Validator;
 
 class ProductsController extends Controller
@@ -17,10 +19,12 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Articulo::orderBy('id_articulo','desc')->paginate(25);
-            
+
+        if($request->wantsJson())
+          return response()->json(new ProductsCollection( Articulo::where('activo',1)->orderBy('id_articulo','desc')->paginate(25)));
+        return view('admin.products.index');
     }
 
     /**
@@ -28,9 +32,10 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.products.create');    }
+    // public function create()
+    // {
+    //     return view('admin.products.create');    1
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -87,11 +92,11 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Articulo::find($id);
+        return new Product($product);
     }
     function anotherProvider(){
          $products = Articulo::with('section')->where('proveedor','!=','pchmayoreo');
-
          foreach ($products->get() as $product) {
             $utilidad=Utility::where('hasta','>=',$product->precio)
                             ->where('desde','<=',$product->precio)

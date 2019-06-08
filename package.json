@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "vue-infinite-loading": "^2.4.4",
+        "vue-router": "^3.0.6",
         "vuex": "^3.0.1"
     }
 }

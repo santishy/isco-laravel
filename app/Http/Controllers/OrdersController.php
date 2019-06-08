@@ -7,7 +7,7 @@ use App\Order;
 use App\Role;
 use Illuminate\Support\Facades\Auth;
 use Mail;
-use Mail\OrderShipped;
+use App\Mail\OrderShipped;
 
 class OrdersController extends Controller
 {
@@ -50,7 +50,6 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate(['line1'=>'required',
                             'state' => 'required',
                             'city' => 'required',

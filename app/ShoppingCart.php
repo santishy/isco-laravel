@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -32,7 +31,7 @@ class ShoppingCart extends Model
     }
 	public function productsCount()
 	{
-		return $this->hasMany('App\inShoppingCart','shopping_cart_id','id')
+		return $this->hasMany('App\InShoppingCart','shopping_cart_id','id')
 				->addSelect(DB::raw('SUM(qty) as cantidad'));
 	}
     // public function scopeArticulos($query)
@@ -50,7 +49,7 @@ class ShoppingCart extends Model
     //                  ->orderBy('moneda','asc');
     // }
     public function articulos(){
-        return $this->belongsToMany('App\Articulo','in_shopping_carts','shopping_cart_id','id_articulo');
+        return $this->belongsToMany('App\Articulo','in_shopping_carts','shopping_cart_id','id_articulo')->withPivot('qty','price');
     }
     public function BelongsToManyArticulos()
     {

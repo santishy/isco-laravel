@@ -1,8 +1,8 @@
 <template>
-	<a href="#" class="viewShoppingCart">
+	<div class="viewShoppingCart">
         <span class="badge">{{productsCount}}</span>
         <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
-    </a>
+  </div>
 </template>
 <script>
 	export default{
