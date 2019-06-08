@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('ventas@grupoisco.com'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('Isco2019.'),
 
     /*
     |--------------------------------------------------------------------------
