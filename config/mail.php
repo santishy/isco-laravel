@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 2525),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'ventas@grupoisco.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'santiagomartinochoaestrada@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'ISCO COMPUTADORAS'),
     ],
 
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('159798c9b65f96'),
+    'username' => env('santiagomartinochoaestrada@gmail.com'),
 
-    'password' => env('61c2990184ec55'),
+    'password' => env('san10mar'),
 
     /*
     |--------------------------------------------------------------------------
