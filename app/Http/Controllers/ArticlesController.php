@@ -138,7 +138,7 @@ class ArticlesController extends Controller
         if(!$validator->fails()){
             if($request->hasFile('image'))
                 if($request->file('image')->isValid()){
-
+                    dd($request->path());
                     $img = \Storage::disk('public')->putFileAs('images/imgsPCH',$request->file('image'),$article->sku.'.'.$request->image->extension());
                     //dd($img);
                     //\Storage::setVisibility('sliders/'.$request->file('slider'),'public');
