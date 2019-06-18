@@ -152,7 +152,8 @@ class ArticlesController extends Controller
                     dd('no contiene imagen');
     } else
                 dd($validator->errors());
-     return redirect()->back();
+
+     return redirect("/producto/$id");
 }
     public function pdf(){
         $pdf = \PDF::loadView('pdf.prueba');
