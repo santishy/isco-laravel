@@ -139,7 +139,7 @@ class ArticlesController extends Controller
             if($request->hasFile('image'))
                 if($request->file('image')->isValid()){
 
-                    $img = \Storage::disk('public')->putFileAs('images/imgsPCH/',$request->file('image'),$article->sku.'.'.$request->image->extension());
+                    $img = \Storage::disk('public')->putFileAs('images/imgsPCH',$request->file('image'),$article->sku.'.'.$request->image->extension());
                     dd($img);
                     //\Storage::setVisibility('sliders/'.$request->file('slider'),'public');
                     $article->extension = $request->image->extension();
