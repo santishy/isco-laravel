@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -59,9 +59,8 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'ventas@grupoisco.com'),
         'name' => env('MAIL_FROM_NAME', 'ISCO COMPUTADORAS'),
     ],
-    'reply_to' => ['address' => 'example@example.com', 'name' => 'App Name'],
-
-    /*
+    'reply_to' => ['address' => 'ventas@grupoisco.com', 'name' => 'Isco Computadoras'],
+      /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
     |--------------------------------------------------------------------------
@@ -85,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME','santiagomartinochoaestrada@gmail.com'),
+    'username' => env('MAIL_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD','osuatfehtxdooagd'),
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------

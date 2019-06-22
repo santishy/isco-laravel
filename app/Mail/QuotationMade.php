@@ -29,8 +29,7 @@ class QuotationMade extends Mailable
      */
     public function build()
     {
-        return $this->from('ventas@grupoisco.com')
-                    ->view('admin.quotation.email',['data' => $this->data])
+        return $this->from("iscosahuayo@gmail.com","ISCO COMPUTADORAS")->subject('Cotizacion')->view('admin.quotation.email',['data' => $this->data])
                     ->attachData($this->data->pdf,'cotizacion.pdf', [
                         'mime' => 'application/pdf',
                     ]);
