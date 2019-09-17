@@ -72,7 +72,7 @@ class ShoppingCart extends Model
         $total=0;
         foreach($this->belongsToManyArticulos()->get() as $articulo)
         {
-            $total+=$articulo->precio*$articulo->qty;
+            $total+=$articulo->price*$articulo->qty;
         }
         return $total;
     }

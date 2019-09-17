@@ -97,7 +97,7 @@
                 {{$producto->qty}}
               </td>
               <td>
-                {{($producto->precio*$producto->qty)}}
+                {{($producto->price*$producto->qty)}}
               </td>
             </tr>
             @php $i++; @endphp

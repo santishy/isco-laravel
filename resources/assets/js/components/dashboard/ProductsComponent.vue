@@ -48,7 +48,8 @@
               <th>SKU</th>
               <th>SKU FABRICANTE</th>
               <th>DESCRIPCION</th>
-              <th>PRECIO</th>
+              <th>P. PROVEEDOR</th>
+              <th>P. DE VENTA</th>
               <th></th>
             </thead>
             <tbody>
@@ -56,6 +57,7 @@
                 <td>{{product.sku}}</td>
                 <td>{{product.skuManufacturer}}</td>
                 <td>{{product.description}}</td>
+                <td>{{product.providerPrice}}</td>
                 <td>{{product.humanPrice}}</td>
                 <td><button class="btn btn-info btn-sm" @click="getProductData(product.id)"><i class="far fa-eye"></i></button></td>
               </tr>

@@ -99,9 +99,9 @@
 					</td>
 
 					<td>
-						${{ $product->precio }}
+						${{ $product->price }}
 					</td>
-					<td>${{$product->precio*$product->qty}}</td>
+					<td>${{$product->price*$product->qty}}</td>
 
 				</tr>
 			@endforeach

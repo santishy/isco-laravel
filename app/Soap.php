@@ -109,6 +109,7 @@ class Soap extends Model
             $product->moneda=$item->moneda;
             $product->activo=1;
             $product->precio=$item->precio;
+            $product->precio_proveedor = $item->precio;
             $product->save();
             /*hasta aqui articulo guardado--------------------------------------*/
             $data['article']=$product;
@@ -141,23 +142,6 @@ class Soap extends Model
         'id_serie'=>$serie->id,'skuFabricante'=>$item->skuFabricante,'id_marca'=>$brand->id_marca,
         'id_seccion'=>$section->id_seccion,'id_linea' => $line->id_linea,'moneda' => $item->moneda,
         'activo' => 1,'precio'=>$item->precio]);
-      
-        // $product->proveedor='pchmayoreo';
-        // $product->sku=$item->sku;
-        // $product->descripcion=$item->descripcion;
-        // $product->id_serie=$serie->id;
-        // $product->skuFabricante=$item->skuFabricante;
-        // $product->id_marca=$brand->id_marca;
-        // $product->id_seccion=$section->id_seccion;
-        // $product->id_linea=$line->id_linea;
-        // $product->moneda=$item->moneda;
-        // $product->activo=1;
-        // $product->precio=$item->precio;
-        // $product->save();
-        /*hasta aqui articulo guardado--------------------------------------*/
-        ///$data['article']=$product;
-      //  dd($item->seccion
-
         $data = array();
         $data['categoria']=$item->seccion;
         $data['precio']=$item->precio;

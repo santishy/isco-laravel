@@ -41,7 +41,7 @@
                             <a class="nav-link" href="{{url('utilities')}}">Utilidad</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="{{url('products/create')}}">Productos</a>
+                            <a class="nav-link" href="{{url('products')}}">Productos</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
