@@ -21,7 +21,7 @@ class ProductsCollection extends ResourceCollection
                 return [
                     'description' => $ele->descripcion,
                     'skuManufacturer' => $ele->skuFabricante,
-                    'humanPrice' => number_format($ele->price,2),
+                    'humanPrice' => number_format($ele->precio,2),
                     'providerPrice' => number_format($ele->precio_proveedor),
                     'sku' => $ele->sku,
                     'id' => $ele->id_articulo,
