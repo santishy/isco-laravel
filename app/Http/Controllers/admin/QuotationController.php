@@ -42,7 +42,7 @@ class QuotationController extends Controller
     {
       $request->shopping_cart->cliente = $request->name;
       //dd($request->shopping_cart->cliente);
-      $pdf=\PDF::LoadView('pdf.quotation',['shopping_cart'=>$request->shopping_cart,'fecha'=>Carbon::now()->toDateTimeString()]);
+      $pdf=\PDF::LoadView('pdf.quotation',['name'=>$request->name,'shopping_cart'=>$request->shopping_cart,'fecha'=>Carbon::now()->toDateTimeString()]);
       $request->pdf = $pdf->output();
       //$request->file($request->pdf)->store('images','public/pdfs');
       Mail::to($request->email)->send(new QuotationMade($request));

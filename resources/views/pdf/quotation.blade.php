@@ -59,7 +59,11 @@
 	<h3 class="text-right title">Cotización</h3>
 	{{-- @if($shopping_cart->cliente) --}}
 		<h4><strong>Cliente</strong></h4>
-		<h4>{{$shopping_cart->cliente}}</h4>
+		<h4>@php
+			if(isset($name))
+				echo $name;
+		@endphp</h4>
+		<hr>
 	{{-- @endif --}}
 	<table class="table">
 		<thead>
