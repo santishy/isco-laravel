@@ -45,7 +45,7 @@ class QuotationController extends Controller
       $pdf=\PDF::LoadView('pdf.quotation',['shopping_cart'=>$request->shopping_cart,'fecha'=>Carbon::now()->toDateTimeString()]);
       $request->pdf = $pdf->output();
       //$request->file($request->pdf)->store('images','public/pdfs');
-      //Mail::to($request->email)->send(new QuotationMade($request));
+      Mail::to($request->email)->send(new QuotationMade($request));
       $request->session()->forget('shopping_cart_id');
       return response()->json( $pdf->save("cotizacion.pdf"));
     }
