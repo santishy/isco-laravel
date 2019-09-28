@@ -49406,16 +49406,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      sent: false,
+      message: false
+    };
+  },
+
   methods: {
     store: function store() {
+      var _this = this;
+
       var quotationData = new FormData(document.querySelector('#quotation-data'));
+      this.sent = true;
+      this.message = false;
       axios({
         method: 'POST',
         url: '/quotations',
         data: quotationData
       }).then(function (response) {
+        _this.sent = false;
+        _this.message = 'Envio Exitoso';
         console.log(response.data);
       }).catch(function (error) {
         console.log(error);
@@ -49443,6 +49462,34 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row justify-content-center" }, [
               _c("div", { staticClass: "col-sm-7" }, [
+                _vm.sent
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "alert alert-light text-center",
+                        attrs: { role: "alert" }
+                      },
+                      [_vm._v("\n                Enviando...\n              ")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.message
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "alert alert-success",
+                        attrs: { role: "alert" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.message) +
+                            "\n              "
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "form",
                   {
@@ -50260,26 +50307,18 @@ var render = function() {
                   : _vm._e()
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.product.id,
-                      expression: "product.id"
-                    }
-                  ],
-                  staticClass: "col-sm-6 col-md-6"
-                },
-                [
-                  _c("form-quotation-component", {
-                    attrs: { product: _vm.product }
-                  })
-                ],
-                1
-              )
+              _vm.product.id
+                ? _c(
+                    "div",
+                    { staticClass: "col-sm-6 col-md-6" },
+                    [
+                      _c("form-quotation-component", {
+                        attrs: { product: _vm.product }
+                      })
+                    ],
+                    1
+                  )
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c(

@@ -34,7 +34,7 @@
                 </dd>
               </dl>
             </div>
-            <div v-show="product.id" class="col-sm-6 col-md-6">
+            <div v-if="product.id" class="col-sm-6 col-md-6">
               <form-quotation-component :product="product"></form-quotation-component>
             </div>
           </div>
