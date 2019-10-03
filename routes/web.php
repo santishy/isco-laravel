@@ -22,9 +22,9 @@ Route::get('pagar/completado','PaymentsController@execute')->name('execute');
  Route::resource('pagos','PaymentsController',['online'=>['store']]);
  Route::resource('in_shopping_carts','InShoppingCartsController',['only'=>['store','update','destroy']]);
  Route::get('articles/image/{fileName}','ArticlesController@images');
-
+Route::put('producto/{id}','ArticlesController@update')->name('updateProduct');
  Route::resource('producto','ArticlesController');
- Route::put('producto/{id}','ArticlesController@update')->name('updateProduct');
+
  Auth::routes();
  Route::get('/home', 'HomeController@index');
  Route::resource('remisiones','RemisionesController');
