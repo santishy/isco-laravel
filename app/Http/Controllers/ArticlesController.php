@@ -128,7 +128,7 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('entro');
+      
         $article = Articulo::find($id);
         $messages=['image'=>'El :attribute tiene que ser una imagen',
                     'dimensions'=>'Las dimensiones de :attribute tienen que ser de 3200 x 800 width-height','required'=>'El :attribute es un campo requerido'];
@@ -140,7 +140,7 @@ class ArticlesController extends Controller
                 if($request->file('image')->isValid()){
 
                     $img = \Storage::disk('public')->putFileAs('images/imgsPCH',$request->file('image'),$article->sku.'.'.$request->image->extension());
-                    dd($img);
+
                     //\Storage::setVisibility('sliders/'.$request->file('slider'),'public');
                     $article->extension = $request->image->extension();
                     $article->save();
