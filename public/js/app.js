@@ -50609,6 +50609,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -50666,7 +50667,7 @@ var render = function() {
               {
                 attrs: {
                   action: _vm.product.route,
-                  method: "PUT",
+                  method: "POST",
                   enctype: "multipart/form-data"
                 }
               },
@@ -50675,6 +50676,11 @@ var render = function() {
                 _vm._v(" "),
                 _c("input", {
                   attrs: { type: "hidden", name: "_method", value: "PUT" }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  attrs: { type: "hidden", name: "id" },
+                  domProps: { value: _vm.product.id }
                 }),
                 _vm._v(" "),
                 _c("input", {

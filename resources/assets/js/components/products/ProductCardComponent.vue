@@ -10,9 +10,10 @@
 			<p>${{ product.humanPrice }}</p>
 		</div>
 		<div v-if="product.auth">
-			<form :action="product.route" :method="'PUT'" :enctype="'multipart/form-data'">
+			<form :action="product.route" :method="'POST'" :enctype="'multipart/form-data'">
 				<label>Subir imagen</label>
 				<input type="hidden" name="_method" value="PUT">
+				<input type="hidden" name="id" :value="product.id">
 				<input type="hidden" name="_token" :value="product.csrf">
 				<input type="file" name="image" class="form-control imageUpdate">
 				<button type="submit" class="btn btn-success">Enviar</button>
