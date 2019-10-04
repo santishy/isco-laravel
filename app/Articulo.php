@@ -131,11 +131,11 @@ class Articulo extends Model
             return $this->externalFile($this->sku);
     }
     public function localFile(){
-         return "http://iscocomputadoras.com/storage/images/imgsPCH/".$this->sku.'.'.$this->extension;
+         return "https://iscocomputadoras.com/storage/images/imgsPCH/".$this->sku.'.'.$this->extension;
     }
     public function externalFile($sku)
     {
-         return "http://www.pchmayoreo.com/media/catalog/product/".substr($this->sku, 0,1)."/".substr($this->sku, 1,1)."/".$this->sku.".jpg";
+         return "https://www.pchmayoreo.com/media/catalog/product/".substr($this->sku, 0,1)."/".substr($this->sku, 1,1)."/".$this->sku.".jpg";
 
     }
 }
