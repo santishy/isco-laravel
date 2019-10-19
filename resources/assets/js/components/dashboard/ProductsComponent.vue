@@ -16,7 +16,7 @@
                 </dd>
                 <dt class="col-sm-3 text-center">
                   SKU Fabricante
-                  
+
                 </dt>
                 <dd class="col-sm-9 text-justify">
                   {{product.skuFabricante}}
@@ -104,7 +104,7 @@ export default {
         }
         else
         {
-          $state.completed()
+          $state.completed();
         }
       }).catch((error)=>{
         console.log(error)

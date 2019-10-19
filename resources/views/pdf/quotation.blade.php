@@ -46,7 +46,7 @@
 <body>
 	<header>
 		<div class="inline-block" style="width:30%;position: absolute;">
-			<img class="logotipo" src="images/logotipo.jpg">
+			<img class="logotipo" src="{{url('images/logotipo.jpg')}}">
 		</div>
 		<div class="inline-block" style="width:100%">
 			<h3 class="center">Isco Computadoras S.A. de C.V.</h4>
