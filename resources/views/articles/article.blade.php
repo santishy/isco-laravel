@@ -60,7 +60,7 @@
                       <div class="text-secundary">
                         Elige tú lugar más cercano
                       </div>
-                      <table class="table table-striped">
+                      <table class="table table-striped table-responsive">
                           <thead>
                               <th>Amacen</th>
                               <th>Stock</th>
