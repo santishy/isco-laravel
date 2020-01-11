@@ -1,6 +1,6 @@
 <div class="col-md-3 ">
-  <div class="sidebar" style="padding-top: 3em;height: 200px;">
-        <div class="title-sidebar">
+  <div class="sidebar border-0 shadow-sm" style="padding-top: 3em;height:200px;background:white">
+        <div class="title-sidebar border-0">
           Lineas
         </div>
         @if($lines != null)
@@ -9,8 +9,8 @@
           @endforeach
           @endif
     </div>
-    <div class="sidebar" style='margin-bottom: 10px;'>
-        <div class="title-sidebar">
+    <div class="sidebar border-0 shadow-sm" style='margin-bottom: 10px;background:white'>
+        <div class="title-sidebar border-0">
           Series
         </div>
         @if($series != null)
@@ -24,7 +24,7 @@
                   <input name="serie_{{ $i }}" type="checkbox" class="checkbox_serie" value="{{ $serie->id}}" @php if(isset($array['serie_'.$i])) echo 'checked' @endphp> {{ $serie->name}}
                 </label>
               </div>
-              @php 
+              @php
                 $i++;
               @endphp
           @endforeach

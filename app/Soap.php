@@ -102,6 +102,10 @@ class Soap extends Model
             $product->sku=$item->sku;
             $product->descripcion=$item->descripcion;
             $product->id_serie=$serie->id;
+            $product->largo = $item->largo;
+            $product->ancho = $item->ancho;
+            $product->alto = $item->alto;
+            $product->peso = $item->peso;
             $product->skuFabricante=$item->skuFabricante;
             $product->id_marca=$brand->id_marca;
             $product->id_seccion=$section->id_seccion;
@@ -111,6 +115,7 @@ class Soap extends Model
             $product->precio=$item->precio;
             $product->precio_proveedor = $item->precio;
             $product->save();
+            dd($product);
             /*hasta aqui articulo guardado--------------------------------------*/
             $data['article']=$product;
             $data['categoria']=$item->seccion;
@@ -141,7 +146,7 @@ class Soap extends Model
         ['proveedor'=>'pchmayoreo','sku'=>$item->sku,'descripcion'=>$item->descripcion,
         'id_serie'=>$serie->id,'skuFabricante'=>$item->skuFabricante,'id_marca'=>$brand->id_marca,
         'id_seccion'=>$section->id_seccion,'id_linea' => $line->id_linea,'moneda' => $item->moneda,
-        'activo' => 1,'precio'=>$item->precio]);
+        'activo' => 1,'precio'=>$item->precio,'largo'=>$item->largo,'ancho'=>$item->ancho,'alto'=>$item->alto,'peso'=>$item->peso]);
         $data = array();
         $data['categoria']=$item->seccion;
         $data['precio']=$item->precio;

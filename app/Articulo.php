@@ -13,7 +13,7 @@ class Articulo extends Model
     protected $ip;
     protected $table="articulos";
     protected $primaryKey="id_articulo";
-    protected $fillable=['proveedor','activo','sku','descripcion','skuFabricante','id_marca','id_serie','id_seccion','id_linea','moneda','precio'];
+    protected $fillable=['proveedor','activo','sku','alto','peso','largo','ancho','descripcion','skuFabricante','id_marca','id_serie','id_seccion','id_linea','moneda','precio'];
     public function searchableAs()
     {
         return 'articulos';
@@ -107,7 +107,7 @@ class Articulo extends Model
     }
     public function brand()
     {
-        return $this->hasOne('App\Brand','id_articulo','id_marca');
+        return $this->hasOne('App\Brand','id_marca','id_marca');
     }
     // public function section()
     // {

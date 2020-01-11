@@ -31,6 +31,7 @@ class ProductsCollection extends ResourceCollection
                     'noimg' => asset('images/noimg.jpg'),
                     'route' => route('updateProduct',$ele->id_articulo),
                     'imgLocal'=>$ele->localFile(),
+                    'brand' => $ele->brand->marca,
                     // 'imgExternal'=>$ele->externalFile(),
                     'csrf' => csrf_token()
                 ];

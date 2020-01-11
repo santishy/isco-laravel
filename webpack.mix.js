@@ -10,6 +10,12 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+ mix.browserSync({
+          proxy: 'http://isco.test',
+          open: false,
+          browser:'Google chrome',
+          ghostMode: false,
+          watch:true,
+      });
+mix.js('resources/js/app.js', 'public/js')
+   .sass('resources/sass/app.scss', 'public/css');

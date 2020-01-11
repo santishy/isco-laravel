@@ -28,6 +28,7 @@ class ArticlesController extends Controller
 
         $webservice = new Soap(new SoapWrapper);
         $data = collect($webservice->consume());
+        
         cache::forever('data',$data);
 
         //$webservice->obtenerListaArticulos();
@@ -140,7 +141,7 @@ class ArticlesController extends Controller
                 if($request->file('image')->isValid()){
 
                     $img = \Storage::disk('public')->putFileAs('images/imgsPCH',$request->file('image'),$article->sku.'.'.$request->image->extension());
-                
+
                     //\Storage::setVisibility('sliders/'.$request->file('slider'),'public');
                     $article->extension = $request->image->extension();
                     $article->save();

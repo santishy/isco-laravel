@@ -5,8 +5,8 @@
     <div class="row">
     	@include('slider.products',['articles'=>$articles,'slider_id'=>'sliderProducts','title'=>'Lo más visto'])
     </div>
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+    <div class="row justify-content-center">
+        <div class="col-md-10>
             @include('slider.brands',['slider_id'=>'sliderBrands'])
         </div>
     </div>

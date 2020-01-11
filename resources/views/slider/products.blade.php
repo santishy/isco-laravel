@@ -1,4 +1,4 @@
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-12">
     <div class="header-slider">
         {{ $title }}
     </div>
@@ -11,16 +11,16 @@
 	    				<div class="content-article">
 	    						<p class="description">
 	    							{{ $article->descripcion }}
-	    						</p>	
+	    						</p>
 	    						<p class="price">
 	    							${{ $article->numberFormat() }}
 	    						</p>
 	    				</div>
     				</a>
-    			</div>	
+    			</div>
     		@endforeach
     	</div>
-        <a href="#" class="btnRight"><span class=" glyphicon glyphicon-chevron-right"></span></a>   
-        <a href="#" class="btnLeft"><span class=" glyphicon glyphicon-chevron-left"></span></a>             
+        <a href="#" class="btnRight"><span class=" glyphicon glyphicon-chevron-right"></span></a>
+        <a href="#" class="btnLeft"><span class=" glyphicon glyphicon-chevron-left"></span></a>
     </div>
 </div>
