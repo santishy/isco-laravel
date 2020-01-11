@@ -17,3 +17,4 @@ yarn-error.log
 /config/debugbar.php
 /config/filesystems.php
 /config/mail.php
+/storage/debugbar
