@@ -101,6 +101,9 @@ class Articulo extends Model
         $price=$price*1.16;
         return round($price);
     }
+    public function line(){
+      return $this->belongsTo(Line::class,'id_linea','id_linea');
+    }
     public function utilidade()
     {
         return $this->belongsTo('App\Utility','id_utilidad','id_utilidad');

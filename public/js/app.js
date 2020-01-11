@@ -2281,6 +2281,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38755,15 +38757,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      staticClass: "btn btn-block btn-primary",
-      attrs: { id: "btn-add-product", type: "button" },
-      on: { click: _vm.addToCart }
-    },
-    [_vm._v(_vm._s(_vm.message))]
-  )
+  return _c("div", {}, [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-block btn-primary",
+        attrs: { id: "btn-add-product", type: "button" },
+        on: { click: _vm.addToCart }
+      },
+      [_vm._v(_vm._s(_vm.message))]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52525,7 +52529,7 @@ Vue.component('product-card-component', __webpack_require__(/*! ./components/pro
 Vue.component('products-component', __webpack_require__(/*! ./components/products/ProductsComponent.vue */ "./resources/js/components/products/ProductsComponent.vue")["default"]);
 Vue.component('material-transition-component', __webpack_require__(/*! ./components/animations/MaterialCollectionComponent.vue */ "./resources/js/components/animations/MaterialCollectionComponent.vue"));
 Vue.component('search-items-component', __webpack_require__(/*! ./components/search/SearchItemsComponent.vue */ "./resources/js/components/search/SearchItemsComponent.vue"));
-Vue.component('btn-add-to-cart', __webpack_require__(/*! ./components/products/AddToCartComponent.vue */ "./resources/js/components/products/AddToCartComponent.vue"));
+Vue.component('btn-add-to-cart', __webpack_require__(/*! ./components/products/AddToCartComponent.vue */ "./resources/js/components/products/AddToCartComponent.vue")["default"]);
 Vue.component('counter-products-component', __webpack_require__(/*! ./components/shopping_cart/CounterComponent.vue */ "./resources/js/components/shopping_cart/CounterComponent.vue")["default"]);
 Vue.component('cart-component', __webpack_require__(/*! ./components/shopping_cart/CartComponent.vue */ "./resources/js/components/shopping_cart/CartComponent.vue")["default"]);
 Vue.component('quote-button-component', __webpack_require__(/*! ./components/shopping_cart/QuoteButtonComponent.vue */ "./resources/js/components/shopping_cart/QuoteButtonComponent.vue"));

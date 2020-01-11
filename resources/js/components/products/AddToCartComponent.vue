@@ -1,5 +1,7 @@
 <template>
-	<button id="btn-add-product" type="button" class="btn btn-block btn-primary" @click="addToCart">{{message}}</button>
+	<div class="">
+		<button id="btn-add-product" type="button" class="btn btn-block btn-primary" @click="addToCart">{{message}}</button>
+	</div>
 </template>
 <script>
 	export default{
@@ -28,7 +30,7 @@
 					}
 				}).then((response)=>{
 					window.store.commit("increment");
-					
+
 					 $(".container-right a span").text(response.data.productsCount);
 					 this.addCart(response.data.article,response.data.inShoppingCart);
 					 $("#modalCart").modal('show');
@@ -76,7 +78,7 @@
 					url:'/in_shopping_carts/'+$(this).data('id'),
 					type:'DELETE',
 					dataType:'JSON',
-					
+
 					data:{id:$(this).data('id'),_token:$('#tbody-cart').data('token')},
 					boforeSend:function()
 					{
