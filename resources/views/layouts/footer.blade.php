@@ -48,6 +48,6 @@
   	{{-- <script>
   		$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
   	</script> --}}
-	<script src="{{url('/js/app.js')}}"></script>
+	<script src="{{url('/js/app-enero.js')}}"></script>
 </body>
 </html>
