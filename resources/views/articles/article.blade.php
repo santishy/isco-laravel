@@ -6,7 +6,7 @@
             <div class="col-md-8">
               <div class="card my-3 border-0 shadow-sm">
                 <div class="row no-gutters">
-                  <div class="col-md-4">
+                  <div class="col-md-5">
                     @php
                         $img=@fopen("http://www.pchmayoreo.com/media/catalog/product/".substr($article->sku, 0,1)."/".substr($article->sku, 1,1)."/".$article->sku.".jpg",'r');
                         // $local=@fopen('http://iscocomputadoras.com/storage/images/imgsPCH/'.$article->sku.'.'.$,'r');
@@ -21,7 +21,7 @@
                         <img class="img-fluid" onerror="this.onerror=null;this.src='{{ asset('images/noimg.jpg') }}'" src="http://iscocomputadoras.com/storage/images/imgsPCH/{{$article->sku.'.'.$article->extension}}">
                     @endif
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-7">
                     <div class="card-body">
                       <h5 class="card-title">SKU:{{$article->skuFabricante}}</h5>
                       <p class="card-text">{{strtoupper($article->descripcion)}}</p>

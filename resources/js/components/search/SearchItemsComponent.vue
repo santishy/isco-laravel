@@ -1,12 +1,12 @@
 <template>
-	<section>
+	<div>
 		<material-transition-component
 		:css="false"
 		name="fadeIn"
 		class="container-products">
 			<product-card-component :key="product.id" :data-index="index" v-bind:product="product" v-for="(product,index) in products"></product-card-component>
 		</material-transition-component>
-	</section>
+	</div>
 </template>
 <script>
 	export default{

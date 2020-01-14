@@ -77,8 +77,8 @@ Vue.component('InfiniteLoading',require('vue-infinite-loading'));
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('product-card-component', require('./components/products/ProductCardComponent.vue').default);
 Vue.component('products-component', require('./components/products/ProductsComponent.vue').default);
-Vue.component('material-transition-component',require('./components/animations/MaterialCollectionComponent.vue'))
-Vue.component('search-items-component',require('./components/search/SearchItemsComponent.vue'));
+Vue.component('material-transition-component',require('./components/animations/MaterialCollectionComponent.vue').default)
+Vue.component('search-items-component',require('./components/search/SearchItemsComponent.vue').default);
 Vue.component('btn-add-to-cart',require('./components/products/AddToCartComponent.vue').default);
 Vue.component('counter-products-component',require('./components/shopping_cart/CounterComponent.vue').default);
 Vue.component('cart-component',require('./components/shopping_cart/CartComponent.vue').default);
