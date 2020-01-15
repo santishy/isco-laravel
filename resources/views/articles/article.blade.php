@@ -49,7 +49,7 @@
                         </tbody>
                       </table>
                       @php
-                        $pdf = @fopen("https://fichastecnicas.pchmayoreo.com/$article->sku.pdf");
+                        $pdf = @fopen("https://fichastecnicas.pchmayoreo.com/$article->sku.pdf","r");
 
                       @endphp
                       @if($pdf)
