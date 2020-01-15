@@ -49,12 +49,15 @@
                         </tbody>
                       </table>
                       @php
-                        $contents = file_get_contents("https://fichastecnicas.pchmayoreo.com/$article->sku.pdf");
+                        $pdf = @fopen("https://fichastecnicas.pchmayoreo.com/$article->sku.pdf");
 
                       @endphp
-                      @if(strlen($contents))
+                      @if($pdf)
                         <hr>
                         <a target="_blank" class="text-decoration-none text-info pull-right mb-3" href="https://fichastecnicas.pchmayoreo.com/{{$article->sku}}.pdf">Descargar Ficha Técnica <i class="fas fa-file-pdf"></i></a>
+                        @php
+                          @fclose($pdf);
+                        @endphp
                       @endif
                     </div>
                   </div>
