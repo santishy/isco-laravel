@@ -47,6 +47,7 @@
                             <td>{{$article->alto}}mm</td>
                           </tr>
                         </tbody>
+                        
                       </table>
                     </div>
                   </div>
