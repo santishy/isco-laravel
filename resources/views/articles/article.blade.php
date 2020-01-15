@@ -41,10 +41,10 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td>{{$article->largo}}</td>
-                            <td>{{$article->ancho}}</td>
-                            <td>{{$article->peso}}</td>
-                            <td>{{$article->alto}}</td>
+                            <td>{{$article->largo}}mm</td>
+                            <td>{{$article->ancho}}mm</td>
+                            <td>{{$article->peso}}g</td>
+                            <td>{{$article->alto}}mm</td>
                           </tr>
                         </tbody>
                       </table>
