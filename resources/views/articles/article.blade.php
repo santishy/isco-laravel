@@ -41,13 +41,13 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td>{{$article->largo}}mm</td>
-                            <td>{{$article->ancho}}mm</td>
-                            <td>{{$article->peso}}g</td>
-                            <td>{{$article->alto}}mm</td>
+                            <td>{{$article->largo}}<small>mm</small></td>
+                            <td>{{$article->ancho}}<small>mm</small></td>
+                            <td>{{$article->peso}}<small>g</small></td>
+                            <td>{{$article->alto}}<small>mm</small></td>
                           </tr>
                         </tbody>
-                        
+
                       </table>
                     </div>
                   </div>
