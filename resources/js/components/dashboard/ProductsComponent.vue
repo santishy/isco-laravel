@@ -46,12 +46,15 @@
         <div class="table-responsive">
           <table class="table table-striped text-center">
             <thead>
-              <th>SKU</th>
-              <th>SKU FABRICANTE</th>
-              <th>DESCRIPCION</th>
-              <th>P. PROVEEDOR</th>
-              <th>P. DE VENTA</th>
-              <th></th>
+              <tr>
+                <th>SKU</th>
+                <th>SKU FABRICANTE</th>
+                <th>DESCRIPCION</th>
+                <th>P. PROVEEDOR</th>
+                <th>P. DE VENTA</th>
+                <th></th>
+              </tr>
+
             </thead>
             <tbody>
               <tr v-for="product in products">
@@ -64,9 +67,14 @@
               </tr>
             </tbody>
           </table>
+          <infinite-loading spinner="waveDots" @infinite="fetchProducts">
+      			<div slot="no-more">No hay mas resultados</div>
+      			<div slot="no-results">No hay resultados :( </div>
+      		</infinite-loading>
         </div>
+
         </div>
-        <infinite-loading @infinite="fetchProducts"></infinite-loading>
+
       </div>
     </div>
 </template>
@@ -81,8 +89,11 @@ export default {
       page:1
     }
   },
+  props:['url','section'],
   created(){
-    //  this.fetchProducts();
+    if(this.id){
+      this.url = this.url +'/' + this.section;
+    }
   },
   computed:{
     ...mapState(['products'])
@@ -91,10 +102,14 @@ export default {
     fetchProducts($state){
       axios({
         method:'get',
-        url:'/products',
+        url:this.url,
         params:{
           page:this.page
-        }
+        },
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*",
+      }
       }).then((response)=>{
         if(response.data.data.length)
         {
@@ -104,7 +119,7 @@ export default {
         }
         else
         {
-          $state.completed();
+          $state.complete();
         }
       }).catch((error)=>{
         console.log(error)

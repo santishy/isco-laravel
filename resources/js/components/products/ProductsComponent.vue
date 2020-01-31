@@ -19,7 +19,9 @@
 			}
 		},
 		props:['ruta','method'],
-
+		created(){
+			console.log(this.ruta)
+		},
 		methods:{
 			infiniteHandler($state){
 				let ruta = this.endpoint+'?page='+this.page;
@@ -41,7 +43,7 @@
 					else {
 						$state.complete();
 					}
-				})
+				});
 			}
 		}
 	}

@@ -67,13 +67,13 @@ window.store = new Vuex.Store({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 // var variable = require('./frontend');
-Vue.component('app-component',require('./components/AppComponent.vue'));
-Vue.component('quotation-component',require('./components/dashboard/quotation/QuotationComponent.vue'));
-Vue.component('search-component',require('./components/dashboard/SearchComponent.vue'));
+Vue.component('app-component',require('./components/AppComponent.vue').default);
+Vue.component('quotation-component',require('./components/dashboard/quotation/QuotationComponent.vue').default);
+Vue.component('search-component',require('./components/dashboard/SearchComponent.vue').default);
 
-Vue.component('form-quotation-component',require('./components/dashboard/quotation/FormQuotationComponent.vue'))
-Vue.component('dashboard-products-component',require('./components/dashboard/ProductsComponent.vue'))
-Vue.component('InfiniteLoading',require('vue-infinite-loading'));
+Vue.component('form-quotation-component',require('./components/dashboard/quotation/FormQuotationComponent.vue').default)
+Vue.component('dashboard-products-component',require('./components/dashboard/ProductsComponent.vue').default)
+Vue.component('InfiniteLoading',require('vue-infinite-loading').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('product-card-component', require('./components/products/ProductCardComponent.vue').default);
 Vue.component('products-component', require('./components/products/ProductsComponent.vue').default);
@@ -82,9 +82,10 @@ Vue.component('search-items-component',require('./components/search/SearchItemsC
 Vue.component('btn-add-to-cart',require('./components/products/AddToCartComponent.vue').default);
 Vue.component('counter-products-component',require('./components/shopping_cart/CounterComponent.vue').default);
 Vue.component('cart-component',require('./components/shopping_cart/CartComponent.vue').default);
-Vue.component('quote-button-component',require('./components/shopping_cart/QuoteButtonComponent.vue'));
-Vue.component('quotation-header',require('./components/shopping_cart/QuotationHeaderComponent.vue'));
-Vue.component('section-series-products-component',require('./components/sections/SeriesProductsComponent.vue'))
+Vue.component('quote-button-component',require('./components/shopping_cart/QuoteButtonComponent.vue').default);
+Vue.component('quotation-header',require('./components/shopping_cart/QuotationHeaderComponent.vue').default);
+Vue.component('section-series-products-component',require('./components/sections/SeriesProductsComponent.vue').default)
+Vue.component('item-products',require('./components/menu/ItemProducts.vue').default);
 const app = new Vue({
     el: '#app',
     store: window.store

@@ -92,7 +92,9 @@ class SectionsController extends Controller
         $section=Section::with(['lines','series'])->find($id);
         $series=$section->series;
         $articles=$section->articles()->with('brand')->orderBy('precio','asc')->paginate(20);
+
         if($request->isJson()){
+          
             return response()->json(new ProductsCollection($articles));
         }
         $lines=$section->lines;

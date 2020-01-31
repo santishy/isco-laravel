@@ -80,3 +80,9 @@ Route::resource('users','UserController');
     Route::resource('quotations','QuotationController');
     Route::get('correo','QuotationController@email');
  });
+
+ // menu items------------------------------------------------------------------
+ Route::middleware(['auth'])->group(function(){
+   Route::get('/item-products','ItemProductsController@index');
+   Route::get('/section-products/{section}','SectionProductsController@index');
+ });

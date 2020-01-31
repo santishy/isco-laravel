@@ -41,8 +41,9 @@
                             <a class="nav-link" href="{{url('utilities')}}">Utilidad</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link" href="{{url('products')}}">Productos</a>
+                            <a class="nav-link" href="{{url('products')}}">Todos los Productos</a>
                         </li>
+                        <item-products/>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

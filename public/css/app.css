@@ -11911,6 +11911,12 @@ a.text-dark:focus {
   }
 }
 
+.dashboard-menu-productos {
+  width: 700px !important;
+  height: 500px !important;
+  left: -300px;
+}
+
 .product-card-container {
   width: 100%;
 }

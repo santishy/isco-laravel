@@ -59,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
             $marcas=Brand::orderBy('marca','asc')->where('status','=',1)->get();
             $vars['productsCount']=
             $vars['secciones']=$secciones;
+            \Session::put('item-products',$secciones);
             $vars['marcas']=$marcas;
             $vars['lineas']=Line::orderBy('linea','asc')->get();
             $vars['lines']=Line::limit(10);
