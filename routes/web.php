@@ -88,3 +88,8 @@ Route::resource('users','UserController');
    Route::get('/items-brands','ItemsBrandsController@index');
    Route::get('/section-products/{section}','SectionProductsController@index');
  });
+
+ // productos de linea de seccion
+Route::middleware(['auth'])->group(function(){
+  Route::get('/section-line-products','SectionLineProductsController@index');
+});

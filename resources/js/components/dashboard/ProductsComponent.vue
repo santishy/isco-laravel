@@ -8,7 +8,11 @@
             Lineas
           </div>
           <hr>
-          <a @click.prevent="getSectionSeriesProducts(line.id_linea)" v-for="line in lineas" class="link-product" href="" v-text="line.linea">a</a>
+          <a v-for="line in lineas"
+             @click.prevent="getSectionLineProducts(line.id_linea)"
+             class="link-product"
+             href="" v-text="line.linea">
+          </a>
         </div>
         <div class="sidebar shadow-sm border-0" style="height: 200px; background: white;">
           <div class="title-sidebar border-0 ">
@@ -156,16 +160,16 @@ export default {
         console.log(error);
       })
     },
-    getSectionSeriesProducts(serie_id){
-      axios({
-        url:'/section-series-products/',
-        params:{
-          'serie_id' : serie_id,
-          'id_section' : this.section
-        },
 
+    getSectionLineProducts(line_id){
+      axios({
+        url:'/section-line-products/',
+        params:{
+          'line_id' : line_id,
+          'section_id' : this.section
+        },
       }).then((res) => {
-        console.log(res.data)
+        console.log(res.data.data)
       }).catch(err => {
         console.log(err)
       })
