@@ -4,9 +4,9 @@
       Productos
     </a>
     <div class="dropdown-menu dashboard-menu-productos" aria-labelledby="navbarDropdown">
-      <div style="overflow-x:none;" class=" d-flex  flex-wrap ">
-          <a v-for="product in products" class="dropdown-item text-center"  style="width:50%"
-             :href="`/section-products/${product.id_seccion}`">{{product.seccion}}</a>
+      <div style="overflow-x:none;" class="d-flex  flex-wrap ">
+          <a v-for="item in items" class="dropdown-item text-center"  style="width:50%"
+             :href="url_products + item.id">{{item.name}}</a>
       </div>
     </div>
   </li>
@@ -16,18 +16,21 @@
 export default {
   data(){
     return{
-      products:[]
+      items:[],
+      url_products:''
     }
   },
+  props:['url'],
   created(){
     axios({
       method:'GET',
-      url:'/item-products',
+      url:this.url,
       headers: {
             'Content-Type': 'application/json',
         }
     }).then(res=>{
-      this.products = res.data.data
+      this.items = res.data.data
+      this.url_products = res.data.url
     }).catch(err =>{
       console.log(err)
     })

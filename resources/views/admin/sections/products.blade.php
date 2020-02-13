@@ -1,4 +1,7 @@
 @extends('layouts.app')
 @section('content')
-  <dashboard-products-component url="/section-products/{{$id}}" section="{{$id}}" />
+  <dashboard-products-component lines="{{$lines}}"
+                                series="{{$series}}"
+                                url="/section-products/{{$id}}"
+                                section="{{$id}}" />
 @endsection

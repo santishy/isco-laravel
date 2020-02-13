@@ -60,6 +60,7 @@ class AppServiceProvider extends ServiceProvider
             $vars['productsCount']=
             $vars['secciones']=$secciones;
             \Session::put('item-products',$secciones);
+            \Session::put('brand-products',$marcas);
             $vars['marcas']=$marcas;
             $vars['lineas']=Line::orderBy('linea','asc')->get();
             $vars['lines']=Line::limit(10);

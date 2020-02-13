@@ -2024,17 +2024,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       product: {},
-      page: 1
+      page: 1,
+      lineas: []
     };
   },
-  props: ['url', 'section'],
+  props: ['url', 'section', 'lines', 'series'],
   created: function created() {
+    this.lineas = JSON.parse(this.lines);
+    console.log(this.lineas);
+
     if (this.id) {
       this.url = this.url + '/' + this.section;
     }
@@ -2080,6 +2101,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       })["catch"](function (error) {
         console.log(error);
+      });
+    },
+    getSectionSeriesProducts: function getSectionSeriesProducts(serie_id) {
+      axios({
+        url: '/section-series-products/',
+        params: {
+          'serie_id': serie_id,
+          'id_section': this.section
+        }
+      }).then(function (res) {
+        console.log(res.data);
+      })["catch"](function (err) {
+        console.log(err);
       });
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['getProducts', 'setProducts', 'addProducts']))
@@ -2311,20 +2345,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      products: []
+      items: [],
+      url_products: ''
     };
   },
+  props: ['url'],
   created: function created() {
     var _this = this;
 
     axios({
       method: 'GET',
-      url: '/item-products',
+      url: this.url,
       headers: {
         'Content-Type': 'application/json'
       }
     }).then(function (res) {
-      _this.products = res.data.data;
+      _this.items = res.data.data;
+      _this.url_products = res.data.url;
     })["catch"](function (err) {
       console.log(err);
     });
@@ -38346,154 +38383,220 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card border-primary" }, [
-        _c("div", { staticClass: "card-header text-center text-bold" }, [
-          _vm._v("Productos")
-        ]),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-3" }, [
+        _c(
+          "div",
+          {
+            staticClass: "sidebar shadow-sm border-0",
+            staticStyle: { height: "200px", background: "white" }
+          },
+          [
+            _c("div", { staticClass: "title-sidebar border-0 " }, [
+              _vm._v("\n          Lineas\n        ")
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._l(_vm.lineas, function(line) {
+              return _c(
+                "a",
+                {
+                  staticClass: "link-product",
+                  attrs: { href: "" },
+                  domProps: { textContent: _vm._s(line.linea) },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.getSectionSeriesProducts(line.id_linea)
+                    }
+                  }
+                },
+                [_vm._v("a")]
+              )
+            })
+          ],
+          2
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-sm-6 col-md-6" }, [
-              _vm.product.id
-                ? _c("dl", { staticClass: "row justify-content-center" }, [
-                    _c("dt", { staticClass: "col-sm-3 text-center" }, [
-                      _vm._v("\n                SKU\n              ")
-                    ]),
-                    _vm._v(" "),
-                    _c("dd", { staticClass: "col-sm-9 text-justify" }, [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(_vm.product.sku) +
-                          "\n              "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("dt", { staticClass: "col-sm-3 text-center" }, [
-                      _vm._v(
-                        "\n                SKU Fabricante\n\n              "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("dd", { staticClass: "col-sm-9 text-justify" }, [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(_vm.product.skuFabricante) +
-                          "\n              "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("dt", { staticClass: "col-sm-3 text-center" }, [
-                      _vm._v("\n                Existencia\n              ")
-                    ]),
-                    _vm._v(" "),
-                    _c("dd", { staticClass: "col-sm-9 text-justify" }, [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(_vm.product.existence) +
-                          "\n              "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("dt", { staticClass: "col-sm-3 text-center" }, [
-                      _vm._v("\n                Descripción\n              ")
-                    ]),
-                    _vm._v(" "),
-                    _c("dd", { staticClass: "col-sm-9 text-justify" }, [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(_vm.product.description) +
-                          "\n              "
-                      )
+        _c(
+          "div",
+          {
+            staticClass: "sidebar shadow-sm border-0",
+            staticStyle: { height: "200px", background: "white" }
+          },
+          [
+            _c("div", { staticClass: "title-sidebar border-0 " }, [
+              _vm._v("\n          Series\n        ")
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _vm._l(JSON.parse(_vm.series), function(serie) {
+              return _c("a", {
+                staticClass: "link-product",
+                attrs: { href: "" },
+                domProps: { textContent: _vm._s(serie.name) }
+              })
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-9" }, [
+        _c("div", { staticClass: "card border-primary" }, [
+          _c("div", { staticClass: "card-header text-center text-bold" }, [
+            _vm._v("Productos")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-6 col-md-6" }, [
+                _vm.product.id
+                  ? _c("dl", { staticClass: "row justify-content-center" }, [
+                      _c("dt", { staticClass: "col-sm-3 text-center" }, [
+                        _vm._v("\n                  SKU\n                ")
+                      ]),
+                      _vm._v(" "),
+                      _c("dd", { staticClass: "col-sm-9 text-justify" }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(_vm.product.sku) +
+                            "\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("dt", { staticClass: "col-sm-3 text-center" }, [
+                        _vm._v(
+                          "\n                  SKU Fabricante\n\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("dd", { staticClass: "col-sm-9 text-justify" }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(_vm.product.skuFabricante) +
+                            "\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("dt", { staticClass: "col-sm-3 text-center" }, [
+                        _vm._v(
+                          "\n                  Existencia\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("dd", { staticClass: "col-sm-9 text-justify" }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(_vm.product.existence) +
+                            "\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("dt", { staticClass: "col-sm-3 text-center" }, [
+                        _vm._v(
+                          "\n                  Descripción\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("dd", { staticClass: "col-sm-9 text-justify" }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(_vm.product.description) +
+                            "\n                "
+                        )
+                      ])
                     ])
-                  ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm.product.id
+                ? _c(
+                    "div",
+                    { staticClass: "col-sm-6 col-md-6" },
+                    [
+                      _c("form-quotation-component", {
+                        attrs: { product: _vm.product }
+                      })
+                    ],
+                    1
+                  )
                 : _vm._e()
             ]),
             _vm._v(" "),
-            _vm.product.id
-              ? _c(
-                  "div",
-                  { staticClass: "col-sm-6 col-md-6" },
-                  [
-                    _c("form-quotation-component", {
-                      attrs: { product: _vm.product }
-                    })
-                  ],
-                  1
-                )
-              : _vm._e()
+            _c(
+              "div",
+              { staticClass: "row justify-content-end" },
+              [_c("search-component", { attrs: { products: _vm.products } })],
+              1
+            )
           ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "row justify-content-end" },
-            [_c("search-component", { attrs: { products: _vm.products } })],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "table-responsive" },
-          [
-            _c("table", { staticClass: "table table-striped text-center" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.products, function(product) {
-                  return _c("tr", [
-                    _c("td", [_vm._v(_vm._s(product.sku))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.skuManufacturer))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.description))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.providerPrice))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(product.humanPrice))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-info btn-sm",
-                          on: {
-                            click: function($event) {
-                              return _vm.getProductData(product.id)
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "far fa-eye" })]
-                      )
-                    ])
-                  ])
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "infinite-loading",
-              {
-                attrs: { spinner: "waveDots" },
-                on: { infinite: _vm.fetchProducts }
-              },
-              [
-                _c("div", { attrs: { slot: "no-more" }, slot: "no-more" }, [
-                  _vm._v("No hay mas resultados")
-                ]),
+            { staticClass: "table-responsive" },
+            [
+              _c("table", { staticClass: "table table-striped text-center" }, [
+                _vm._m(0),
                 _vm._v(" "),
                 _c(
-                  "div",
-                  { attrs: { slot: "no-results" }, slot: "no-results" },
-                  [_vm._v("No hay resultados :( ")]
+                  "tbody",
+                  _vm._l(_vm.products, function(product) {
+                    return _c("tr", [
+                      _c("td", [_vm._v(_vm._s(product.sku))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.skuManufacturer))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.description))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.providerPrice))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(product.humanPrice))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-info btn-sm",
+                            on: {
+                              click: function($event) {
+                                return _vm.getProductData(product.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "far fa-eye" })]
+                        )
+                      ])
+                    ])
+                  }),
+                  0
                 )
-              ]
-            )
-          ],
-          1
-        )
+              ]),
+              _vm._v(" "),
+              _c(
+                "infinite-loading",
+                {
+                  attrs: { spinner: "waveDots" },
+                  on: { infinite: _vm.fetchProducts }
+                },
+                [
+                  _c("div", { attrs: { slot: "no-more" }, slot: "no-more" }, [
+                    _vm._v("No hay mas resultados")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { attrs: { slot: "no-results" }, slot: "no-results" },
+                    [_vm._v("No hay resultados :( ")]
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ])
       ])
     ])
   ])
@@ -38870,18 +38973,18 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: " d-flex  flex-wrap ",
+            staticClass: "d-flex  flex-wrap ",
             staticStyle: { "overflow-x": "none" }
           },
-          _vm._l(_vm.products, function(product) {
+          _vm._l(_vm.items, function(item) {
             return _c(
               "a",
               {
                 staticClass: "dropdown-item text-center",
                 staticStyle: { width: "50%" },
-                attrs: { href: "/section-products/" + product.id_seccion }
+                attrs: { href: _vm.url_products + item.id }
               },
-              [_vm._v(_vm._s(product.seccion))]
+              [_vm._v(_vm._s(item.name))]
             )
           }),
           0

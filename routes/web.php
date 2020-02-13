@@ -84,5 +84,7 @@ Route::resource('users','UserController');
  // menu items------------------------------------------------------------------
  Route::middleware(['auth'])->group(function(){
    Route::get('/item-products','ItemProductsController@index');
+   Route::get('/brand-products/{brand}','BrandProductsController@index');
+   Route::get('/items-brands','ItemsBrandsController@index');
    Route::get('/section-products/{section}','SectionProductsController@index');
  });

@@ -13,6 +13,8 @@ class SectionProductsController extends Controller
         $products = $section->articles()->with('brand')->orderBy('precio','asc')->paginate(20);
         return response()->json(new ProductsCollection($products));
       }
-      return view('admin.sections.products',['id' => $section->id_seccion]);
+      return view('admin.sections.products',['id' => $section->id_seccion,
+                                             'lines' => $section->lines,
+                                             'series' => $section->series]);
     }
 }
