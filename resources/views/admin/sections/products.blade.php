@@ -3,5 +3,5 @@
   <dashboard-products-component lines="{{$lines}}"
                                 series="{{$series}}"
                                 url="/section-products/{{$id}}"
-                                section="{{$id}}" />
+                                section="{{$id}}"/>
 @endsection

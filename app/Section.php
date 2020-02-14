@@ -72,4 +72,5 @@ class Section extends Model
 
         // }
     }
+    //public function seriesProducts
 }

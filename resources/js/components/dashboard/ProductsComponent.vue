@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <div class="row">
-
       <div class="col-md-3">
-        <div class="sidebar shadow-sm border-0" style="height:200px; background:white;">
+        <div v-if="lineas.length" class="sidebar shadow-sm border-0" style="height:200px; background:white;">
           <div class="title-sidebar border-0 ">
             Lineas
           </div>
@@ -14,16 +13,21 @@
              href="" v-text="line.linea">
           </a>
         </div>
-        <div class="sidebar shadow-sm border-0" style="height: 200px; background: white;">
+        <div v-if="JSON.parse(series).length" class="sidebar shadow-sm border-0" style="height: 200px; background: white;">
           <div class="title-sidebar border-0 ">
             Series
           </div>
           <hr>
-          <a v-for="serie in JSON.parse(series)" class="link-product" href="" v-text="serie.name"></a>
+          <a v-for="serie in JSON.parse(series)"
+             class="link-product"
+             @click.prevent="getSectionSeriesProducts(serie.id)"
+             href=""
+             v-text="serie.name">
+          </a>
         </div>
       </div>
       <div class="col-md-9">
-        <div class="card border-primary">
+        <div class="card border-0 shadow-sm bg-white">
           <div class="card-header text-center text-bold">Productos</div>
           <div class="card-body">
             <!-- Aqui va formucarlio con  cantidad ,aplicar utilidad, utilidad aplicada anteriormente y existencia. -->
@@ -38,7 +42,6 @@
                   </dd>
                   <dt class="col-sm-3 text-center">
                     SKU Fabricante
-
                   </dt>
                   <dd class="col-sm-9 text-justify">
                     {{product.skuFabricante}}
@@ -65,7 +68,7 @@
               <search-component :products="products"></search-component>
             </div>
           </div>
-          <div class="table-responsive">
+          <div v-if="this.products.length" class="table-responsive">
             <table class="table table-striped text-center">
               <thead>
                 <tr>
@@ -76,10 +79,9 @@
                   <th>P. DE VENTA</th>
                   <th></th>
                 </tr>
-
               </thead>
               <tbody>
-                <tr v-for="product in products">
+                <tr v-for="product in products" :key="product.id">
                   <td>{{product.sku}}</td>
                   <td>{{product.skuManufacturer}}</td>
                   <td>{{product.description}}</td>
@@ -89,15 +91,18 @@
                 </tr>
               </tbody>
             </table>
-            <infinite-loading spinner="waveDots" @infinite="fetchProducts">
-              <div slot="no-more">No hay mas resultados</div>
-              <div slot="no-results">No hay resultados :( </div>
-            </infinite-loading>
           </div>
+          <div v-else>
+            <h3 class="text-center">Cargando datos...</h3>
           </div>
+          <infinite-loading v-if="infinity" spinner="waveDots" @infinite="fetchProducts">
+            <div slot="no-more">No hay mas resultados</div>
+            <div slot="no-results">No hay resultados :( </div>
+          </infinite-loading>
         </div>
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -108,7 +113,9 @@ export default {
     return{
       product:{},
       page:1,
-      lineas:[]
+      lineas:[],
+      route:this.url,
+      infinity:true,
     }
   },
   props:['url','section','lines','series'],
@@ -126,9 +133,9 @@ export default {
     fetchProducts($state){
       axios({
         method:'get',
-        url:this.url,
+        url:this.route,
         params:{
-          page:this.page
+          page:this.page,
         },
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
@@ -137,8 +144,8 @@ export default {
       }).then((response)=>{
         if(response.data.data.length)
         {
-          this.addProducts(response.data.data)
           this.page+=1;
+          this.addProducts(response.data.data)
           $state.loaded();
         }
         else
@@ -160,8 +167,8 @@ export default {
         console.log(error);
       })
     },
-
     getSectionLineProducts(line_id){
+      this.setProducts([]);
       axios({
         url:'/section-line-products/',
         params:{
@@ -169,15 +176,33 @@ export default {
           'section_id' : this.section
         },
       }).then((res) => {
-        console.log(res.data.data)
+        if(res.data.data.length){
+          this.infinity = false;
+          this.setProducts(res.data.data);
+        }
       }).catch(err => {
         console.log(err)
       })
+    },
+    getSectionSeriesProducts(serie_id){
+      this.setProducts([]);
+      axios({
+        url:'/section-series-products/',
+        params:{
+          'id_serie': serie_id,
+          'section_id': this.section
+        },
+        method:'GET'
+        }).then((res)=>{
+          if(res.data.data.length){
+            this.infinity = false;
+            this.setProducts(res.data.data)
+          }
+        }).catch((err) => {
+          console.log(err)
+        });
     },
     ...mapMutations(['getProducts','setProducts','addProducts'])
   }
 }
 </script>
-
-<style lang="css" scoped>
-</style>

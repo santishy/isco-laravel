@@ -13,7 +13,6 @@ class SectionLineProductsController extends Controller
                   ->where('id_linea',$request->line_id)
                   ->where('id_seccion',$request->section_id)
                   ->where('activo','=',1)->orderBy('precio','asc');
-      return $products->get();
-      return new ProductsCollection($products);
+      return new ProductsCollection($products->get());
     }
 }

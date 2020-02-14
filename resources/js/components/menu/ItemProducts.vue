@@ -1,7 +1,7 @@
 <template>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Productos
+      {{label}}
     </a>
     <div class="dropdown-menu dashboard-menu-productos" aria-labelledby="navbarDropdown">
       <div style="overflow-x:none;" class="d-flex  flex-wrap ">
@@ -11,7 +11,6 @@
     </div>
   </li>
 </template>
-
 <script>
 export default {
   data(){
@@ -20,7 +19,7 @@ export default {
       url_products:''
     }
   },
-  props:['url'],
+  props:['url','label'],
   created(){
     axios({
       method:'GET',
