@@ -34,10 +34,12 @@ export default {
       getImage(file){
         let reader = new FileReader();
         reader.onload = (e) => {
-          console.log('upload-index:' + this.index)
           let product = this.products[this.index];
           product.url_img = e.target.result;
-          this.updateProductByIndex(product,this.index)
+          let obj = new Object;
+          obj.product = product;
+          obj.index = this.index;
+          this.updateProductByIndex(obj)
         }
         reader.readAsDataURL(file);
 

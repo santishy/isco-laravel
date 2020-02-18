@@ -2345,11 +2345,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        console.log('upload-index:' + _this.index);
         var product = _this.products[_this.index];
         product.url_img = e.target.result;
+        var obj = new Object();
+        obj.product = product;
+        obj.index = _this.index;
 
-        _this.updateProductByIndex(product, _this.index);
+        _this.updateProductByIndex(obj);
       };
 
       reader.readAsDataURL(file);
@@ -53015,9 +53017,8 @@ window.store = new Vuex.Store({
     addProducts: function addProducts(state, products) {
       state.products = state.products.concat(products);
     },
-    updateProductByIndex: function updateProductByIndex(state, product, index) {
-      console.log('index: ' + index);
-      Vue.set(state.products[index], 'imgLocal', product.img_url); //state.products[index] = product;
+    updateProductByIndex: function updateProductByIndex(state, data) {
+      Vue.set(state.products[data.index], 'imgLocal', data.product.img_url); //state.products[index] = product;
     }
   }
 });
