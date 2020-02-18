@@ -2242,9 +2242,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     noimg: function noimg(event) {
       event.target.src = this.product.noimg;
-    },
-    getImage: function getImage(file) {
-      console.log(file);
     }
   })
 });
@@ -2307,6 +2304,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2317,6 +2321,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2324,15 +2330,31 @@ __webpack_require__.r(__webpack_exports__);
       form: {}
     };
   },
-  methods: {
+  props: ['index'],
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['products'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['updateProductByIndex']), {
     onFileSelected: function onFileSelected(event) {
       var file = event.target.files[0];
-      this.form.image = file;
-      EventBus.$emit('onFileSelected', file); // for(let i=0;i<event.target.files.length;i++){
-      //   this.attachments.push(event.target.files[i])
-      // }
+      this.form.image = file; //EventBus.$emit('onFileSelected',file);
+
+      this.getImage(file);
+    },
+    getImage: function getImage(file) {
+      var _this = this;
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        console.log('upload-index:' + _this.index);
+        var product = _this.products[_this.index];
+        product.url_img = e.target.result;
+
+        _this.updateProductByIndex(product, _this.index);
+      };
+
+      reader.readAsDataURL(file);
     }
-  }
+  })
 });
 
 /***/ }),
@@ -38699,7 +38721,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.products, function(product) {
+                        _vm._l(_vm.products, function(product, index) {
                           return _c("tr", { key: product.id }, [
                             _c("td", { staticClass: "bg-white" }, [
                               _c(
@@ -38718,7 +38740,11 @@ var render = function() {
                                   _c(
                                     "div",
                                     { staticClass: "upload-btn-container" },
-                                    [_c("upload-image")],
+                                    [
+                                      _c("upload-image", {
+                                        attrs: { index: index }
+                                      })
+                                    ],
                                     1
                                   )
                                 ]
@@ -52988,6 +53014,10 @@ window.store = new Vuex.Store({
     },
     addProducts: function addProducts(state, products) {
       state.products = state.products.concat(products);
+    },
+    updateProductByIndex: function updateProductByIndex(state, product, index) {
+      console.log('index: ' + index);
+      Vue.set(state.products[index], 'imgLocal', product.img_url); //state.products[index] = product;
     }
   }
 });
@@ -54726,8 +54756,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

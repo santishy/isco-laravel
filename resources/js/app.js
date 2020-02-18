@@ -57,6 +57,11 @@ window.store = new Vuex.Store({
     },
     addProducts(state,products){
        state.products = state.products.concat(products);
+    },
+    updateProductByIndex(state,product,index){
+      console.log('index: ' + index)
+      Vue.set(state.products[index],'imgLocal',product.img_url)
+      //state.products[index] = product;
     }
 	}
 })

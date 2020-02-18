@@ -82,14 +82,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="product in products" :key="product.id">
+                <tr v-for="(product,index) in products" :key="product.id">
                   <td class="bg-white">
                     <figure class="dashboard-images-container mb-0">
                       <img style="width:100%;" class="img-responsive product-image"
                            :src="product.url_img"
                            @error="onerror">
                       <div class="upload-btn-container">
-                        <upload-image/>
+                        <upload-image :index="index"/>
                       </div>
                     </figure>
                   </td>
@@ -222,9 +222,7 @@ export default {
       event.target.src = this.product.noimg;
 
     },
-    getImage(file){
-      console.log(file)
-    }
+
   }
 }
 </script>
