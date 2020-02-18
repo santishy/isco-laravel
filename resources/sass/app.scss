@@ -17,6 +17,30 @@
 	//height: 500px !important;
 	left: -300px;
 }
+.dashboard-images-container{
+	position: relative;
+	overflow: hidden;
+	width: 150px;
+}
+.dashboard-images-container:hover .upload-btn-container{
+	top:0;
+
+}
+.dashboard-images-container img{
+	width:100%;
+}
+.upload-btn-container{
+	position: absolute;
+	top:-100%;
+
+	width: 150px;
+	height: 100%;
+	background: rgba(0,0,0,.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 300ms;
+}
 .product-card-container{
 	width: 100%;
 }

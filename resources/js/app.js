@@ -31,7 +31,7 @@ class inputMD{
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+window.EventBus = new Vue();
 const Vuex = require('vuex');
 window.store = new Vuex.Store({
 	state:{
@@ -86,6 +86,7 @@ Vue.component('quote-button-component',require('./components/shopping_cart/Quote
 Vue.component('quotation-header',require('./components/shopping_cart/QuotationHeaderComponent.vue').default);
 Vue.component('section-series-products-component',require('./components/sections/SeriesProductsComponent.vue').default)
 Vue.component('item-products',require('./components/menu/ItemProducts.vue').default);
+Vue.component('upload-image',require('./components/dashboard/UploadImage.vue').default);
 const app = new Vue({
     el: '#app',
     store: window.store

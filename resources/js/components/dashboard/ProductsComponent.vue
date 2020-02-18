@@ -72,6 +72,7 @@
             <table class="table table-striped text-center">
               <thead>
                 <tr>
+                  <th>Imagen</th>
                   <th>SKU</th>
                   <th>SKU FABRICANTE</th>
                   <th>DESCRIPCION</th>
@@ -82,6 +83,16 @@
               </thead>
               <tbody>
                 <tr v-for="product in products" :key="product.id">
+                  <td class="bg-white">
+                    <figure class="dashboard-images-container mb-0">
+                      <img style="width:100%;" class="img-responsive product-image"
+                           :src="product.url_img"
+                           @error="onerror">
+                      <div class="upload-btn-container">
+                        <upload-image/>
+                      </div>
+                    </figure>
+                  </td>
                   <td>{{product.sku}}</td>
                   <td>{{product.skuManufacturer}}</td>
                   <td>{{product.description}}</td>
@@ -121,7 +132,7 @@ export default {
   props:['url','section','lines','series'],
   created(){
     this.lineas = JSON.parse(this.lines);
-    console.log(this.lineas)
+    EventBus.$on('onFileSelected',this.getImage);
     if(this.id){
       this.url = this.url +'/' + this.section;
     }
@@ -130,6 +141,7 @@ export default {
     ...mapState(['products'])
   },
   methods:{
+    ...mapMutations(['getProducts','setProducts','addProducts']),
     fetchProducts($state){
       axios({
         method:'get',
@@ -202,7 +214,17 @@ export default {
           console.log(err)
         });
     },
-    ...mapMutations(['getProducts','setProducts','addProducts'])
+    onerror(event){
+       event.target.src = this.product.noimg;
+
+    },
+    noimg(event){
+      event.target.src = this.product.noimg;
+
+    },
+    getImage(file){
+      console.log(file)
+    }
   }
 }
 </script>
