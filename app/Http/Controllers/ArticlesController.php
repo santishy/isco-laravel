@@ -28,7 +28,7 @@ class ArticlesController extends Controller
 
         $webservice = new Soap(new SoapWrapper);
         $data = collect($webservice->consume());
-        
+
         cache::forever('data',$data);
 
         //$webservice->obtenerListaArticulos();
@@ -139,13 +139,11 @@ class ArticlesController extends Controller
         if(!$validator->fails()){
             if($request->hasFile('image'))
                 if($request->file('image')->isValid()){
-
                     $img = \Storage::disk('public')->putFileAs('images/imgsPCH',$request->file('image'),$article->sku.'.'.$request->image->extension());
-
                     //\Storage::setVisibility('sliders/'.$request->file('slider'),'public');
                     $article->extension = $request->image->extension();
                     $article->save();
-
+                    return response()->Json(['success' => true]);
                 }
                 else dd('ultimo if');
 
@@ -176,15 +174,14 @@ class ArticlesController extends Controller
 
     public function images($fileName)
     {
-
     	$path= storage_path('app/images/'.$fileName);
-        if(!\File::exists($path))
+      if(!\File::exists($path))
         {
             $fileName=strtoupper($fileName);
             $path= storage_path('app/images/'.$fileName);
         }
-        if(!\File::exists($path))
-            $path=storage_path('app/images/noimg.jpg');
+      if(!\File::exists($path))
+        $path=storage_path('app/images/noimg.jpg');
         $file=\File::get($path); //leemos el archivo
         $mimeType=\File::mimeType($path);
         $response=\Response::make($file,200); //

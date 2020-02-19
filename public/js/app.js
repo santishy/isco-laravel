@@ -2335,9 +2335,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['updateProductByIndex']), {
     onFileSelected: function onFileSelected(event) {
       var file = event.target.files[0];
-      this.form.image = file; //EventBus.$emit('onFileSelected',file);
-
+      this.form.image = file;
       this.getImage(file);
+      this.updateImage(file);
     },
     getImage: function getImage(file) {
       var _this = this;
@@ -2350,11 +2350,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var obj = new Object();
         obj.product = product;
         obj.index = _this.index;
-
-        _this.updateProductByIndex(obj);
       };
 
       reader.readAsDataURL(file);
+    },
+    updateImage: function updateImage(file) {
+      var id = this.products[this.index].id;
+      var formData = new FormData();
+      formData.append('id', id);
+      formData.append('image', file);
+      formData.append('_method', 'PUT');
+      axios({
+        url: '/producto/' + id,
+        method: 'POST',
+        data: formData
+      }).then(function (res) {
+        console.log(res);
+      });
     }
   })
 });
@@ -54757,8 +54769,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

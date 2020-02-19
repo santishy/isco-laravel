@@ -27,9 +27,8 @@ export default {
     onFileSelected(event){
         let file = event.target.files[0];
         this.form.image = file;
-
-        //EventBus.$emit('onFileSelected',file);
         this.getImage(file);
+        this.updateImage(file);
       },
       getImage(file){
         let reader = new FileReader();
@@ -39,10 +38,24 @@ export default {
           let obj = new Object;
           obj.product = product;
           obj.index = this.index;
-          this.updateProductByIndex(obj)
         }
         reader.readAsDataURL(file);
 
+      },
+      updateImage(file){
+        let id = this.products[this.index].id;
+        let formData = new FormData();
+        formData.append('id',id);
+        formData.append('image',file);
+        formData.append('_method','PUT')
+        axios({
+               url:'/producto/' + id,
+               method:'POST',
+               data:formData
+             })
+             .then((res)=>{
+               console.log(res)
+             });
       }
   }
 }
