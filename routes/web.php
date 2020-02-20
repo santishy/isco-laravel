@@ -65,8 +65,9 @@ Route::resource('users','UserController');
  Route::get('/home', 'HomeController@index')->name('home');
  //Route::resource('/slider','SlidersController');
  ///////////////routes para el panel//////////////////////////////////////////////////////////////77
- Route::get('dashboard','DashboardController@index')->name('dashboard')->middleware('permission:dashboard');
+
  Route::middleware(['auth'])->group(function(){
+    Route::get('dashboard','DashboardController@index')->name('dashboard')->middleware('permission:dashboard');
    Route::get('orders','OrdersController@index')->name('orders.index')->middleware('permission:orderes.index');
    Route::get('orders/create','OrdersController@create')->name('orders.create');
    Route::post('orders','OrdersController@store')->name('orders.store');
@@ -97,4 +98,17 @@ Route::middleware(['auth'])->group(function(){
 // productos de serie de seccion
 Route::middleware(['auth'])->group(function(){
   Route::get('/section-series-products','SectionSeriesProductsController@index');
+});
+
+
+Route::get('/storage-link',function(){
+  if (file_exists(public_path('storage'))) {
+      return $this->error('The "public/storage" directory already exists.');
+  }
+
+  app('files')->link(
+      storage_path('app/public'), public_path('storage')
+  );
+
+  $this->info('The [public/storage] directory has been linked.');
 });

@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.1.3",
         "algolia/algoliasearch-client-php": "^1.27",
+        "aprendible/storage-link-route": "^1.0",
         "artisaninweb/laravel-soap": "0.3.0.9",
         "barryvdh/laravel-dompdf": "^0.8.3",
         "caffeinated/shinobi": "^3.3",
