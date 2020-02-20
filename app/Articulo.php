@@ -134,7 +134,7 @@ class Articulo extends Model
             return $this->externalFile($this->sku);
     }
     public function localFile(){
-         return asset("public/storage/images/imgsPCH/").'/'.$this->sku.'.'.$this->extension;
+         return "public/storage/images/imgsPCH/".$this->sku.'.'.$this->extension;
     }
     public function externalFile($sku)
     {
