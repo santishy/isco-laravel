@@ -112,10 +112,6 @@ class Articulo extends Model
     {
         return $this->hasOne('App\Brand','id_marca','id_marca');
     }
-    // public function section()
-    // {
-    //     return $this->hasOne('App\Section','id_seccion','id_articulo');
-    // }
     public function section(){
         return $this->belongsTo('App\Section','id_seccion','id_seccion');
     }
@@ -134,11 +130,19 @@ class Articulo extends Model
             return $this->externalFile($this->sku);
     }
     public function localFile(){
-         return "/storage/images/imgsPCH/".$this->sku.'.'.$this->extension;
+        return "/storage/images/imgsPCH/".$this->sku.'.'.$this->extension;
     }
     public function externalFile($sku)
     {
-         return "https://www.pchmayoreo.com/media/catalog/product/".substr($this->sku, 0,1)."/".substr($this->sku, 1,1)."/".$this->sku.".jpg";
+        $file = @fopen("https://www.pchmayoreo.com/media/catalog/product/".substr($this->sku, 0,1)."/".substr($this->sku, 1,1)."/".$this->sku.".jpg",'r');
+        if($file){
+          @fclose($file);
+          return "https://www.pchmayoreo.com/media/catalog/product/".substr($this->sku, 0,1)."/".substr($this->sku, 1,1)."/".$this->sku.".jpg";
+        }
+        else {
+          return 'https://www.pchmayoreo.com/media/catalog/product/cache/1/image/270x270/9df78eab33525d08d6e5fb8d27136e95/'.strtolower(substr($this->sku, 0,1))."/".strtolower(substr($this->sku, 1,1))."/".strtolower($this->sku).".jpg";
+        }
+
 
     }
 }
