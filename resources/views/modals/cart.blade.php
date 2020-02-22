@@ -62,8 +62,8 @@
                   <tbody id="tbody-cart" data-token="{{csrf_token()}}">
                       @foreach($shopping_cart->BelongsToManyArticulos as $article)
                         <tr class="tr-cart">
-                            <td style="width:120px">
-                                <img class="img-responsive" src="http://www.pchmayoreo.com/media/catalog/product/{{substr($article->sku, 0,1)}}/{{substr($article->sku, 1,1)}}/{{$article->sku}}.jpg" alt="">
+                            <td>
+                                <img class="img-fluid" src="http://www.pchmayoreo.com/media/catalog/product/{{substr($article->sku, 0,1)}}/{{substr($article->sku, 1,1)}}/{{$article->sku}}.jpg" alt="">
                             </td>
                             <td>{{$article->descripcion}}</td>
                             <td>{{$article->qty}}</td>
