@@ -6,18 +6,26 @@ use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 use Illuminate\Support\Facades\DB;
+use Nicolaslopezj\Searchable\SearchableTrait;
+
 class Articulo extends Model
 {
     //
-    use Searchable;
+    //use Searchable;
+    use SearchableTrait;
+    protected $searchable = [
+      'columns' => [
+        'descripcion' => 10
+      ]
+    ];
     protected $ip;
     protected $table="articulos";
     protected $primaryKey="id_articulo";
     protected $fillable=['proveedor','activo','sku','alto','peso','largo','ancho','descripcion','skuFabricante','id_marca','id_serie','id_seccion','id_linea','moneda','precio'];
-    public function searchableAs()
-    {
-        return 'articulos';
-    }
+    // public function searchableAs()
+    // {
+    //     return 'articulos';
+    // }
     public static function desactivar(){
         return Articulo::where('id_articulo','>',0)
         ->update(['activo'=>0]);

@@ -57,6 +57,7 @@ class ArticlesController extends Controller
     public function searching(Request $request){
         $request->flash();
         $products=Articulo::search($request->word)->paginate(40);
+
         if($request->wantsJson())
             return new ProductsCollection($products);
         $ruta = url('/search');
