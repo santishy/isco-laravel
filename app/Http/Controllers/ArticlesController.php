@@ -56,10 +56,13 @@ class ArticlesController extends Controller
      */
     public function searching(Request $request){
         $request->flash();
-        $products=Articulo::search($request->word)->paginate(40);
+        $products = [];
 
-        if($request->wantsJson())
-            return new ProductsCollection($products);
+        if($request->wantsJson()){
+          $products=Articulo::search($request->word)->paginate(40);
+          return new ProductsCollection($products);
+        }
+
         $ruta = url('/search');
         $method = 'GET';
         return view('search.products',['products'=>$products,'method'=>$method,'ruta'=>$ruta]);
