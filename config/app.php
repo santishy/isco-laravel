@@ -161,7 +161,7 @@ return [
          App\Providers\ShoppingCartProvider::class,
         App\Providers\AlmacenesServiceProvider::class,
         App\Providers\ServiceAppProvider::class,
-        Laravel\Scout\ScoutServiceProvider::class,
+      //  Laravel\Scout\ScoutServiceProvider::class,
         //providers de terceros, instalados por mi
        // Cviebrock\EloquentSluggable\ServiceProvider::class,
          Barryvdh\DomPDF\ServiceProvider::class,
