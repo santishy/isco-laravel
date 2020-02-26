@@ -57,15 +57,16 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($view){
             $secciones=Section::orderBy('seccion','asc')->where('status','=',1)->get();
             $marcas=Brand::orderBy('marca','asc')->where('status','=',1)->get();
-            $vars['productsCount']=
+            //$vars['productsCount']=
             $vars['secciones']=$secciones;
             \Session::put('item-products',$secciones);
             \Session::put('brand-products',$marcas);
             $vars['marcas']=$marcas;
             $vars['lineas']=Line::orderBy('linea','asc')->get();
-            $vars['lines']=Line::limit(10);
+            $vars['lines']=$vars['lineas']->take(10);
+            //$vars['lines']=Line::limit(10);
             $vars['series']=Serie::orderBy('name','asc')->get();
-            $vars['products']=Section::limit(10);
+            $vars['products']=$secciones->take(10);
             $view->with('vars',$vars);
               /*$shopping_cart_id=\Session::get('shopping_cart_id');
               $shopping_cart=ShoppingCart::findBySessionShoppingCart($shopping_cart_id);

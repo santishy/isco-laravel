@@ -2,14 +2,15 @@
   <div class="div-menu-footer">
     <ul class="menu-footer col-md-2 ">
       <li class="title-menu">LINEAS</li>
-      @foreach($vars['lines']->get() as $line)
+
+      @foreach($vars['lines'] as $line)
         <li><a href="{{ url('lineas/'.$line->id_linea) }}">{{ $line->linea }}</a></li>
       @endforeach
       <li ><a class="menu-list" data-type="lines" href="#">Ver todas...</a></li>
     </ul>
     <ul class="menu-footer col-md-2">
       <li class="title-menu">PRODUCTOS</li>
-      @foreach($vars['products']->get() as $seccion)
+      @foreach($vars['products'] as $seccion)
         <li><a href="{{url('/productos/'.$seccion->id_seccion)}}">{{$seccion->seccion}}</a></li>
       @endforeach
       <li ><a class="menu-list" data-type="products" href="#">Ver todas...</a></li>
