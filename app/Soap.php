@@ -13,7 +13,7 @@ use App\Serie;
 use App\Detinvart;
 use Carbon\Carbon;
 use App\Remision;
-use Laravel\Scout\Searchable;
+//use Laravel\Scout\Searchable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
@@ -26,16 +26,16 @@ class Soap extends Model
     public $param = array('cliente' =>6722,'llave' => '112012');
     protected $soapWrapper;
     protected $items;
-    use Searchable;
+    //use Searchable;
  /**
   * SoapController constructor.
   *
   * @param SoapWrapper $soapWrapper
   */
-  public function searchableAs()
-    {
-        return 'articulos';
-    }
+  // public function searchableAs()
+  //   {
+  //       return 'articulos';
+  //   }
     function __construct(SoapWrapper $soapWrapper)
     {
         set_time_limit ( -1 );

@@ -56,8 +56,7 @@ class ArticlesController extends Controller
      */
     public function searching(Request $request){
         $request->flash();
-        $products = [];
-
+        $products=[];
         if($request->wantsJson()){
           $products=Articulo::search($request->word)->paginate(40);
           return new ProductsCollection($products);
