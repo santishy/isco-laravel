@@ -42,7 +42,7 @@ class BrandsController extends Controller
     public function brandLine(Request $request,$id_linea){
 
         $brand=Brand::with(['series'])->find(\Session::get('brand_id'));
-				if($brand->lines){
+				if(isset($brand->lines)){
 					$lines=$brand->lines;
 				}
         else {
