@@ -94,7 +94,7 @@ class SectionsController extends Controller
         $articles=$section->articles()->with('brand')->orderBy('precio','asc')->paginate(20);
 
         if($request->isJson()){
-          
+
             return response()->json(new ProductsCollection($articles));
         }
         $lines=$section->lines;
@@ -137,7 +137,11 @@ class SectionsController extends Controller
     }
     public function productsLine(Request $request,$id_linea){
         $section=Section::with(['lines','series'])->find(\Session::get('id_seccion'));
+        if(isset($section->lines))
         $lines=$section->lines;
+        else{
+          return;
+        }
         $series=$section->series;
         $products=Articulo::with('utilidade')->where('id_linea',$id_linea)->where('id_seccion',\Session::get('id_seccion'))->where('activo','=',1)->orderBy('precio','asc')->paginate(20);
         $ruta = url()->full();
