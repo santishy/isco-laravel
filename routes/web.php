@@ -111,3 +111,7 @@ Route::get('storage-link',function(){
   );
   return 'The [public/storage] directory has been linked.';
 });
+Route::get('/queue-work', function() {
+				$status = Artisan::call('queue:work');
+				return '<h1>Comando ejecutado</h1>';
+			});
