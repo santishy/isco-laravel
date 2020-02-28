@@ -114,4 +114,5 @@ Route::get('storage-link',function(){
 Route::get('/queue-work', function() {
 				$status = Artisan::call('queue:work');
 				return '<h1>Comando ejecutado</h1>';
-			});
+
+      });
