@@ -42,7 +42,13 @@ class BrandsController extends Controller
     public function brandLine(Request $request,$id_linea){
 
         $brand=Brand::with(['series'])->find(\Session::get('brand_id'));
-        $lines=$brand->lines;
+				if(isset($brand->lines)){
+					$lines=$brand->lines;
+				}
+        else {
+        	return;
+        }
+
         $series=$brand->series;
         $products=Articulo::with('utilidade')->where('id_linea',$id_linea)->where('activo','=',1)->where('id_marca',\Session::get('brand_id'))->orderBy('precio','asc')->paginate(16);
         if($request->wantsJson())
