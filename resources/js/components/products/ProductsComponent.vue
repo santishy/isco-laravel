@@ -1,7 +1,11 @@
 <template>
 	<section>
 		<div class="container-products">
-			<product-card-component :key="product.id" :data-index="index" v-bind:product="product" v-for="(product,index) in products"></product-card-component>
+			<product-card-component :key="product.id"
+															:data-index="index"
+															v-bind:product="product"
+															v-for="(product,index) in products">
+			</product-card-component>
 		</div>
 		<infinite-loading spinner="waveDots" @infinite="infiniteHandler">
 			<div slot="no-more">No hay mas resultados</div>

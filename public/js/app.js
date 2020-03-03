@@ -2774,6 +2774,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39311,7 +39315,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "product-card-container" }, [
-    _c("div", { staticClass: "card mb-3 shadow-sm border-0 mt-3" }, [
+    _c("div", { staticClass: "card mb-2 shadow-sm border-0 mt-2" }, [
       _c("div", { staticClass: "card-body d-flex flex-column" }, [
         _c("div", { staticClass: "d-flex align-items-center mb-3 column " }, [
           _c("img", {
@@ -54769,8 +54773,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

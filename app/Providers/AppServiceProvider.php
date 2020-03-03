@@ -54,10 +54,11 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             return false;
         });
-        view()->composer('*',function($view){
+        view()->composer(['menus.main','layouts.footer','layouts.app'],function($view){
             $secciones=Section::orderBy('seccion','asc')->where('status','=',1)->get();
             $marcas=Brand::orderBy('marca','asc')->where('status','=',1)->get();
             //$vars['productsCount']=
+
             $vars['secciones']=$secciones;
             \Session::put('item-products',$secciones);
             \Session::put('brand-products',$marcas);
