@@ -2839,6 +2839,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2864,31 +2874,10 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'application/json'
         }
       }).then(function (response) {
-        console.log(response.data + " " + formData);
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = formData.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var value = _step.value;
-            console.log(value);
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-              _iterator["return"]();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
-        }
-
+        // console.log(response.data+" "+formData);
+        // for (var value of formData.values()) {
+        //    console.log(value);
+        // }
         _this.products = response.data.data;
       });
     }
@@ -39446,26 +39435,45 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "d-flex justify-content-center" },
     [
-      _c(
-        "material-transition-component",
-        {
-          staticClass: "container-products",
-          attrs: { css: false, name: "fadeIn" }
-        },
-        _vm._l(_vm.products, function(product, index) {
-          return _c("product-card-component", {
-            key: product.id,
-            attrs: { "data-index": index, product: product }
-          })
-        }),
-        1
-      )
+      !_vm.products.length
+        ? _c(
+            "div",
+            {
+              staticClass: "card shadow-sm mb-4 mt-4 border-0",
+              staticStyle: { width: "22rem" }
+            },
+            [_vm._m(0)]
+          )
+        : _c(
+            "material-transition-component",
+            {
+              staticClass: "container-products",
+              attrs: { css: false, name: "fadeIn" }
+            },
+            _vm._l(_vm.products, function(product, index) {
+              return _c("product-card-component", {
+                key: product.id,
+                attrs: { "data-index": index, product: product }
+              })
+            }),
+            1
+          )
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("h2", { staticClass: "mb-0 text-center" }, [_vm._v("Buscando...")])
+    ])
+  }
+]
 render._withStripped = true
 
 
