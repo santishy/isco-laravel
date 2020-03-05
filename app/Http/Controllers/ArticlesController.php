@@ -61,7 +61,6 @@ class ArticlesController extends Controller
           $products=Articulo::search($request->word)->with('brand')->paginate(20);
           return new ProductsCollection($products);
         }
-
         $ruta = url('/search');
         $method = 'GET';
         return view('search.products',['products'=>$products,'method'=>$method,'ruta'=>$ruta]);

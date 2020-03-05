@@ -2710,35 +2710,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
   },
+  created: function created() {},
   methods: {
     onerror: function onerror(event) {
+      EventBus.$emit('on');
+      event.target.src = this.product.img;
       event.target.src = this.product.noimg;
     },
     noimg: function noimg(event) {
@@ -2829,6 +2809,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -39441,7 +39422,7 @@ var render = function() {
         ? _c(
             "div",
             {
-              staticClass: "card shadow-sm mb-4 mt-4 border-0",
+              staticClass: "card shadow-sm mb-4 mt-4 border-0 bg-white",
               staticStyle: { width: "22rem" }
             },
             [_vm._m(0)]
@@ -39455,7 +39436,7 @@ var render = function() {
             _vm._l(_vm.products, function(product, index) {
               return _c("product-card-component", {
                 key: product.id,
-                attrs: { "data-index": index, product: product }
+                attrs: { "data-index": index, index: index, product: product }
               })
             }),
             1
@@ -39470,7 +39451,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-body" }, [
-      _c("h2", { staticClass: "mb-0 text-center" }, [_vm._v("Buscando...")])
+      _c("h3", { staticClass: "mb-0 h-100 text-center" }, [
+        _vm._v("Buscando...")
+      ])
     ])
   }
 ]

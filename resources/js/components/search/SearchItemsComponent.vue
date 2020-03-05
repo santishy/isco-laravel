@@ -1,8 +1,8 @@
 <template>
 	<div class="d-flex justify-content-center">
-		<div v-if="!products.length" class="card shadow-sm mb-4 mt-4 border-0" style="width: 22rem;">
+		<div v-if="!products.length" class="card shadow-sm mb-4 mt-4 border-0 bg-white" style="width: 22rem;">
 			<div class="card-body">
-				<h2 class="mb-0 text-center">Buscando...</h2>
+				<h3 class="mb-0 h-100 text-center">Buscando...</h3>
 			</div>
 		</div>
 		<material-transition-component
@@ -12,6 +12,7 @@
 		class="container-products">
 			<product-card-component :key="product.id"
 															:data-index="index"
+															:index="index"
 															v-bind:product="product"
 															v-for="(product,index) in products">
 			</product-card-component>
