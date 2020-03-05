@@ -28,8 +28,12 @@
 			}
 		},
 		props:['ruta','method'],
-		created(){
+		mounted(){
 			this.search();
+			EventBus.$on('imgLocal',index => {
+				this.products[index].unloadedImage = true;
+				console.log('...............................')
+			})
 		},
 		methods:{
 			search(){
@@ -50,6 +54,9 @@
 					this.products = response.data.data;
 				})
 			},
+			unloadedImage(event){
+
+			}
 		}
 	}
 </script>

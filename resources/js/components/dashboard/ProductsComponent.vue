@@ -87,6 +87,8 @@
                     <figure class="dashboard-images-container mb-0">
                       <img style="width:100%;" class="img-responsive product-image"
                            :src="product.url_img"
+                           :data-index="index"
+                           :data-product="product"
                            @error="onerror">
                       <div class="upload-btn-container">
                         <upload-image :index="index"/>
@@ -141,7 +143,7 @@ export default {
     ...mapState(['products'])
   },
   methods:{
-    ...mapMutations(['getProducts','setProducts','addProducts']),
+    ...mapMutations(['getProducts','setProducts','addProducts','updateProduct']),
     fetchProducts($state){
       axios({
         method:'get',
@@ -215,10 +217,21 @@ export default {
         });
     },
     onerror(event){
-       event.target.src = this.product.noimg;
+      let obj = new Object;
+      let product = event.target.dataset.product;
+      console.log(product)
+      product.unloadedImage = true;
+      obj.product = product;
+      obj.index = event.target.dataset.index;
+      this.updateProuct(obj);
+      if(!this.product.unloadedImage)
+        event.target.src = this.product.imgLocal;
+      else
+        event.target.src = this.product.noimg;
 
     },
     noimg(event){
+      console.log('index: ' + event.target.dataset.index)
       event.target.src = this.product.noimg;
 
     },

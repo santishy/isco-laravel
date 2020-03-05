@@ -62,6 +62,9 @@ window.store = new Vuex.Store({
 
       Vue.set(state.products[data.index],'imgLocal',data.product.img_url)
       //state.products[index] = product;
+    },
+    updateProduct(state,data){
+      Vue.set(state.products,index,data.product);
     }
 	}
 })

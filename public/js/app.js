@@ -2131,6 +2131,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2153,7 +2155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['products'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['getProducts', 'setProducts', 'addProducts']), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['getProducts', 'setProducts', 'addProducts', 'updateProduct']), {
     fetchProducts: function fetchProducts($state) {
       var _this = this;
 
@@ -2238,9 +2240,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     onerror: function onerror(event) {
-      event.target.src = this.product.noimg;
+      var obj = new Object();
+      var product = event.target.dataset.product;
+      console.log(product);
+      product.unloadedImage = true;
+      obj.product = product;
+      obj.index = event.target.dataset.index;
+      this.updateProuct(obj);
+      if (!this.product.unloadedImage) event.target.src = this.product.imgLocal;else event.target.src = this.product.noimg;
     },
     noimg: function noimg(event) {
+      console.log('index: ' + event.target.dataset.index);
       event.target.src = this.product.noimg;
     }
   })
@@ -2717,9 +2727,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {},
   methods: {
     onerror: function onerror(event) {
-      EventBus.$emit('on');
-      event.target.src = this.product.img;
-      event.target.src = this.product.noimg;
+      console.log('entro');
+      EventBus.$emit('imgLocal', this.$attrs['data-index']);
+      if (!this.product.unloadedImage) event.target.src = this.product.imgLocal;else event.target.src = this.product.noimg;
     },
     noimg: function noimg(event) {
       event.target.src = this.product.noimg;
@@ -2838,12 +2848,18 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: ['ruta', 'method'],
-  created: function created() {
+  mounted: function mounted() {
+    var _this = this;
+
     this.search();
+    EventBus.$on('imgLocal', function (index) {
+      _this.products[index].unloadedImage = true;
+      console.log('...............................');
+    });
   },
   methods: {
     search: function search() {
-      var _this = this;
+      var _this2 = this;
 
       var formData = new FormData(document.getElementById("formSearch"));
       axios({
@@ -2859,9 +2875,10 @@ __webpack_require__.r(__webpack_exports__);
         // for (var value of formData.values()) {
         //    console.log(value);
         // }
-        _this.products = response.data.data;
+        _this2.products = response.data.data;
       });
-    }
+    },
+    unloadedImage: function unloadedImage(event) {}
   }
 });
 
@@ -38721,7 +38738,11 @@ var render = function() {
                                   _c("img", {
                                     staticClass: "img-responsive product-image",
                                     staticStyle: { width: "100%" },
-                                    attrs: { src: product.url_img },
+                                    attrs: {
+                                      src: product.url_img,
+                                      "data-index": index,
+                                      "data-product": product
+                                    },
                                     on: { error: _vm.onerror }
                                   }),
                                   _vm._v(" "),
@@ -53026,6 +53047,9 @@ window.store = new Vuex.Store({
     },
     updateProductByIndex: function updateProductByIndex(state, data) {
       Vue.set(state.products[data.index], 'imgLocal', data.product.img_url); //state.products[index] = product;
+    },
+    updateProduct: function updateProduct(state, data) {
+      Vue.set(state.products, index, data.product);
     }
   }
 });
@@ -54764,8 +54788,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
