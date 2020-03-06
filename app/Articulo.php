@@ -15,7 +15,9 @@ class Articulo extends Model
     use SearchableTrait;
     protected $searchable = [
       'columns' => [
-        'descripcion' => 10
+        'descripcion' => 10,
+        'sku'  => 10,
+        'skuFabricante' => 10
       ]
     ];
     protected $ip;
