@@ -2133,6 +2133,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2241,13 +2242,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     onerror: function onerror(event) {
       var obj = new Object();
-      var product = event.target.dataset.product;
-      console.log(product);
+      var product = JSON.parse(event.target.dataset.product);
+      if (!product.unloadedImage) event.target.src = product.imgLocal;else {
+        event.target.src = product.noimg;
+      }
       product.unloadedImage = true;
       obj.product = product;
       obj.index = event.target.dataset.index;
-      this.updateProuct(obj);
-      if (!this.product.unloadedImage) event.target.src = this.product.imgLocal;else event.target.src = this.product.noimg;
+      this.updateProduct(obj);
     },
     noimg: function noimg(event) {
       console.log('index: ' + event.target.dataset.index);
@@ -38741,7 +38743,7 @@ var render = function() {
                                     attrs: {
                                       src: product.url_img,
                                       "data-index": index,
-                                      "data-product": product
+                                      "data-product": JSON.stringify(product)
                                     },
                                     on: { error: _vm.onerror }
                                   }),
@@ -53049,7 +53051,7 @@ window.store = new Vuex.Store({
       Vue.set(state.products[data.index], 'imgLocal', data.product.img_url); //state.products[index] = product;
     },
     updateProduct: function updateProduct(state, data) {
-      Vue.set(state.products, index, data.product);
+      Vue.set(state.products, data.index, data.product);
     }
   }
 });
@@ -54788,8 +54790,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

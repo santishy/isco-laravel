@@ -64,7 +64,7 @@ window.store = new Vuex.Store({
       //state.products[index] = product;
     },
     updateProduct(state,data){
-      Vue.set(state.products,index,data.product);
+      Vue.set(state.products,data.index,data.product);
     }
 	}
 })
