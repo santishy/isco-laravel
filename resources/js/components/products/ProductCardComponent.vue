@@ -28,7 +28,6 @@ export default{
 		},
 		methods:{
 			onerror(event){
-				console.log('entro')
 				EventBus.$emit('imgLocal',this.$attrs['data-index'])
 				if(!this.product.unloadedImage)
 					event.target.src = this.product.imgLocal;

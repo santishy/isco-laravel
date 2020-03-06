@@ -2729,7 +2729,6 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {},
   methods: {
     onerror: function onerror(event) {
-      console.log('entro');
       EventBus.$emit('imgLocal', this.$attrs['data-index']);
       if (!this.product.unloadedImage) event.target.src = this.product.imgLocal;else event.target.src = this.product.noimg;
     },
@@ -2780,11 +2779,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ['ruta', 'method'],
   created: function created() {
-    console.log(this.ruta);
+    var _this = this;
+
+    EventBus.$on('imgLocal', function (index) {
+      _this.products[index].unloadedImage = true;
+    });
   },
   methods: {
     infiniteHandler: function infiniteHandler($state) {
-      var _this = this;
+      var _this2 = this;
 
       var ruta = this.endpoint + '?page=' + this.page;
       axios({
@@ -2799,8 +2802,8 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         if (response.data.data.length) {
-          _this.page += 1;
-          _this.products = _this.products.concat(response.data.data);
+          _this2.page += 1;
+          _this2.products = _this2.products.concat(response.data.data);
           $state.loaded();
         } else {
           $state.complete();
@@ -54790,8 +54793,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

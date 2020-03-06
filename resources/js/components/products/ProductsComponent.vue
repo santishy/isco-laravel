@@ -24,7 +24,9 @@
 		},
 		props:['ruta','method'],
 		created(){
-			console.log(this.ruta)
+			EventBus.$on('imgLocal',index => {
+				this.products[index].unloadedImage = true;
+			});
 		},
 		methods:{
 			infiniteHandler($state){
