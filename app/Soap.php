@@ -68,13 +68,18 @@ class Soap extends Model
     }
     public function  obtenerParidad(){
         $param=$this->param;
-           $response=$this->soapWrapper->call('ObtenerParidad', $this->param);
+           $response=$this->soapWrapper->call('pch.ObtenerParidad', $this->param);
+
             if(strlen($response->datos)>0){
+
                 $dolar=Dolar::find(1);
+
                 if(empty($dolar))
                     $dolar=new Dolar;
+
                 $dolar->precio=$response->datos;
-                return $dolar->save();
+
+                return response()->json(['response' => $dolar->save()]);
             }
             else
                 return $response->mensaje;
