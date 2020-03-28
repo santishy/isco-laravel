@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9">
-				<div class="card border-0 shadow-sm mt-3">
+				<div class="card border-0 shadow-sm my-4">
 					<div class="card-body ">
 						<div class="well top-space">
 							<h3>Resumen de tu carrito de compras.</h3>
@@ -68,6 +68,9 @@
 								<img src="{{asset('images/mercadopago.jpg')}}" class="img-thumnail"  alt="">
 							</label>
 						</div>
+					</div>
+					<div class="form-group">
+
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary btn-lg btn-block">Pagar</button>
