@@ -44,7 +44,7 @@
 				tr.classList.add('tr-cart');
 				var td=document.createElement('td');
 				var img=document.createElement('img');
-				img.classList.add('img-responsive');
+				img.classList.add('img-fluid');
 				img.setAttribute('src',"http://www.pchmayoreo.com/media/catalog/product/"+article.sku.substr(0,1)+"/"+article.sku.substr(1,1)+"/"+article.sku+".jpg" );
 				td.appendChild(img);
 				tr.appendChild(td);

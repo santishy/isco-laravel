@@ -35,7 +35,7 @@
         <header class="header">
             <div class="container-logo">
                 <a href="http://iscocomputadoras.com" class="logo">
-                    <img src="{{asset('images/logo.png')}}" class="img-responsive">
+                    <img src="{{asset('images/logo.png')}}" class="img-fluid">
                 </a>
             </div>
             <div class="container-search">

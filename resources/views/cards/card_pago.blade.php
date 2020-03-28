@@ -11,7 +11,7 @@
 		{!! Form::Close() !!}
 	</div>
 	<!--Card image-->
-	<img class="img-responsive" src="{{asset('images/'.$fileName)}}" alt="Card image cap">
+	<img class="img-fluid" src="{{asset('images/'.$fileName)}}" alt="Card image cap">
 	<!--/.Card image-->
 	<!--Card content-->
 	<!--/.Card content-->

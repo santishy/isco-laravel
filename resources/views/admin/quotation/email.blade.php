@@ -66,7 +66,7 @@
   </head>
   <body>
     <header>
-      <div width="30px" class="img-responsive">
+      <div width="30px" class="img-fluid">
         <img src="{{asset('images/logo.png')}}" alt="">
       </div>
     </header>

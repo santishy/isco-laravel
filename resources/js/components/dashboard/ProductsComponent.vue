@@ -85,7 +85,7 @@
                 <tr v-for="(product,index) in products" :key="product.id">
                   <td class="bg-white">
                     <figure class="dashboard-images-container mb-0">
-                      <img style="width:100%;" class="img-responsive product-image"
+                      <img style="width:100%;" class="img-fluid product-image"
                            :src="product.url_img"
                            :data-index="index"
 

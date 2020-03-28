@@ -29,7 +29,7 @@
     <div id="app">
         <header class="header">
             <div class="container-fluid">
-                <img clas="img-responsive" src="{{asset('images/logotipo.png')}}"/>
+                <img clas="img-fluid" src="{{asset('images/logotipo.png')}}"/>
             </div>
         </header>
         @yield('content')
