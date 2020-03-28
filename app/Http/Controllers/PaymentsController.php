@@ -45,11 +45,20 @@ class PaymentsController extends Controller
                     'envio'=>$envio]);
     }
     public function pay(Request $request){
-        $amount = $request->shopping_cart->amount();
-        $paypal = new Paypal();
-        $payment = $paypal->generate($request->shopping_cart);
-        return redirect($payment->getApprovalLink());
+      $amount = $request->shopping_cart->amount();
+      switch ($request->payment_platform) {
+        case 'paypal':
+          $paypal = new Paypal();
+          $payment = $paypal->generate($request->shopping_cart);
+          return redirect($payment->getApprovalLink());
+          break;
+        case 'mercadopago':
 
+          break;
+        default:
+          // code...
+          break;
+      }
     }
     public function execute(Request $request){
         $paymentId = $request->paymentId;
@@ -60,7 +69,7 @@ class PaymentsController extends Controller
         $payment = Payment::create(['forma_pago' =>  $paypalPayment->payer->payment_method,
                                      'paypal_payment_id' => $paypalPayment->id,
                                      'total' => $paypalPayment->transactions[0]->amount->total ]);
-        
+
         $order = $request->shopping_cart->order();
         $order->id_pago = $payment->id_pago;
         $order->save();

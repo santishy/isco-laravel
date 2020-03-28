@@ -14,7 +14,7 @@ Route::get('/', 'HomeController@index');
 // Route::get('/',function(){
 // 	return view('layouts.construccion');
 // });
-Route::get('pagar/','PaymentsController@pay');
+Route::get('pagar/','PaymentsController@pay')->name('pagar');
 Route::get('pagar/completado','PaymentsController@execute')->name('execute');
  Route::get('pagos/updateAndStore','PaymentsController@updateAndStore');
  Route::get('pagos/{shopping_cart_id}','PaymentsController@create');// poner primero
