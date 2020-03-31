@@ -425,7 +425,7 @@ function crearAlerta(clase1,clase2,mensaje)
 }
 /****************************************************************************************/
 // Habilitar el boton para agregar al carrito
-$('#btn-add-product').attr('disabled',true);
+//$('#btn-add-product').attr('disabled',true);
 $('input:radio[name="almacen"]').change(function(){
 	if($(this).is(':checked'))
 	{

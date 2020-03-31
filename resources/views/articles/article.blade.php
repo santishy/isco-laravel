@@ -79,7 +79,6 @@
                           </thead>
                           <tbody>
                             @foreach ($article->inventario()->get() as $inventario)
-
                                 <tr>
                                     <td>{{$almacenes[$inventario->almacen]}}</td>
                                     <td>{{$inventario->pivot->existencia}}</td>
@@ -92,10 +91,8 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                           </tbody>
                       </table>
-
                       <form id="form-add-product" action="{{url('/in_shopping_carts')}}" method="post">
                           <div class="form-group">
                             <label for="cantidad" class="control-label">Cantidad:</label>

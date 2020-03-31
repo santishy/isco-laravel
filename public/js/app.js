@@ -2600,6 +2600,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2635,7 +2638,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addCart: function addCart(article, inShoppingCart) {
-      console.log(article);
       var tbody = document.querySelector('#tbody-cart');
       var tr = document.createElement('tr');
       tr.classList.add('tr-cart');
@@ -53472,9 +53474,9 @@ function crearAlerta(clase1, clase2, mensaje) {
 }
 /****************************************************************************************/
 // Habilitar el boton para agregar al carrito
+//$('#btn-add-product').attr('disabled',true);
 
 
-$('#btn-add-product').attr('disabled', true);
 $('input:radio[name="almacen"]').change(function () {
   if ($(this).is(':checked')) {
     $("#btn-add-product").attr('disabled', false);

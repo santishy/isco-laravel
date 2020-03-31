@@ -1,6 +1,9 @@
 <template>
 	<div class="">
-		<button id="btn-add-product" type="button" class="btn btn-block btn-primary" @click="addToCart">{{message}}</button>
+		<button id="btn-add-product"
+					type="button"
+					class="btn btn-block btn-primary"
+					@click="addToCart">{{message}}</button>
 	</div>
 </template>
 <script>
@@ -18,7 +21,6 @@
 		},
 		methods:{
 			addToCart(){
-
 				var form = new FormData (document.querySelector("#form-add-product"))
 				axios({
 					url:this.endpoint,
@@ -30,7 +32,6 @@
 					}
 				}).then((response)=>{
 					window.store.commit("increment");
-
 					 $(".container-right a span").text(response.data.productsCount);
 					 this.addCart(response.data.article,response.data.inShoppingCart);
 					 $("#modalCart").modal('show');
@@ -38,7 +39,6 @@
 			},
 			addCart(article,inShoppingCart)
 			{
-				console.log(article)
 				var tbody=document.querySelector('#tbody-cart');
 				var tr=document.createElement('tr');
 				tr.classList.add('tr-cart');
@@ -66,7 +66,6 @@
 				span.classList.add('glyphicon-trash');
 				span.classList.add('glyphicon');
 				button.appendChild(span);
-
 				td.appendChild(button);
 				tr.appendChild(td);
 				tbody.appendChild(tr);
