@@ -39317,7 +39317,7 @@ var render = function() {
       _c("div", { staticClass: "card-body d-flex flex-column" }, [
         _c("div", { staticClass: "d-flex align-items-center mb-3 column " }, [
           _c("img", {
-            staticClass: "img-responsive product-image",
+            staticClass: "img-fluid product-image",
             attrs: { src: _vm.product.url_img },
             on: { error: _vm.onerror }
           }),
