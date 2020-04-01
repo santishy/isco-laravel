@@ -8,7 +8,7 @@
     <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#4285f4"/>
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{url('/css/app.css')}}" rel="stylesheet">

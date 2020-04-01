@@ -37,6 +37,13 @@ return [
     'paypal' => [
         'clientid' => env('PAYPAL_CLIENT_ID'),
         'secret' => env('PAYPAL_CLIENT_SECRET')
-    ]
+    ],
+    'mercadopago' =>[
+      'base_uri' => env('MERCADO_PAGO_BASE_URI'),
+      'key' => env('MERCADO_PAGO_KEY'),
+      'secret' => env('MERCADO_PAGO_SECRET'),
+      'class' => App\MercadoPagoService::class,
+      'base_currency' => 'mxn'
+    ],
 
 ];
