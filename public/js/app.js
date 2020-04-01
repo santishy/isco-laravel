@@ -39587,7 +39587,7 @@ var render = function() {
                 },
                 [
                   _c("img", {
-                    staticClass: "img-responsive",
+                    staticClass: "img-fluid",
                     attrs: { src: product.url_img },
                     on: { error: _vm.onerror }
                   })

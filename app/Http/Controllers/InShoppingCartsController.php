@@ -13,8 +13,8 @@ class InShoppingCartsController extends Controller
     }
     public function store(Request $request)
     {
-        // if(!$request->qty < $request->existencia)
-        // {
+        if((!$request->qty < $request->existencia) || auth()->user()->hasPermissionTo('dashboard'))
+         {
             $in_shopping_cart = InShoppingCart::where('id_articulo',$request->id_articulo)
                 ->where('shopping_cart_id',$request->shopping_cart->id)->first();
             if($in_shopping_cart)
@@ -30,7 +30,7 @@ class InShoppingCartsController extends Controller
                                      'productsCount'=>$request->shopping_cart->productsCount[0]->cantidad,
                                      'article'=>$in_shopping_cart->article,'inShoppingCart'=>$in_shopping_cart
                                  ]);
-        // }
+        }
             return response()->JSON(['success'=>false]);
     }
     public function update(Request $request, $id)

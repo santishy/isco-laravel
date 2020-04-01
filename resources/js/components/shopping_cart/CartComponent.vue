@@ -7,7 +7,7 @@
   >
     <tr  class="tr-center":key="product.id" :data-index="index" v-for="(product,index) in products">
         <td width="100px" style="background:white">
-          <img  class="img-responsive" :src="product.url_img" @error="onerror">
+          <img  class="img-fluid" :src="product.url_img" @error="onerror">
         </td>
         <td>{{product.description}}</td>
         <td>{{product.humanPrice}}</td>
