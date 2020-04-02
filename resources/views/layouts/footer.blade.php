@@ -38,17 +38,7 @@
   </div>
 </footer>
 @include('modals.cart')
-<!-- Scripts -->
-
-
-    {{-- <script>
-    $.material.init();
-	  $.material.ripples();
-	  $.material.input();
-  	</script> --}}
-  	{{-- <script>
-  		$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
-  	</script> --}}
-	<script src="{{url('/js/app.js')}}"></script>
+<script src="{{url('/js/app.js')}}"></script>
+@stack('scripts')
 </body>
 </html>

@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<div class="card border-0 shadow-sm my-4">
 					<div class="card-body ">
 						<div class="well top-space">
@@ -55,18 +55,28 @@
 
 
 			</div>
-			<div class="col-md-3 mt-3">
+			<div class="col-md-4 mt-3">
 				<form  action="{{route('pagar')}}" method="get">
-					<div class="form-group">
+					<div class="form-group" id="toggler">
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-outline-secondary rounded m-2 p-1">
+							<label class="btn btn-outline-secondary rounded m-2 p-1"
+											data-toggle="collapse"
+											data-target="#paypal-collapse">
 								<input type="radio" name="payment_platform" value="paypal" required>
 								<img src="{{asset('images/paypal.jpg')}}" class="img-thumnail"  alt="">
 							</label>
-							<label class="btn btn-outline-secondary rounded m-2 p-1">
+							<label class="btn btn-outline-secondary rounded m-2 p-1"
+											data-toggle="collapse"
+											data-target="#mercadopago-collapse">
 								<input type="radio" name="payment_platform" value="mercadopago" required>
 								<img src="{{asset('images/mercadopago.jpg')}}" class="img-thumnail"  alt="">
 							</label>
+						</div>
+						<div id="paypal-collapse" class="collapse" data-parent="#toggler">
+							@includeIf('components.paypal-collapse')
+						</div>
+						<div id="mercadopago-collapse" class="collapse" data-parent="#toggler">
+							@includeIf('components.mercadopago-collapse')
 						</div>
 					</div>
 					<div class="form-group">

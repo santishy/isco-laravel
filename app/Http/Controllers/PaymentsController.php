@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MercadoPago;
 use App\ShoppingCart;
 use App\Payment;
 use App\Paypal;
@@ -53,7 +54,8 @@ class PaymentsController extends Controller
           return redirect($payment->getApprovalLink());
           break;
         case 'mercadopago':
-
+          $mercadopago = new MercadoPago;
+          $mercadopago->handlePayment($request);
           break;
         default:
           // code...
