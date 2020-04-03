@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\ConsumesExternalServices;
+use Illuminate\Http\Request;
 
 class MercadoPago extends Model
 {
@@ -47,13 +48,15 @@ class MercadoPago extends Model
     ]);
     $payment = $this->createPayment($request->value,$request->currency,$request->paymentMethodId,$request->cardToken,$request->email);
     if($payment->status == 'approved'){
-      $name = $payment->payer->name;
+
+      $name = $payment->payer->first_name;
       $currency = strtoupper($payment->currency_id);
       $amount = number_format($payment->transaction_amount,2);
       $originalCurrency = $request->currency;
       $originalAmount = $request->value;
       return redirect(route('home'))
-              ->withSuccess(["payment" => "Thanks {$name} we received your {$originalAmount}{$originalCurrency} payment ({$amount}{$currency)."]);
+              ->withSuccess(["payment" =>
+                             "Thanks $name we received your $originalAmount $originalCurrency payment ($amount$currency)."]);
     }
   return redirect('home')->withErrors('We were unable to confirm your payment. Try again, please');
   }

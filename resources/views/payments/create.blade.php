@@ -56,7 +56,7 @@
 
 			</div>
 			<div class="col-md-4 mt-3">
-				<form  action="{{route('pagar')}}" method="get">
+				<form  action="{{route('pagar')}}" method="get" id="paymentForm">
 					<div class="form-group" id="toggler">
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
 							<label class="btn btn-outline-secondary rounded m-2 p-1"

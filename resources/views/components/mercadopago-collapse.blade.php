@@ -5,12 +5,12 @@
 <label class="mt-3">Details Card</label>
 <div class="form-group form-row">
   <div class="col-12">
-    <input type="text" class="form-control" data-checkout="cardholderName" placeholder="Name">
+    <input type="text" name="name" class="form-control" data-checkout="cardholderName" placeholder="Name">
   </div>
 </div>
 <div class="form-group form-row">
   <div class="col-12">
-    <input type="email" class="form-control" data-checkout="cardholderEmail" placeholder="email@example.com">
+    <input type="email" name="email" class="form-control" data-checkout="cardholderEmail" placeholder="email@example.com">
   </div>
 </div>
 <div class="form-group form-row">
@@ -47,6 +47,8 @@
 </div>
 <input type="hidden" name="paymentMethodId" id="paymentMethodId" value="">
 <input type="hidden" name="cardToken" id="cardToken" value="">
+<input type="hidden" name="value" value="{{$shopping_cart->total()}}">
+<input type="hidden" name="currency" value="mxn">
 @push('scripts')
   <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
 
@@ -75,7 +77,7 @@
     mercadopagoForm.addEventListener('submit',doPay);
 
     function doPay(event){
-      if(form.elements.payment_platform.value === "mercadopago" ){
+      if(mercadopagoForm.elements.payment_platform.value === "mercadopago" ){
         event.preventDefault();
         window.Mercadopago.createToken(mercadopagoForm,sdkResponseHandler);
       }
