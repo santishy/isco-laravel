@@ -55,8 +55,7 @@ class PaymentsController extends Controller
           break;
         case 'mercadopago':
           $mercadopago = new MercadoPago;
-        //  dd($request->all());
-          $mercadopago->handlePayment($request);
+          return $mercadopago->handlePayment($request);
           break;
         default:
           // code...

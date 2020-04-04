@@ -62,7 +62,7 @@ Route::put('producto/{id}','ArticlesController@update')->name('updateProduct');
 
 
 Route::resource('users','UserController');
- Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
  //Route::resource('/slider','SlidersController');
  ///////////////routes para el panel//////////////////////////////////////////////////////////////77
 
@@ -116,4 +116,4 @@ Route::get('/queue-work', function() {
 				return '<h1>Comando ejecutado</h1>';
 
       });
- Auth::routes();
+Auth::routes();
