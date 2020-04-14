@@ -90,6 +90,7 @@
 
         cardToken = document.getElementById('cardToken');
         cardToken.value = response.id;
+
         setCardNetwork();
       }
     }

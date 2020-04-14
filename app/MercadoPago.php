@@ -46,8 +46,8 @@ class MercadoPago extends Model
       'cardToken' => 'required',
       'email' => 'required',
     ]);
-    return redirect()->route('home');
     $payment = $this->createPayment($request->value,$request->currency,$request->paymentMethodId,$request->cardToken,$request->email);
+
     if($payment->status == 'approved'){
       $name = $payment->payer->first_name;
       $currency = strtoupper($payment->currency_id);
