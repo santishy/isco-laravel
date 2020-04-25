@@ -29,6 +29,7 @@
                         <li>LINEA : {{$article->line->linea}}</li>
                         <li>SERIE: {{$article->serie->name}}</li>
                       </ul>
+                      <h4>Precio: <strong>${{number_format($article->price,2)}}</strong></h4>
                       <p class="card-text">Medidas</p>
                       <table class="table table-responsive-sm text-center">
                         <thead>
