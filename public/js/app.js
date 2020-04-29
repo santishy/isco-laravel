@@ -2732,7 +2732,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onerror: function onerror(event) {
       EventBus.$emit('imgLocal', this.$attrs['data-index']);
-      if (!this.product.unloadedImage) event.target.src = this.product.imgLocal;else event.target.src = this.product.noimg;
+      if (this.product.unloadedImage) event.target.src = this.product.imgLocal;else event.target.src = this.product.noimg;
     },
     noimg: function noimg(event) {
       event.target.src = this.product.noimg;

@@ -29,7 +29,7 @@ export default{
 		methods:{
 			onerror(event){
 				EventBus.$emit('imgLocal',this.$attrs['data-index'])
-				if(!this.product.unloadedImage)
+				if(this.product.unloadedImage)
 					event.target.src = this.product.imgLocal;
 				else
 					event.target.src = this.product.noimg;
