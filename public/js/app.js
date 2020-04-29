@@ -2726,13 +2726,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      failedImageCount: 0
+    };
   },
   created: function created() {},
   methods: {
     onerror: function onerror(event) {
       EventBus.$emit('imgLocal', this.$attrs['data-index']);
-      if (this.product.unloadedImage) event.target.src = this.product.imgLocal;else event.target.src = this.product.noimg;
+
+      if (this.product.unloadedImage) {
+        event.target.src = this.product.imgLocal;
+
+        if (this.failedImageCount) {
+          event.target.src = this.product.noimg;
+        }
+
+        this.failedImageCount++;
+      } else event.target.src = this.product.noimg;
     },
     noimg: function noimg(event) {
       event.target.src = this.product.noimg;

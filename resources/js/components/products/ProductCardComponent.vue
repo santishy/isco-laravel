@@ -22,6 +22,7 @@
 export default{
 		data(){
 			return {
+				failedImageCount:0,
 			}
 		},
 		created(){
@@ -29,8 +30,13 @@ export default{
 		methods:{
 			onerror(event){
 				EventBus.$emit('imgLocal',this.$attrs['data-index'])
-				if(this.product.unloadedImage)
+				if(this.product.unloadedImage){
 					event.target.src = this.product.imgLocal;
+					if(this.failedImageCount){
+						event.target.src = this.product.noimg;
+					}
+					this.failedImageCount++;
+				}
 				else
 					event.target.src = this.product.noimg;
 			},
