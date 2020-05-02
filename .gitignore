@@ -2,6 +2,7 @@
 /config/cache.php
 /config/queue.php
 /config/scout.php
+/config/mail.php
 /public/storage
 /storage/*.key
 /vendor
