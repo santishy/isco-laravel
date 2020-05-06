@@ -31,8 +31,6 @@ class MercadoPago extends Model
   public function resolveAccessToken(){
     return $this->secret;
   }
-
-
   public function resolveFactor($currency){
     $zeroDecimalCurrency = ['JPY'];
     if(in_array(strtoupper($currency),$zeroDecimalCurrency)){
@@ -47,7 +45,6 @@ class MercadoPago extends Model
       'email' => 'required',
     ]);
     $payment = $this->createPayment($request->value,$request->currency,$request->paymentMethodId,$request->cardToken,$request->email);
-
     if($payment->status == 'approved'){
       $name = $payment->payer->first_name;
       $currency = strtoupper($payment->currency_id);
@@ -58,7 +55,7 @@ class MercadoPago extends Model
               ->withSuccess(["payment" =>
                              "Thanks $name we received your $originalAmount $originalCurrency payment ($amount$currency)."]);
     }
-    return redirect(route('home'))->withErrors('We were unable to confirm your payment. Try again, please');
+    return redirect(route('home'))->withErrors($payment);
   }
   public function createPayment($value,$currency,$paymentMethodId,$cardToken,$email,$installments = 1){
     return $this->makeRequest('POST',
@@ -69,7 +66,7 @@ class MercadoPago extends Model
             'email' => $email
           ],
           'binary_mode' => true,
-          'transaction_amount' => round($value * $this->resolveFactor($currency)),
+          'transaction_amount' => $value,// round($value * $this->resolveFactor($currency)),
           'payment_method_id' => $paymentMethodId,
           'token' => $cardToken,
           'installments' => $installments,

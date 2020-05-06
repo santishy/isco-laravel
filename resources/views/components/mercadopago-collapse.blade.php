@@ -15,7 +15,7 @@
 </div>
 <div class="form-group form-row">
   <div class="col-12">
-    <input type="text" id="cardNumber" placeholder="Card Number" class="form-control" data-checkout="cardNumber" l>
+    <input type="text" id="cardNumber" maxlength="20" placeholder="Card Number" class="form-control" data-checkout="cardNumber" l>
   </div>
 </div>
 <div class="form-group form-row ">
@@ -28,6 +28,9 @@
   <div class="col-4">
     <input type="text" class="form-control" placeholder="YY" data-checkout="cardExpirationYear">
   </div>
+</div>
+<div class="form-group form-row">
+  <select id="installments" class="form-control" name="installments"></select>
 </div>
 
 {{-- <div class="form-gropu form-row">
@@ -47,13 +50,15 @@
 </div>
 <input type="hidden" name="paymentMethodId" id="paymentMethodId" value="">
 <input type="hidden" name="cardToken" id="cardToken" value="">
-<input type="hidden" name="value" value="{{$shopping_cart->total()}}">
+<input type="hidden" name="value" id="transactionAmount" value="{{$shopping_cart->total()}}">
 <input type="hidden" name="currency" value="mxn">
 @push('scripts')
   <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
 
   <script>
     window.Mercadopago.setPublishableKey("{{config("services.mercadopago.key")}}");
+    document.getElementById('cardNumber').addEventListener('keyup',setCardNetwork);
+    document.getElementById('cardNumber').addEventListener('change',setCardNetwork);
     function getBin(){
       const bin = document.getElementById('cardNumber')
       return bin.value.substring(0,6);;
@@ -67,8 +72,27 @@
       if(status == 200){
         const paymentMethodId = document.getElementById('paymentMethodId');
         paymentMethodId.value = response[0].id;
-        mercadopagoForm.submit();
+        getInstallments();
+        //mercadopagoForm.submit();
       }
+    }
+    function getInstallments(){
+      window.Mercadopago.getInstallments({
+        'payment_method_id':document.getElementById('paymentMethodId').value,
+        'amount':document.getElementById('transactionAmount').value
+      },function(status,response){
+        if(status == 200){
+          document.getElementById('installments').options.length = 0;
+          response[0].payer_costs.forEach( installment => {
+            let opt = document.createElement('option');
+            opt.text = installment.recommended_message;
+            opt.value = installment.installments;
+            document.getElementById('installments').appendChild(opt);
+          });
+        }else {
+            alert(`installments method info error: ${response}`);
+        }
+      });
     }
   </script>
   <script>
@@ -90,8 +114,8 @@
 
         cardToken = document.getElementById('cardToken');
         cardToken.value = response.id;
-
-        setCardNetwork();
+        //setCardNetwork();
+        mercadopagoForm.submit();
       }
     }
   </script>
