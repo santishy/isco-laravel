@@ -55,6 +55,7 @@ class MercadoPago extends Model
               ->withSuccess(["payment" =>
                              "Thanks $name we received your $originalAmount $originalCurrency payment ($amount$currency)."]);
     }
+    //dd($payment);
     return redirect(route('home'))->withErrors($payment);
   }
   public function createPayment($value,$currency,$paymentMethodId,$cardToken,$email,$installments = 1){
