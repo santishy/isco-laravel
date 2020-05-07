@@ -50,7 +50,7 @@
 </div>
 <input type="hidden" name="paymentMethodId" id="paymentMethodId" value="">
 <input type="hidden" name="cardToken" id="cardToken" value="">
-<input type="hidden" name="value" id="transactionAmount" value="{{$shopping_cart->total()}}">
+<input type="hidden" name="value" id="transactionAmount" value="{{floatval($shopping_cart->total())}}">
 <input type="hidden" name="currency" value="mxn">
 @push('scripts')
   <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
@@ -104,18 +104,19 @@
       if(mercadopagoForm.elements.payment_platform.value === "mercadopago" ){
         event.preventDefault();
         window.Mercadopago.createToken(mercadopagoForm,sdkResponseHandler);
+        return false;
       }
     }
     function sdkResponseHandler(status,response){
       if(status != 200 && status != 201){
-          const error = document.getElementById('paymentErros');
-          error.textContent = response.cause[0].description;
+          const errors = document.getElementById('paymentErros');
+          errors.textContent = response.cause[0].description;
       }else{
 
         cardToken = document.getElementById('cardToken');
         cardToken.value = response.id;
-        //setCardNetwork();
         mercadopagoForm.submit();
+
       }
     }
   </script>

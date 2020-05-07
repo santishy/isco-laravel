@@ -48,6 +48,7 @@ class MercadoPago extends Model
     if($payment->status == 'approved'){
       $name = $payment->payer->first_name;
       $currency = strtoupper($payment->currency_id);
+
       $amount = number_format($payment->transaction_amount,2);
       $originalCurrency = $request->currency;
       $originalAmount = $request->value;
@@ -55,7 +56,7 @@ class MercadoPago extends Model
               ->withSuccess(["payment" =>
                              "Thanks $name we received your $originalAmount $originalCurrency payment ($amount$currency)."]);
     }
-    //dd($payment);
+    dd($payment);
     return redirect(route('home'))->withErrors($payment);
   }
   public function createPayment($value,$currency,$paymentMethodId,$cardToken,$email,$installments = 1){
