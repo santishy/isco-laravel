@@ -18,7 +18,7 @@
     <input type="text" id="cardNumber" maxlength="20" placeholder="Card Number" class="form-control" data-checkout="cardNumber" l>
   </div>
 </div>
-<div class="form-group form-row ">
+<div class="form-group form-row">
   <div class="col-4">
     <input type="text"  data-checkout="securityCode" class="form-control" placeholder="CVC">
   </div>

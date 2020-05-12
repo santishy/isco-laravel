@@ -57,7 +57,7 @@ class MercadoPago extends Model
                              "Thanks $name we received your $originalAmount $originalCurrency payment ($amount$currency)."]);
     }
     dd($payment);
-    return redirect(route('home'))->withErrors($payment);
+    return redirect(route('home'))->withErrors('A ocurido un error con tu pago, intentalo más tarde.');
   }
   public function createPayment($value,$currency,$paymentMethodId,$cardToken,$email,$installments = 1){
     return $this->makeRequest('POST',
@@ -68,7 +68,7 @@ class MercadoPago extends Model
             'email' => $email
           ],
           'binary_mode' => true,
-          'transaction_amount' => $value,// round($value * $this->resolveFactor($currency)),
+          'transaction_amount' => floatval($value),// round($value * $this->resolveFactor($currency)),
           'payment_method_id' => $paymentMethodId,
           'token' => $cardToken,
           'installments' => $installments,
@@ -77,5 +77,6 @@ class MercadoPago extends Model
         [],
         $isJson = true);
   }
+
 
 }
