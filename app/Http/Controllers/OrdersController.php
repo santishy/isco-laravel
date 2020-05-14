@@ -38,7 +38,10 @@ class OrdersController extends Controller
      */
     public function create(Request $request)
     {
-        $shoppingCart = $request->shoppingcart;
+        $shoppingCart = $request->shopping_cart;
+
+        if($shoppingCart->order())
+          return redirect(url('pagos/'.$request->session()->get("shopping_cart_id")));
         return view('orders.create',compact('shoppingCart'));
     }
 
@@ -71,7 +74,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        return Order::find($id);
     }
 
     /**

@@ -8,11 +8,9 @@
 					<div class="card-header bg-secundary">
 						 <h3 class="card-title mb-0">Datos de Envío</h3>
 					</div>
-				  <div class="card-body">
-
 					{!! Form::Open(['method'=>'POST', 'url' => 'orders']) !!}
+				  <div class="card-body">
 						<div class="form-group">
-
 							<input type="text" name="line1" class="form-control" placeholder="Domicilio, ejemplo: Calle #numero">
 						</div>
 						<div class="form-group">
@@ -70,8 +68,9 @@
 						<div class="form-group mb-0">
 							<button class="btn btn-primary btn-block mb-0">Guardar</button>
 						</div>
-					{!! Form::close() !!}
+
 					</div>
+					{!! Form::close() !!}
 				</div>
 
 				@if ($errors->any())
