@@ -2614,6 +2614,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -39351,7 +39360,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card border-0 shadow-sm my-4" }, [
+  return _c("div", { staticClass: "card border-0 shadow-sm " }, [
+    _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n    Datos de envío\n  ")
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
       _c("div", { staticClass: "text-muted" }, [
         _vm._v("\n      " + _vm._s(_vm.order.line1) + "\n    ")
@@ -39367,6 +39380,14 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "text-muted" }, [
         _vm._v("\n      " + _vm._s(_vm.order.city) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-muted" }, [
+        _vm._v("\n      " + _vm._s(_vm.order.postal_code) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-muted" }, [
+        _vm._v("\n      " + _vm._s(_vm.order.recipient_name) + "\n    ")
       ])
     ])
   ])

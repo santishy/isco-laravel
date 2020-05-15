@@ -1,5 +1,8 @@
 <template>
-  <div class="card border-0 shadow-sm my-4">
+  <div class="card border-0 shadow-sm ">
+    <div class="card-header">
+      Datos de envío
+    </div>
     <div class="card-body">
       <div class="text-muted">
         {{order.line1}}
@@ -12,6 +15,12 @@
       </div>
       <div class="text-muted">
         {{order.city}}
+      </div>
+      <div class="text-muted">
+        {{order.postal_code}}
+      </div>
+      <div class="text-muted">
+        {{order.recipient_name}}
       </div>
     </div>
   </div>
