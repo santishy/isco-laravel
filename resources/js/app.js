@@ -95,6 +95,7 @@ Vue.component('quotation-header',require('./components/shopping_cart/QuotationHe
 Vue.component('section-series-products-component',require('./components/sections/SeriesProductsComponent.vue').default)
 Vue.component('item-products',require('./components/menu/ItemProducts.vue').default);
 Vue.component('upload-image',require('./components/dashboard/UploadImage.vue').default);
+Vue.component('order-created',require('./components/orders/Created.vue').default);
 const app = new Vue({
     el: '#app',
     store: window.store

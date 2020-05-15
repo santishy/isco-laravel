@@ -14,15 +14,15 @@
 
 <script>
 export default {
-  props:['shopping_cart_id'],
+  props:['id'],
   data(){
     return{
       order:null,
-      url:'/orders/'+this.shopping_cart_id
+      url:'/orders/'+this.id
     }
   },
   created(){
-    this.getOrder(this.shopping_cart_id);
+    this.getOrder(this.id);
   },
   methods:{
     getOrder(id){
@@ -30,7 +30,7 @@ export default {
         method:'GET',
         url:this.url,
         params:{
-          id:this.shopping_cart_id
+          order:this.shopping_cart_id
         }
       }).then((res)=>{
         if(res.data.length){

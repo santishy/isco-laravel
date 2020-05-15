@@ -14,7 +14,7 @@
     <link href="{{url('/css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
    <script src="https://use.fontawesome.com/4262dce400.js"></script>
     <!-- Scripts -->
      <script>
@@ -61,9 +61,9 @@
         </header>
         @yield('menu')
         @yield('slider')
-        <div class="container">
+
           <main class="py-4">
-        <div class="container">
+
           @if (isset($errors) && $errors->any())
             <div class="alert alert-danger">
               <ul>
@@ -82,11 +82,11 @@
               </ul>
             </div>
           @endif
-        </div>
+
           @yield('content')
       </main>
 
-        </div>
+
     </div>
 
     @include('layouts.footer')
