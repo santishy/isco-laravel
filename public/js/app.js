@@ -2609,6 +2609,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -2631,7 +2636,7 @@ __webpack_require__.r(__webpack_exports__);
           order: this.shopping_cart_id
         }
       }).then(function (res) {
-        if (res.data.length) {
+        if (res.data) {
           _this.order = res.data;
         }
       })["catch"](function (err) {
@@ -39346,20 +39351,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("table", [_c("tbody", [_c("tr", [_c("td")])])])
+  return _c("div", { staticClass: "card border-0 shadow-sm my-4" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "text-muted" }, [
+        _vm._v("\n      " + _vm._s(_vm.order.line1) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-muted" }, [
+        _vm._v("\n      " + _vm._s(_vm.order.line2) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-muted" }, [
+        _vm._v("\n      " + _vm._s(_vm.order.state) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-muted" }, [
+        _vm._v("\n      " + _vm._s(_vm.order.city) + "\n    ")
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

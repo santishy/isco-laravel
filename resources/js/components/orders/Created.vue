@@ -1,13 +1,18 @@
 <template>
-  <div class="card">
+  <div class="card border-0 shadow-sm my-4">
     <div class="card-body">
-      <table>
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="text-muted">
+        {{order.line1}}
+      </div>
+      <div class="text-muted">
+        {{order.line2}}
+      </div>
+      <div class="text-muted">
+        {{order.state}}
+      </div>
+      <div class="text-muted">
+        {{order.city}}
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +38,7 @@ export default {
           order:this.shopping_cart_id
         }
       }).then((res)=>{
-        if(res.data.length){
+        if(res.data){
           this.order = res.data
         }
       }).catch((err) => {

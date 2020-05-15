@@ -4,8 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<order-created id="{{$shopping_cart->order()->id}}"/>
-				<br>
+				<order-created id="{{$shopping_cart->order()->id}}"></order-created>
 				<div class="card border-0 shadow-sm my-4">
 					<div class="card-body ">
 						<div class="well top-space">
@@ -87,11 +86,6 @@
 						<button class="btn btn-primary btn-lg btn-block">Pagar</button>
 					</div>
 				</form>
-			{{-- <a href="{{url('pagar')}}"><i style="font-size: 5em;" class="fab fa-cc-paypal"></i></a> --}}
-			{{-- 	@include('cards.card_pago',['ruta'=>url("/pagar"),'shopping_cart'=>$shopping_cart,
-						'forma_pago'=>'paypal','fileName'=>'paypal.png','form_id'=>'form']) --}}
-			{{-- 	@include('cards.card_pago',['ruta'=>url("/pagos"),'shopping_cart'=>$shopping_cart,
-				'forma_pago'=>'credit_card','fileName'=>'credito.png','form_id'=>'formCardPago']) --}}
 			</div>
 
 		</div>
