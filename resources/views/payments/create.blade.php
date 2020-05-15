@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			<div class="col-md-7">
+			<div class="col-md-8">
 
 				<div class="card border-0 shadow-sm my-4">
 					<div class="card-body ">
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-5 mt-3">
+			<div class="col-md-4 mt-3">
 				<order-created id="{{$shopping_cart->order()->id}}"></order-created>
 				<form  action="{{route('pagar')}}" method="get" id="paymentForm">
 					<div class="form-group" id="toggler">
