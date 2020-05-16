@@ -2624,12 +2624,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
     return {
       order: null,
-      url: '/orders/' + this.id
+      url: '/orders/' + this.id,
+      editing: false
     };
   },
   created: function created() {
@@ -2652,6 +2657,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    edit: function edit() {
+      this.editing = !this.editing;
     }
   }
 });
@@ -39363,7 +39371,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card border-0 shadow-sm " }, [
     _c("div", { staticClass: "card-body" }, [
-      _vm._m(0),
+      _c(
+        "div",
+        {
+          staticClass:
+            "card-title d-flex justify-content-between align-items-center"
+        },
+        [
+          _c("h3", { staticClass: "mb-0" }, [_vm._v("Datos de envío")]),
+          _vm._v(" "),
+          _c("div", [
+            !_vm.editing
+              ? _c("i", {
+                  staticClass: "fas fa-edit fa-2x",
+                  on: { click: _vm.edit }
+                })
+              : _c("i", {
+                  staticClass: "fas fa-check-square fa-2x",
+                  on: { click: _vm.edit }
+                })
+          ])
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "text-muted" }, [
         _vm._v("\n      " + _vm._s(_vm.order.line1) + "\n    ")
@@ -39391,25 +39420,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "card-title d-flex justify-content-between align-items-center"
-      },
-      [
-        _c("h3", { staticClass: "mb-0" }, [_vm._v("Datos de envío")]),
-        _vm._v(" "),
-        _c("i", { staticClass: "fas fa-edit" })
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

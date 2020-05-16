@@ -3,7 +3,11 @@
     <div class="card-body">
       <div class="card-title d-flex justify-content-between align-items-center">
         <h3 class="mb-0">Datos de envío</h3>
-        <i class="fas fa-edit"></i>
+        <div>
+          <i v-if="!editing" @click="edit" class="fas fa-edit fa-2x"></i>
+          <i v-else @click="edit" class="fas fa-check-square fa-2x"></i>
+        </div>
+
       </div>
       <div class="text-muted">
         {{order.line1}}
@@ -33,7 +37,8 @@ export default {
   data(){
     return{
       order:null,
-      url:'/orders/'+this.id
+      url:'/orders/'+this.id,
+      editing:false,
     }
   },
   created(){
@@ -54,6 +59,9 @@ export default {
       }).catch((err) => {
         console.log(err)
       })
+    },
+    edit(){
+      this.editing = !this.editing;
     }
   }
 }
