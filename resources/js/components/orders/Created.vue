@@ -1,9 +1,10 @@
 <template>
   <div class="card border-0 shadow-sm ">
-    <div class="card-header">
-      Datos de envío
-    </div>
     <div class="card-body">
+      <div class="card-title d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">Datos de envío</h3>
+        <i class="fas fa-edit"></i>
+      </div>
       <div class="text-muted">
         {{order.line1}}
       </div>

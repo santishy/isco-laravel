@@ -2623,6 +2623,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -39361,11 +39362,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card border-0 shadow-sm " }, [
-    _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n    Datos de envío\n  ")
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
+      _vm._m(0),
+      _vm._v(" "),
       _c("div", { staticClass: "text-muted" }, [
         _vm._v("\n      " + _vm._s(_vm.order.line1) + "\n    ")
       ]),
@@ -39392,7 +39391,25 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "card-title d-flex justify-content-between align-items-center"
+      },
+      [
+        _c("h3", { staticClass: "mb-0" }, [_vm._v("Datos de envío")]),
+        _vm._v(" "),
+        _c("i", { staticClass: "fas fa-edit" })
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -55001,8 +55018,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

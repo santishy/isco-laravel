@@ -11,15 +11,15 @@
 							<h3>Resumen de tu carrito de compras.</h3>
 							<div class="row top-space">
 								<div class="col-md-4 col-xs-4 col-lg-4 sale-data">
-									<span>{{number_format($shopping_cart->total(),2)}} MXN</span>
+									<span>{{number_format($shopping_cart->total(),2)}} <small>MXN</small></span>
 									Subtotal
 								</div>
 								<div class="col-md-4 col-xs-4 col-lg-4 sale-data">
-									<span>{{number_format($envio,2)}} MXN</span>
+									<span>{{number_format($envio,2)}} <small>MXN</small></span>
 									Envío
 								</div>
 								<div class="col-md-4 col-xs-4 col-lg-4 sale-data" style="border:none">
-									<span>{{number_format($shopping_cart->total()+$envio,2)}} MXN</span>
+									<span>{{number_format($shopping_cart->total()+$envio,2)}} <small> MXN</small> </span>
 									Total
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 			</div>
 
 			<div class="col-md-4 mt-3">
-				<order-created id="{{$shopping_cart->order()->id}}"></order-created>
+
 				<form  action="{{route('pagar')}}" method="get" id="paymentForm">
 					<div class="form-group" id="toggler">
 						<div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -81,12 +81,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-
-					</div>
-					<div class="form-group">
 						<button class="btn btn-primary btn-lg btn-block">Pagar</button>
 					</div>
 				</form>
+				<order-created id="{{$shopping_cart->order()->id}}"></order-created>
 			</div>
 
 		</div>
