@@ -9,24 +9,27 @@
         </div>
 
       </div>
-      <div class="text-muted">
-        {{order.line1}}
-      </div>
-      <div class="text-muted">
-        {{order.line2}}
-      </div>
-      <div class="text-muted">
-        {{order.state}}
-      </div>
-      <div class="text-muted">
-        {{order.city}}
-      </div>
-      <div class="text-muted">
-        {{order.postal_code}}
-      </div>
-      <div class="text-muted">
-        {{order.recipient_name}}
-      </div>
+      <template v-if="!editing && order">
+        <div class="text-muted">
+          {{order.line1}}
+        </div>
+        <div class="text-muted">
+          {{order.line2}}
+        </div>
+        <div class="text-muted">
+          {{order.state}}
+        </div>
+        <div class="text-muted">
+          {{order.city}}
+        </div>
+        <div class="text-muted">
+          {{order.postal_code}}
+        </div>
+        <div class="text-muted">
+          {{order.recipient_name}}
+        </div>
+      </template>
+      <order-edit v-else :order="order"></order-edit>
     </div>
   </div>
 </template>
@@ -53,6 +56,7 @@ export default {
           order:this.shopping_cart_id
         }
       }).then((res)=>{
+
         if(res.data){
           this.order = res.data
         }

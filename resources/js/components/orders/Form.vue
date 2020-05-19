@@ -1,13 +1,14 @@
 <template>
   <form>
+    <template v-if="form">
     <div class="form-group">
-      <input type="text" name="line1" class="form-control" placeholder="Domicilio, ejemplo: Calle #numero">
+      <input v-model="form.line1" type="text" name="line1"  class="form-control" placeholder="Domicilio, ejemplo: Calle #numero">
     </div>
     <div class="form-group">
-      <input type="text" name="line2" class="form-control" placeholder="Referencia">
+      <input v-model="form.line2" type="text" name="line2" class="form-control" placeholder="Referencia">
     </div>
     <div class="form-group">
-      <select name="state" class="form-control">
+      <select v-model="form.state" name="state" class="form-control">
           <option value="">Seleccione un estado</option>
           <option value="Aguascalientes">Aguascalientes</option>
           <option value="Baja California">Baja California</option>
@@ -44,20 +45,29 @@
       </select>
     </div>
     <div class="form-group">
-      <input type="text" name="city" placeholder="Ciudad" class="form-control">
+      <input v-model="form.city" type="text" name="city" placeholder="Ciudad" class="form-control">
     </div>
     <div class="form-group">
-      <input type="text" name="postal_code" placeholder="Codigo Postal" class="form-control">
+      <input v-model="form.postal_code" type="text" name="postal_code" placeholder="Codigo Postal" class="form-control">
     </div>
     <div class="form-group mb-0">
-      <input type="text" name="recipient_name" placeholder="Persona dirigida" class="form-control">
+      <input v-model="form.recipient_name" type="text" name="recipient_name" placeholder="Persona dirigida" class="form-control">
     </div>
-    
+  </template>
   </form>
 </template>
 
 <script>
 export default {
+  props:['order'],
+  data(){
+    return {
+      form:null,
+    }
+  },
+  created(){
+    this.form=this.order;
+  }
 }
 </script>
 
