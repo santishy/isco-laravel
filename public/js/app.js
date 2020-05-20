@@ -2738,7 +2738,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['order'],
+  props: ['order', 'editing'],
   data: function data() {
     return {
       form: null
@@ -2746,6 +2746,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.form = this.order;
+
+    if (this.editing) {
+      this.update();
+    }
+  },
+  methods: {
+    update: function update() {
+      console.log(this.order); // axios({
+      //   method:'PUT',
+      //   url:'/orders/'+this.order.id,
+      //   data:this.form
+      // }).then((res)=>{
+      //   console.log(res);
+      // }).catch(err => {
+      //   console.log(err);
+      // })
+    }
   }
 });
 
@@ -39476,7 +39493,11 @@ var render = function() {
                   })
                 : _c("i", {
                     staticClass: "fas fa-check-square fa-2x",
-                    on: { click: _vm.edit }
+                    on: {
+                      click: function($event) {
+                        return _vm.edit()
+                      }
+                    }
                   })
             ])
           ]
@@ -39512,7 +39533,9 @@ var render = function() {
                 )
               ])
             ]
-          : _c("order-edit", { attrs: { order: _vm.order } })
+          : _c("order-edit", {
+              attrs: { order: _vm.order, editing: _vm.editing }
+            })
       ],
       2
     )
@@ -54831,15 +54854,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./resources/js/components/orders/Form.vue ***!
   \*************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Form_vue_vue_type_template_id_48b021d3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form.vue?vue&type=template&id=48b021d3&scoped=true& */ "./resources/js/components/orders/Form.vue?vue&type=template&id=48b021d3&scoped=true&");
 /* harmony import */ var _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form.vue?vue&type=script&lang=js& */ "./resources/js/components/orders/Form.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -54869,7 +54891,7 @@ component.options.__file = "resources/js/components/orders/Form.vue"
 /*!**************************************************************************!*\
   !*** ./resources/js/components/orders/Form.vue?vue&type=script&lang=js& ***!
   \**************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55536,8 +55558,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

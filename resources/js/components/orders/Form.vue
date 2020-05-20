@@ -59,7 +59,7 @@
 
 <script>
 export default {
-  props:['order'],
+  props:['order','editing'],
   data(){
     return {
       form:null,
@@ -67,6 +67,24 @@ export default {
   },
   created(){
     this.form=this.order;
+    if(this.editing){
+      this.update();
+    }
+  },
+
+  methods:{
+    update(){
+      console.log(this.order)
+      // axios({
+      //   method:'PUT',
+      //   url:'/orders/'+this.order.id,
+      //   data:this.form
+      // }).then((res)=>{
+      //   console.log(res);
+      // }).catch(err => {
+      //   console.log(err);
+      // })
+    }
   }
 }
 </script>
