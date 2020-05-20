@@ -97,10 +97,12 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $order=Order::find($id);
-        $field=$request->name;
-        $order->$field=$request->value;
-        $order->save();
+      $order = Order::find($id);
+      return response()->json(['data' => $order->update($request->except('id'))]);
+        // $order=Order::find($id);
+        // $field=$request->name;
+        // $order->$field=$request->value;
+        // $order->save();
     }
 
     /**

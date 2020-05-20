@@ -5,7 +5,7 @@
         <h3 class="mb-0">Datos de envío</h3>
         <div>
           <i v-if="!editing" @click="edit" class="fas fa-edit fa-2x"></i>
-          <i v-else @click="edit();" class="fas fa-check-square fa-2x"></i>
+          <i v-else @click="edit();update()" class="fas fa-check-square fa-2x"></i>
         </div>
 
       </div>
@@ -29,7 +29,7 @@
           {{order.recipient_name}}
         </div>
       </template>
-      <order-edit v-else :order="order" :editing="editing"></order-edit>
+      <order-edit v-else :order="order" :editing="editing" ref="order"></order-edit>
     </div>
   </div>
 </template>
@@ -67,6 +67,9 @@ export default {
     edit(){
       this.editing = !this.editing;
     },
+    update(){
+      this.$refs.order.update();
+    }
   }
 }
 </script>

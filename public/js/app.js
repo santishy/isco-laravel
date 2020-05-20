@@ -2663,6 +2663,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     edit: function edit() {
       this.editing = !this.editing;
+    },
+    update: function update() {
+      this.$refs.order.update();
     }
   }
 });
@@ -2738,7 +2741,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['order', 'editing'],
+  props: ['order'],
   data: function data() {
     return {
       form: null
@@ -2746,22 +2749,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.form = this.order;
-
-    if (this.editing) {
-      this.update();
-    }
   },
   methods: {
     update: function update() {
-      console.log(this.order); // axios({
-      //   method:'PUT',
-      //   url:'/orders/'+this.order.id,
-      //   data:this.form
-      // }).then((res)=>{
-      //   console.log(res);
-      // }).catch(err => {
-      //   console.log(err);
-      // })
+      console.log(this.order.id);
+      axios({
+        method: 'PUT',
+        url: '/orders/' + this.order.id,
+        data: this.form
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
+      });
     }
   }
 });
@@ -39495,7 +39495,8 @@ var render = function() {
                     staticClass: "fas fa-check-square fa-2x",
                     on: {
                       click: function($event) {
-                        return _vm.edit()
+                        _vm.edit()
+                        _vm.update()
                       }
                     }
                   })
@@ -39534,6 +39535,7 @@ var render = function() {
               ])
             ]
           : _c("order-edit", {
+              ref: "order",
               attrs: { order: _vm.order, editing: _vm.editing }
             })
       ],
