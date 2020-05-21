@@ -56,34 +56,38 @@
 			</div>
 
 			<div class="col-md-4 mt-3">
+				<div class="card border-0 shadow-sm mb-2">
+					<div class="card-body">
+						<form  action="{{route('pagar')}}" method="get" id="paymentForm">
+							<div class="form-group" id="toggler">
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+									<label class="btn btn-outline-secondary rounded m-2 p-1"
+													data-toggle="collapse"
+													data-target="#paypal-collapse">
+										<input type="radio" name="payment_platform" value="paypal" required>
+										<img src="{{asset('images/paypal.jpg')}}" class="img-thumnail"  alt="">
+									</label>
+									<label class="btn btn-outline-secondary rounded m-2 p-1"
+													data-toggle="collapse"
+													data-target="#mercadopago-collapse">
+										<input type="radio" name="payment_platform" value="mercadopago" required>
+										<img src="{{asset('images/mercadopago.jpg')}}" class="img-thumnail"  alt="">
+									</label>
+								</div>
+								<div id="paypal-collapse" class="collapse" data-parent="#toggler">
+									@includeIf('components.paypal-collapse')
+								</div>
+								<div id="mercadopago-collapse" class="collapse" data-parent="#toggler">
+									@includeIf('components.mercadopago-collapse')
+								</div>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary btn-lg btn-block">Pagar</button>
+							</div>
+						</form>
+					</div>
+				</div>
 
-				<form  action="{{route('pagar')}}" method="get" id="paymentForm">
-					<div class="form-group" id="toggler">
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-outline-secondary rounded m-2 p-1"
-											data-toggle="collapse"
-											data-target="#paypal-collapse">
-								<input type="radio" name="payment_platform" value="paypal" required>
-								<img src="{{asset('images/paypal.jpg')}}" class="img-thumnail"  alt="">
-							</label>
-							<label class="btn btn-outline-secondary rounded m-2 p-1"
-											data-toggle="collapse"
-											data-target="#mercadopago-collapse">
-								<input type="radio" name="payment_platform" value="mercadopago" required>
-								<img src="{{asset('images/mercadopago.jpg')}}" class="img-thumnail"  alt="">
-							</label>
-						</div>
-						<div id="paypal-collapse" class="collapse" data-parent="#toggler">
-							@includeIf('components.paypal-collapse')
-						</div>
-						<div id="mercadopago-collapse" class="collapse" data-parent="#toggler">
-							@includeIf('components.mercadopago-collapse')
-						</div>
-					</div>
-					<div class="form-group">
-						<button class="btn btn-primary btn-lg btn-block">Pagar</button>
-					</div>
-				</form>
 				<order-created id="{{$shopping_cart->order()->id}}"></order-created>
 			</div>
 
