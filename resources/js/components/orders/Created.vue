@@ -7,19 +7,21 @@
           <i v-if="!editing" @click="edit" class="fas fa-edit fa-2x"></i>
           <i v-else @click="edit();update()" class="fas fa-check-square fa-2x"></i>
         </div>
-
       </div>
       <template v-if="!editing && order">
         <div class="text-muted">
-          {{order.line1}}
+          {{order.line1.toUpperCase()}}
         </div>
         <div class="text-muted">
-          {{order.line2}}
+          {{order.line2.toUpperCase()}}
         </div>
         <div class="text-muted">
-          {{order.state}}
+          {{order.state.toUpperCase()}}
         </div>
         <div class="text-muted">
+          ...
+        </div>
+        <!-- <div class="text-muted">
           {{order.city}}
         </div>
         <div class="text-muted">
@@ -27,7 +29,7 @@
         </div>
         <div class="text-muted">
           {{order.recipient_name}}
-        </div>
+        </div> -->
       </template>
       <order-edit v-else :order="order" :editing="editing" ref="order"></order-edit>
     </div>

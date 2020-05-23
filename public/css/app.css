@@ -11516,7 +11516,7 @@ a.text-dark:focus {
   top: 0px;
   z-index: 1000;
   width: 100%;
-  background-color: #1B2631;
+  background-color: #013066;
   margin: 0px;
   padding: 0px;
   color: white;
@@ -12061,7 +12061,7 @@ body {
   margin: 0px;
   max-width: 100%;
   overflow-x: hidden;
-  background-color: #DBDDDD !important;
+  background-color: #FFF9FF !important;
 }
 
 table thead th {
@@ -12112,21 +12112,13 @@ table thead th {
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
-  background: rgba(179, 220, 237, 0.88);
-  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179, 220, 237, 0.88)), color-stop(0%, rgba(179, 220, 237, 0.89)), color-stop(50%, rgba(41, 184, 229, 0.89)), color-stop(100%, rgba(188, 224, 238, 0.89)));
-  background: -webkit-gradient(linear, left top, right top, from(rgba(179, 220, 237, 0.88)), color-stop(0%, rgba(179, 220, 237, 0.89)), color-stop(50%, rgba(41, 184, 229, 0.89)), to(rgba(188, 224, 238, 0.89)));
-  background: linear-gradient(to right, rgba(179, 220, 237, 0.88) 0%, rgba(179, 220, 237, 0.89) 0%, rgba(41, 184, 229, 0.89) 50%, rgba(188, 224, 238, 0.89) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#b3dced", endColorstr="#bce0ee", GradientType=1 );
+  background: #FAFADF;
 }
 
 .header .header-container {
   display: -webkit-box;
   display: flex;
-  background: rgba(179, 220, 237, 0.88);
-  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179, 220, 237, 0.88)), color-stop(0%, rgba(179, 220, 237, 0.89)), color-stop(50%, rgba(41, 184, 229, 0.89)), color-stop(100%, rgba(188, 224, 238, 0.89)));
-  background: -webkit-gradient(linear, left top, right top, from(rgba(179, 220, 237, 0.88)), color-stop(0%, rgba(179, 220, 237, 0.89)), color-stop(50%, rgba(41, 184, 229, 0.89)), to(rgba(188, 224, 238, 0.89)));
-  background: linear-gradient(to right, rgba(179, 220, 237, 0.88) 0%, rgba(179, 220, 237, 0.89) 0%, rgba(41, 184, 229, 0.89) 50%, rgba(188, 224, 238, 0.89) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#b3dced", endColorstr="#bce0ee", GradientType=1 );
+  background: #FAFADF;
   -webkit-box-pack: space-aroundcer;
           justify-content: space-aroundcer;
   padding: 10px;

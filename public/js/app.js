@@ -2631,6 +2631,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['id'],
   data: function data() {
@@ -39507,31 +39509,31 @@ var render = function() {
         !_vm.editing && _vm.order
           ? [
               _c("div", { staticClass: "text-muted" }, [
-                _vm._v("\n        " + _vm._s(_vm.order.line1) + "\n      ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-muted" }, [
-                _vm._v("\n        " + _vm._s(_vm.order.line2) + "\n      ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-muted" }, [
-                _vm._v("\n        " + _vm._s(_vm.order.state) + "\n      ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-muted" }, [
-                _vm._v("\n        " + _vm._s(_vm.order.city) + "\n      ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-muted" }, [
                 _vm._v(
-                  "\n        " + _vm._s(_vm.order.postal_code) + "\n      "
+                  "\n        " +
+                    _vm._s(_vm.order.line1.toUpperCase()) +
+                    "\n      "
                 )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "text-muted" }, [
                 _vm._v(
-                  "\n        " + _vm._s(_vm.order.recipient_name) + "\n      "
+                  "\n        " +
+                    _vm._s(_vm.order.line2.toUpperCase()) +
+                    "\n      "
                 )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-muted" }, [
+                _vm._v(
+                  "\n        " +
+                    _vm._s(_vm.order.state.toUpperCase()) +
+                    "\n      "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-muted" }, [
+                _vm._v("\n        ...\n      ")
               ])
             ]
           : _c("order-edit", {
@@ -55560,8 +55562,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\isco\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\isco\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/isco/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/isco/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
