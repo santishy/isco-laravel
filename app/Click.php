@@ -8,5 +8,9 @@ use Carbon\Carbon;
 class Click extends Model
 {
   	protected $guarded=['id'];
-    
+
+  public function articulo()
+  {
+    return ;
+  }
 }

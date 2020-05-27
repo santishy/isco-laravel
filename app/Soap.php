@@ -51,11 +51,11 @@ class Soap extends Model
     {
          set_time_limit ( -1 );
         // Using the added service
-        Detinvart::emptyStock();
-        Articulo::desactivar();
+        // Detinvart::emptyStock();
+        // Articulo::desactivar();
         $param=$this->param;
         $webservice=$this->soapWrapper->call('pch.ObtenerListaArticulos', $this->param);
-        //dd($webservice->datos);
+        dd($webservice->datos[0]);
         return $this->updateDB($webservice->datos);
     }
     function consume(){

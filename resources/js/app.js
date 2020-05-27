@@ -175,14 +175,7 @@ class Slider{
 		this.slider.style.left=multi*index*20+"%";
 	}
 }
-/*****************************SCROLL PARA MENU***************************/
-// var menu=document.querySelector('#container-menu');
-// if(menu!=null)
-// 	var heightScroll=menu.offsetTop;
-// var menuNave=document.querySelector('.menu');
-// var menuSections=document.querySelector('.menu-sections');
-// var body=document.querySelector('body');
-// var heightBody=body.getBoundingClientRect().height;
+
 (()=>{
 
 	if($("#sliderProducts").length>0){
@@ -216,31 +209,7 @@ class Slider{
 
 })();
 
-// if($('.menu-sections').length)
-// 	var menuSectionsTop=document.querySelector('.menu-sections').getBoundingClientRect().top;
-// if(body.scrollHeight>heightBody){
-// 	// if($.browser.device = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()))){
-//  //    alert('Hola! Entras desde un dispositivo móvil o tablet!');
-// 	// }
-// 	if(screen.width > 1024)
-// 		window.addEventListener('scroll',function(){
-//
-// 			if(window.pageYOffset > heightScroll)
-// 			{
-// 				menu.classList.add('fixed');
-// 			}
-// 			else {
-//
-// 				menu.classList.remove('fixed');
-//
-// 				if($('.menu-sections').length)
-// 				{
-// 					menuSections.classList.add('margin-top');//cambio el sidebar con esta y la ultima linea de este bloke
-// 					menuSections.style.top=menuSectionsTop-window.pageYOffset+'px';
-// 				}
-// 			}
-// 		})}
-//-----------------------------------------------------------------------------
+
 $(document).ready(function(){
 	//new inputMD('.input-form input');
 	$(".btn_borrar_utilidad").on('click',function(){

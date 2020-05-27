@@ -33,16 +33,16 @@ class StoreClick
         if(!$click->exists())
         {
             $click=Click::create(['ip'=>$event->ip,'id_articulo'=>$article->id_articulo,'qty'=>1]);
-            $article->visits+=1;
+            //$article->visits+=1;
         }
         $now=Carbon::now();
         $diff=$now->diffInHours($click->first()->updated_at);
         if($diff==1){
             $click->qty+=1;
             $click->save();
-            $article->visits+=1;
+            //$article->visits+=1;
         }
-        $article->save();
+        //$article->save();
         return $click;
     }
 }

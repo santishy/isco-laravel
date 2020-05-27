@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 use Illuminate\Support\Facades\DB;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Database\Eloquent\Builder;
 
 class Articulo extends Model
 {
@@ -154,5 +155,13 @@ class Articulo extends Model
         // }
 
 
+    }
+    public function clicks(){
+      return $this->hasMany(Click::class,'id_articulo','id_articulo');
+    }
+    public static function mostVisited(){
+      return Articulo::whereHas('clicks',function(Builder $query){
+        $query->where('qty','>=',1)->orderBy('qty','desc');
+      })->get();
     }
 }

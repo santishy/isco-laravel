@@ -9,7 +9,7 @@
     </a>
     <nav class="menu">
         <ul>
-            <li><a href="http://iscocomputadoras.com">Inicio</a></li>
+            <li><a href="http://{{url('/')}}">Inicio</a></li>
             <li>
                 <a href="#" class="submenu">Productos <SPAN class="glyphicon glyphicon-chevron-down"></SPAN></a>
                 <ul>

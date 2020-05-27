@@ -30,12 +30,11 @@ class ArticlesController extends Controller
         $data = collect($webservice->consume());
 
         cache::forever('data',$data);
-
+// comentar esta linea
         //$webservice->obtenerListaArticulos();
-        //$data = cache::get('data');
+// descomentar estas otras
         foreach($data->chunk(400) as $chunk)
         {
-        //  UpdatingWebservice::dispatch($chunk)->delay(now()->addSeconds(10));
           UpdatingWebservice::dispatch($chunk);
         }
         return "Actualizado";
@@ -106,7 +105,7 @@ class ArticlesController extends Controller
         //cuando se remisionaba estaban estas lineas d codigo fin del bloque--------------------------------
         $price=$article->precio;
         $article->price=$price;
-        //event(new ClickArticle($article,$request->ip())); // CONTAR LOS CLICKS
+        event(new ClickArticle($article,$request->ip())); // CONTAR LOS CLICKS
         return view('articles.article',['article'=>$article,
                                         'price'=>$price,'id_articulo'=>$id]);
     }
