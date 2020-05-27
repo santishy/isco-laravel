@@ -11,6 +11,6 @@ class Click extends Model
 
   public function articulo()
   {
-    return ;
+    return $this->belongsTo(Articulo::class,'id_articulo','id_articulo');
   }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Articulo;
 use App\Line;
+use App\Click;
 use App\Slider;
 
 class HomeController extends Controller
@@ -26,6 +27,7 @@ class HomeController extends Controller
      */
    public function index()
     {
+        dd(Click::with('articulo')->where('qty','>',1)->orderBy('qty','desc'));
         dd(Articulo::mostVisited());
         $sliders=Slider::orderBy('id','desc')->limit(3)->get()->take(3);
         $articles = Articulo::with('utilidade')->where('id_utilidad','!=',0)->orderBy('visits','desc')->limit(12)->get();
