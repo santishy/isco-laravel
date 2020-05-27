@@ -54,7 +54,7 @@
                             <strong><span >Tel 01 800 001 isco</span></strong>
                         </a>
                         <div style="display: flex;justify-content:  center; align-items:center ;width: 100%;">
-                            <i  class="fa fa-whatsapp fa-2x" aria-hidden="true" style="margin-right: 5px;color: green"></i><strong> 3321694362</strong>
+                            <i  class="fa fa-whatsapp fa-2x" aria-hidden="true" style="margin-right: 5px;color: green"></i><strong> 3322351553</strong>
                         </div>
             </div>
 
