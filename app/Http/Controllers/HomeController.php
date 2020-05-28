@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
    public function index()
     {
-        dd(Click::mostVisited());
+        
         $sliders=Slider::orderBy('id','desc')->limit(3)->get()->take(3);
         $articles = Articulo::with('utilidade')->where('id_utilidad','!=',0)->orderBy('visits','desc')->limit(12)->get();
         return view('home/index',['articles'=>$articles,'sliders'=>$sliders]);
