@@ -11911,6 +11911,14 @@ a.text-dark:focus {
   }
 }
 
+.relawey {
+  font-family: "Raleway", sans-serif;
+}
+
+.btn-info {
+  background-color: red;
+}
+
 .dashboard-menu-productos {
   width: 700px !important;
   left: -300px;

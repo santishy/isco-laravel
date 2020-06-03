@@ -97,6 +97,7 @@ Vue.component('item-products',require('./components/menu/ItemProducts.vue').defa
 Vue.component('upload-image',require('./components/dashboard/UploadImage.vue').default);
 Vue.component('order-created',require('./components/orders/Created.vue').default);
 Vue.component('order-edit',require('./components/orders/Form.vue').default);
+Vue.component('product-card-vertical',require('./components/products/ProductCardVerticalComponent.vue').default)
 const app = new Vue({
     el: '#app',
     store: window.store

@@ -16,6 +16,6 @@ class Click extends Model
   public static function mostVisited(){
     return Click::with(['articulo' => function($query){
       $query->where('id_utilidad','>',0);
-    }])->where('qty','>',1)->orderBy('qty','desc')->limit(10)->get();
+    }])->where('qty','>',0)->orderBy('qty','desc')->limit(10)->get();
   }
 }
