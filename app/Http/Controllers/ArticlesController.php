@@ -29,7 +29,7 @@ class ArticlesController extends Controller
         $webservice = new Soap(new SoapWrapper);
         $data = collect($webservice->consume());
 
-        cache::forever('data',$data);
+        //cache::forever('data',$data);
 // comentar esta linea
         //$webservice->obtenerListaArticulos();
 // descomentar estas otras

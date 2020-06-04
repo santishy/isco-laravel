@@ -31,7 +31,7 @@ Route::put('producto/{id}','ArticlesController@update')->name('updateProduct');
  Route::resource('compras','ShoppingCartsController',['only'=>['show']]);
  Route::get('carrito/productos','ShoppingCartsController@products')->name('cart.products');
  Route::get('configuraciones/image/{fileName}','ImagesPage@images');
- //Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
  Route::get('/home', 'HomeController@index');
  //NUEVAS RUTAS*****************************************************************
