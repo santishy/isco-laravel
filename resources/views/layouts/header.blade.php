@@ -39,16 +39,37 @@
                     <img src="{{asset('images/logo.png')}}" class="img-fluid">
                 </a>
             </div>
-            <div class="container-search">
-                <form action="{{url('search/')}}"  method="post"  id="formSearch">
-                    <div class="input-form">
 
-                        <input type="text" name="word" id="word" value="{{old('word')}}">
-                        <label for="word">Busca productos</label>
-                        {{ csrf_field() }}
+             <div class="d-flex justify-content-center">
+              @guest
+                    <div class="px-2">
+                        <a class="text-blue-palette text-decoration-none" style="font-size:2em" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt "></i> {{ __('LOGIN') }}</a>
                     </div>
-                </form>
-            </div>
+                    <div class="verticalLine">
+
+                    </div>
+                    <div class="px-2">
+                        <a class="text-blue-palette text-decoration-none"  style="font-size:2em" href="{{ route('register') }}"><i class="fas fa-address-card"></i> {{ __('REGISTRO') }}</a>
+                    </div>
+                @else
+                    <div style="width:auto;" class="nav-item dropdown">
+                        <a  id="navbarDropdown" class="text-blue-palette text-decoration-none dropdown-toggle" style="font-size:2em" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ substr(Auth::user()->name,0,9) }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" style="z-index:10000"aria-labelledby="navbarDropdown">
+                            <a style="color:black" class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                @endguest
+              </div>
+
             <div class="container-contact">
                 <p class="no-margin">Llamanos por cualquier duda sobre tu pedido:</p>
                         <a style="color:black;visited:black;text-decoration: none"href="tel:+018000014726" class="earphone" style="font-weight:bold">

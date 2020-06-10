@@ -11911,6 +11911,18 @@ a.text-dark:focus {
   }
 }
 
+.text-blue-palette {
+  color: #0275B3;
+}
+
+a .text-blue-palette:hover {
+  color: #001E52;
+}
+
+.verticalLine {
+  border-left: thick solid #0275B3;
+}
+
 .relawey {
   font-family: "Raleway", sans-serif;
 }

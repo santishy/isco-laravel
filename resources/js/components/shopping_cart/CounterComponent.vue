@@ -1,8 +1,8 @@
 <template>
-	<div class="viewShoppingCart">
+	<a class="viewShoppingCart submenu" style="height:100%">
         <span class="badge">{{productsCount}}</span>
         <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
-  </div>
+  </a>
 </template>
 
 <script>
