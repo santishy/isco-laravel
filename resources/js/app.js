@@ -99,6 +99,7 @@ Vue.component('order-created',require('./components/orders/Created.vue').default
 Vue.component('order-edit',require('./components/orders/Form.vue').default);
 Vue.component('product-card-vertical',require('./components/products/ProductCardVerticalComponent.vue').default)
 Vue.component('search-component',require('./components/search/Search.vue').default);
+Vue.component('matching-products',require('./components/search/MatchingProducts.vue').default);
 const app = new Vue({
     el: '#app',
     store: window.store

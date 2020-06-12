@@ -11,6 +11,7 @@
         <ul>
             <li class="col-5">
               <search-component></search-component>
+              <matching-products class="mt-2"></matching-products>
             </li>
             <li><a href="http://{{url('/')}}">Inicio</a></li>
             <li>

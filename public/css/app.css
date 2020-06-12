@@ -11911,6 +11911,12 @@ a.text-dark:focus {
   }
 }
 
+.matching-products {
+  width: 100%;
+  background: white;
+  position: absolute;
+}
+
 .text-blue-palette {
   color: #0275B3;
 }
