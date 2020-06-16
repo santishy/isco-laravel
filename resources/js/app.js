@@ -37,7 +37,9 @@ window.store = new Vuex.Store({
 	state:{
 		productsCount:0,
     product:{},
-    products:[]
+    products:[],
+    searching:true,
+    matchingProducts:[],
 	},
 	mutations:{
 		increment(state){
@@ -46,6 +48,9 @@ window.store = new Vuex.Store({
 		set(state,value){
 			return state.productsCount=value;
 		},
+    setSearching(state){
+      return state.searching = !state.searching;
+    },
     setProduct(state,product){
       return state.product = product;
     },
@@ -65,6 +70,9 @@ window.store = new Vuex.Store({
     },
     updateProduct(state,data){
       Vue.set(state.products,data.index,data.product);
+    },
+    setMatchingProducts(state,products){
+      state.matchingProducts = products;
     }
 	}
 })

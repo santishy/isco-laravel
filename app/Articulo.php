@@ -17,8 +17,8 @@ class Articulo extends Model
     protected $searchable = [
       'columns' => [
         'descripcion' => 10,
-        'sku'  => 10,
-        'skuFabricante' => 10
+        'sku'  => 5,
+        //'skuFabricante' => 10
       ]
     ];
     protected $ip;

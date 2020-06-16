@@ -3092,6 +3092,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3111,7 +3118,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      failedImageCount: 0
+    };
+  },
+  methods: {
+    onerror: function onerror(product) {
+      if (product.unloadedImage) {
+        event.target.src = product.imgLocal;
+
+        if (this.failedImageCount) {
+          event.target.src = product.noimg;
+        }
+
+        this.failedImageCount++;
+      } else event.target.src = product.noimg;
+    },
+    noimg: function noimg(event) {
+      event.target.src = product.noimg;
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['matchingProducts', 'searching']))
+});
 
 /***/ }),
 
@@ -3124,6 +3161,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3139,15 +3183,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       word: ''
     };
   },
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setMatchingProducts', 'setSearching']), {
     search: function search(e) {
+      var _this = this;
+
       e.preventDefault();
+      this.setSearching();
       axios({
         url: '/search',
         method: 'POST',
@@ -3155,12 +3203,16 @@ __webpack_require__.r(__webpack_exports__);
           word: this.word
         }
       }).then(function (res) {
-        console.log(res.data);
+        _this.setMatchingProducts(res.data.data);
+
+        _this.setSearching();
       })["catch"](function (err) {
         console.log(err);
+
+        _this.setSearching();
       });
     }
-  }
+  })
 });
 
 /***/ }),
@@ -40098,7 +40150,7 @@ var render = function() {
         _c("div", { staticClass: "d-flex align-items-center mb-3 column " }, [
           _c("img", {
             staticClass: "img-fluid product-image",
-            attrs: { src: _vm.product.url_img },
+            attrs: { loading: "lazy", src: _vm.product.url_img },
             on: { error: _vm.onerror }
           }),
           _vm._v(" "),
@@ -40179,7 +40231,7 @@ var render = function() {
         [
           _c("img", {
             staticClass: "card-img-top img-fluid",
-            attrs: { src: product.url_img, alt: "..." },
+            attrs: { loading: "lazy", src: product.url_img, alt: "..." },
             on: {
               error: function($event) {
                 return _vm.onerror(product)
@@ -40307,49 +40359,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "matching-products" }, [
-      _c(
-        "div",
-        { staticClass: "card mb-3", staticStyle: { "max-width": "540px" } },
-        [
-          _c("div", { staticClass: "row no-gutters" }, [
-            _c("div", { staticClass: "col-md-4" }, [
-              _c("img", {
-                staticClass: "card-img",
-                attrs: { src: "", alt: "..." }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-8" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(
-                    "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."
+  return _c(
+    "div",
+    { staticClass: "matching-products  shadow rounded py-0" },
+    [
+      _c("div", { staticClass: "d-flex align-items-center pb-4" }, [
+        _vm.searching ? _c("div", { staticClass: "loader" }) : _vm._e()
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.matchingProducts, function(product) {
+        return _c(
+          "div",
+          { staticClass: "card border-top-0 border-left-0 border-right-0" },
+          [
+            _c("div", { staticClass: "row no-gutters" }, [
+              _c("div", { staticClass: "col-md-4 px-0 py-0" }, [
+                _c("img", {
+                  staticClass: "img-fluid product-image",
+                  attrs: { loading: "lazy", src: product.url_img },
+                  on: {
+                    error: function($event) {
+                      return _vm.onerror(product)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "text-decoration-none text-primary px-0 py-0",
+                      staticStyle: { "font-size": "1em" },
+                      attrs: { href: "#" }
+                    },
+                    [
+                      _c("h5", { staticClass: "card-title text-bolder" }, [
+                        _vm._v(_vm._s(product.skuManufacturer))
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(product.description))
+                      ])
+                    ]
                   )
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _c("small", { staticClass: "text-muted" }, [
-                    _vm._v("Last updated 3 mins ago")
-                  ])
                 ])
               ])
             ])
-          ])
-        ]
-      )
-    ])
-  }
-]
+          ]
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40378,7 +40444,12 @@ var render = function() {
         staticClass: "col-12",
         staticStyle: { height: "100%" },
         attrs: { id: "formSearch" },
-        on: { submit: _vm.search }
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.search($event)
+          }
+        }
       },
       [
         _c("div", { staticClass: "input-form" }, [
@@ -54038,7 +54109,9 @@ window.store = new Vuex.Store({
   state: {
     productsCount: 0,
     product: {},
-    products: []
+    products: [],
+    searching: true,
+    matchingProducts: []
   },
   mutations: {
     increment: function increment(state) {
@@ -54046,6 +54119,9 @@ window.store = new Vuex.Store({
     },
     set: function set(state, value) {
       return state.productsCount = value;
+    },
+    setSearching: function setSearching(state) {
+      return state.searching = !state.searching;
     },
     setProduct: function setProduct(state, product) {
       return state.product = product;
@@ -54064,6 +54140,9 @@ window.store = new Vuex.Store({
     },
     updateProduct: function updateProduct(state, data) {
       Vue.set(state.products, data.index, data.product);
+    },
+    setMatchingProducts: function setMatchingProducts(state, products) {
+      state.matchingProducts = products;
     }
   }
 });

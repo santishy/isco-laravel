@@ -1,15 +1,21 @@
 <template>
-  <div class="matching-products">
-    <div class="card mb-3" style="max-width: 540px;">
+  <div class="matching-products  shadow rounded py-0">
+  <div class="d-flex align-items-center pb-4">
+    <div v-if="searching" class="loader">
+    </div>
+  </div>
+
+    <div v-for="product in matchingProducts" class="card border-top-0 border-left-0 border-right-0">
       <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="" class="card-img" alt="...">
+        <div class="col-md-4 px-0 py-0">
+          	<img loading="lazy" class="img-fluid product-image"  :src="product.url_img" @error="onerror(product)">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <a href="#" style="font-size:1em" class="text-decoration-none text-primary px-0 py-0">
+              <h5 class="card-title text-bolder">{{product.skuManufacturer}}</h5>
+              <p class="card-text">{{product.description}}</p>
+            </a>
           </div>
         </div>
       </div>
@@ -18,7 +24,33 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
 export default {
+  data(){
+    return{
+        failedImageCount:0,
+    }
+  },
+  methods:{
+    onerror(product){
+      if(product.unloadedImage){
+        event.target.src = product.imgLocal;
+        if(this.failedImageCount){
+          event.target.src = product.noimg;
+        }
+        this.failedImageCount++;
+      }
+      else
+        event.target.src = product.noimg;
+    },
+    noimg(event){
+      event.target.src = product.noimg;
+
+    },
+  },
+  computed:{
+    ...mapState(['matchingProducts','searching'])
+  }
 }
 </script>
 

@@ -3,7 +3,7 @@
 		<div class="card mb-2 shadow-sm border-0 mt-2">
 				<div class="card-body d-flex flex-column">
 					<div class="d-flex align-items-center mb-3 column ">
-						<img class="img-fluid product-image"  :src="product.url_img" @error="onerror">
+						<img loading="lazy" class="img-fluid product-image"  :src="product.url_img" @error="onerror">
 						<div class="ml-xl-3 ml-sm-0">
 							<p class="card-text my-0">{{product.brand}}</p>
 							<p class="card-text">SKU: {{product.skuManufacturer}}</p>

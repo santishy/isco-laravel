@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-wrap  justify-content-center">
     <div v-for="product in products" class="card mr-2 border-0 shadow-sm bg-white rounded mb-2 relawey" style="width: 15rem;">
-      <img :src="product.url_img" class="card-img-top img-fluid" @error="onerror(product)" alt="...">
+      <img loading="lazy" :src="product.url_img" class="card-img-top img-fluid" @error="onerror(product)" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{product.skuFabricante}}</h5>
         <p class="card-text">{{product.description}}</p>
