@@ -25,20 +25,21 @@ export default {
   methods:{
     ...mapMutations(['setMatchingProducts','setSearching']),
 
-    search(e){
+    async search(e){
       e.preventDefault();
+      this.setMatchingProducts([]);
       this.setSearching();
-      axios({
+      const request = await axios({
         url:'/search',
         method:'POST',
         data:{word:this.word},
       }).then( res => {
         this.setMatchingProducts(res.data.data);
-        this.setSearching();
+
       }).catch( err => {
         console.log(err)
-        this.setSearching();
-      })
+      });
+      this.setSearching();
     }
   },
 

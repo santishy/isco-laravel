@@ -38,7 +38,7 @@ window.store = new Vuex.Store({
 		productsCount:0,
     product:{},
     products:[],
-    searching:true,
+    searching:false,
     matchingProducts:[],
 	},
 	mutations:{

@@ -1,6 +1,6 @@
 <template>
   <div class="matching-products  shadow rounded py-0">
-  <div class="d-flex align-items-center pb-4">
+  <div class="d-flex align-items-center">
     <div v-if="searching" class="loader">
     </div>
   </div>
