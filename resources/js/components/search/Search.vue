@@ -5,6 +5,7 @@
           <div class="input-form">
               <input type="text"
                      v-model="word"
+                     @keyup.esc="closeSearch"
                      class="text-center"
                      placeholder="Buscar producto"
                      autocomplete="off" name="word"
@@ -44,6 +45,9 @@ export default {
         console.log(err)
       });
       this.setSearching();
+    },
+    closeSearch(){
+      this.setMatchingProducts([]);
     }
   },
 

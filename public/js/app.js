@@ -3138,6 +3138,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3145,9 +3146,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
-    this.closeSearch();
+    var _this = this;
+
+    document.addEventListener('click', function (event) {
+      var element = document.getElementById('matching-products');
+
+      if (!(element == event.target || element.contains(event.target))) {
+        _this.closeSearch();
+      }
+    });
   },
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setMatchingProducts']), {
     onerror: function onerror(product) {
       if (product.unloadedImage) {
         event.target.src = product.imgLocal;
@@ -3163,17 +3172,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       event.target.src = product.noimg;
     },
     closeSearch: function closeSearch() {
-      document.addEventListener('click', function (event) {
-        var element = document.getElementById('matching-products');
-
-        if (!(element == event.target || element.contains(event.target))) {
-          console.log('este no es el elemento');
-        } else {
-          console.log('este si es el elemento');
-        }
-      });
+      this.setMatchingProducts([]);
     }
-  },
+  }),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['matchingProducts', 'searching']))
 });
 
@@ -3203,6 +3204,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -3274,7 +3276,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return search;
-    }()
+    }(),
+    closeSearch: function closeSearch() {
+      this.setMatchingProducts([]);
+    }
   })
 });
 
@@ -41280,6 +41285,18 @@ var render = function() {
             },
             domProps: { value: _vm.word },
             on: {
+              keyup: function($event) {
+                if (
+                  !$event.type.indexOf("key") &&
+                  _vm._k($event.keyCode, "esc", 27, $event.key, [
+                    "Esc",
+                    "Escape"
+                  ])
+                ) {
+                  return null
+                }
+                return _vm.closeSearch($event)
+              },
               input: function($event) {
                 if ($event.target.composing) {
                   return

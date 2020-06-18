@@ -26,6 +26,7 @@
 
 <script>
 import {mapState} from 'vuex';
+import {mapMutations} from 'vuex';
 export default {
   data(){
     return{
@@ -33,9 +34,17 @@ export default {
     }
   },
   created(){
-    this.closeSearch();
+
+    document.addEventListener('click',(event)=>{
+      let element = document.getElementById('matching-products');
+      if(!(element == event.target || element.contains(event.target))){
+        this.closeSearch();
+      }
+
+    })
   },
   methods:{
+    ...mapMutations(['setMatchingProducts']),
     onerror(product){
       if(product.unloadedImage){
         event.target.src = product.imgLocal;
@@ -52,15 +61,8 @@ export default {
 
     },
     closeSearch(){
-      document.addEventListener('click',(event)=>{
-        let element = document.getElementById('matching-products');
-        if(!(element == event.target || element.contains(event.target))){
-          console.log('este no es el elemento');
-        }
-        else{
-          console.log('este si es el elemento')
-        }
-      })
+      this.setMatchingProducts([]);
+
     }
   },
   computed:{
