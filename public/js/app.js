@@ -3136,12 +3136,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       failedImageCount: 0
     };
+  },
+  created: function created() {
+    this.closeSearch();
   },
   methods: {
     onerror: function onerror(product) {
@@ -3157,6 +3161,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     noimg: function noimg(event) {
       event.target.src = product.noimg;
+    },
+    closeSearch: function closeSearch() {
+      document.addEventListener('click', function (event) {
+        var element = document.getElementById('matching-products');
+
+        if (!(element == event.target || element.contains(event.target))) {
+          console.log('este no es el elemento');
+        } else {
+          console.log('este si es el elemento');
+        }
+      });
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['matchingProducts', 'searching']))
@@ -3188,6 +3203,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -41142,7 +41161,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "matching-products  shadow rounded py-0" },
+    {
+      staticClass: "matching-products  shadow rounded py-0",
+      attrs: { id: "matching-products" },
+      on: { blur: _vm.closeSearch }
+    },
     [
       _c("div", { staticClass: "d-flex align-items-center" }, [
         _vm.searching ? _c("div", { staticClass: "loader" }) : _vm._e()
@@ -41244,6 +41267,10 @@ var render = function() {
               }
             ],
             staticClass: "text-center",
+            staticStyle: {
+              color: "white",
+              "": ":-webkit-input-placeholder { color: red"
+            },
             attrs: {
               type: "text",
               placeholder: "Buscar producto",

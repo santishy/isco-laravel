@@ -1,5 +1,5 @@
 <template>
-  <div class="matching-products  shadow rounded py-0">
+  <div id="matching-products" @blur="closeSearch" class="matching-products  shadow rounded py-0">
   <div class="d-flex align-items-center">
     <div v-if="searching" class="loader">
     </div>
@@ -15,6 +15,7 @@
             <a href="#" style="font-size:1em" class="text-decoration-none text-primary px-0 py-0">
               <h5 class="card-title text-bolder">{{product.skuManufacturer}}</h5>
               <p class="card-text">{{product.description}}</p>
+              <!-- <p class="card-text">{{price_human}}</p> -->
             </a>
           </div>
         </div>
@@ -30,6 +31,9 @@ export default {
     return{
         failedImageCount:0,
     }
+  },
+  created(){
+    this.closeSearch();
   },
   methods:{
     onerror(product){
@@ -47,6 +51,17 @@ export default {
       event.target.src = product.noimg;
 
     },
+    closeSearch(){
+      document.addEventListener('click',(event)=>{
+        let element = document.getElementById('matching-products');
+        if(!(element == event.target || element.contains(event.target))){
+          console.log('este no es el elemento');
+        }
+        else{
+          console.log('este si es el elemento')
+        }
+      })
+    }
   },
   computed:{
     ...mapState(['matchingProducts','searching'])
