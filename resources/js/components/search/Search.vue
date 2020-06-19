@@ -1,5 +1,5 @@
 <template>
-  <div class=" d-flex submenu justify-content-center">
+  <div class=" d-flex submenu justify-content-center align-items-center">
       <!-- <form action="{{url('search/')}}"  method="post"  id="formSearch"> -->
       <form id="formSearch"class="col-12" style="height:100%" @submit.prevent="search">
           <div class="input-form">
@@ -10,16 +10,21 @@
                      placeholder="Buscar producto"
                      autocomplete="off" name="word"
                      id="word"
-                     style="color:white;::-webkit-input-placeholder { color: red; }
+                     style="color:white;font-weight:bold;
 ">
+              <a @click="closeSearch" v-if="matchingProducts.length" class="closeSearch text-decoration-none text-white">
+                <i class="fas fa-times"></i>
+              </a>
               <label style="color:white" for="word">Busca productos</label>
           </div>
       </form>
+
+
   </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
+import {mapMutations,mapState} from 'vuex';
 export default {
   data(){
     return{
@@ -50,7 +55,9 @@ export default {
       this.setMatchingProducts([]);
     }
   },
-
+  computed:{
+    ...mapState(['matchingProducts']),
+  }
 }
 </script>
 

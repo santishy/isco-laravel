@@ -5,6 +5,13 @@
 // Variables
 @import 'variables';
 
+.closeSearch{
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  top:0;
+  right:-14px;
+}
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import "mixins";
@@ -12,6 +19,10 @@
 @import "cart";
 @import "menu";
 
+.matchingProductHover:hover{
+  background: #F1FFE8;
+  color:white !important;
+}
 .loader {
   color: #0a92cd;
   font-size: 90px;

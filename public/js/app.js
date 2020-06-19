@@ -3137,6 +3137,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3145,16 +3146,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       failedImageCount: 0
     };
   },
-  created: function created() {
-    var _this = this;
-
-    document.addEventListener('click', function (event) {
-      var element = document.getElementById('matching-products');
-
-      if (!(element == event.target || element.contains(event.target))) {
-        _this.closeSearch();
-      }
-    });
+  created: function created() {// document.addEventListener('click',(event)=>{
+    //   let element = document.getElementById('matching-products');
+    //   if(!(element == event.target || element.contains(event.target))){
+    //     this.closeSearch();
+    //   }
+    //
+    // })
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])(['setMatchingProducts']), {
     onerror: function onerror(product) {
@@ -3204,6 +3202,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3280,7 +3283,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     closeSearch: function closeSearch() {
       this.setMatchingProducts([]);
     }
-  })
+  }),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['matchingProducts']))
 });
 
 /***/ }),
@@ -41168,8 +41172,7 @@ var render = function() {
     "div",
     {
       staticClass: "matching-products  shadow rounded py-0",
-      attrs: { id: "matching-products" },
-      on: { blur: _vm.closeSearch }
+      attrs: { id: "matching-products" }
     },
     [
       _c("div", { staticClass: "d-flex align-items-center" }, [
@@ -41179,7 +41182,10 @@ var render = function() {
       _vm._l(_vm.matchingProducts, function(product) {
         return _c(
           "div",
-          { staticClass: "card border-top-0 border-left-0 border-right-0" },
+          {
+            staticClass:
+              "card border-top-0 border-left-0 border-right-0 matchingProductHover"
+          },
           [
             _c("div", { staticClass: "row no-gutters" }, [
               _c("div", { staticClass: "col-md-4 px-0 py-0" }, [
@@ -41195,23 +41201,32 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-8" }, [
-                _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "card-body " }, [
                   _c(
                     "a",
                     {
                       staticClass:
-                        "text-decoration-none text-primary px-0 py-0",
-                      staticStyle: { "font-size": "1em" },
-                      attrs: { href: "#" }
+                        "text-decoration-none matchingProductHover text-primary px-0 py-0",
+                      staticStyle: { "font-size": "0.9em" },
+                      attrs: { href: product.vinculo }
                     },
                     [
-                      _c("h5", { staticClass: "card-title text-bolder" }, [
+                      _c("p", { staticClass: "mb-2 font-weight-bolder" }, [
                         _vm._v(_vm._s(product.skuManufacturer))
                       ]),
                       _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
+                      _c("p", { staticClass: "card-text mb-1" }, [
                         _vm._v(_vm._s(product.description))
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass:
+                            "card-text text-danger font-weight-bold my-0"
+                        },
+                        [_vm._v("$" + _vm._s(product.humanPrice))]
+                      )
                     ]
                   )
                 ])
@@ -41246,75 +41261,89 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: " d-flex submenu justify-content-center" }, [
-    _c(
-      "form",
-      {
-        staticClass: "col-12",
-        staticStyle: { height: "100%" },
-        attrs: { id: "formSearch" },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.search($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "input-form" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.word,
-                expression: "word"
-              }
-            ],
-            staticClass: "text-center",
-            staticStyle: {
-              color: "white",
-              "": ":-webkit-input-placeholder { color: red"
-            },
-            attrs: {
-              type: "text",
-              placeholder: "Buscar producto",
-              autocomplete: "off",
-              name: "word",
-              id: "word"
-            },
-            domProps: { value: _vm.word },
-            on: {
-              keyup: function($event) {
-                if (
-                  !$event.type.indexOf("key") &&
-                  _vm._k($event.keyCode, "esc", 27, $event.key, [
-                    "Esc",
-                    "Escape"
-                  ])
-                ) {
-                  return null
-                }
-                return _vm.closeSearch($event)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.word = $event.target.value
-              }
+  return _c(
+    "div",
+    {
+      staticClass: " d-flex submenu justify-content-center align-items-center"
+    },
+    [
+      _c(
+        "form",
+        {
+          staticClass: "col-12",
+          staticStyle: { height: "100%" },
+          attrs: { id: "formSearch" },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.search($event)
             }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            { staticStyle: { color: "white" }, attrs: { for: "word" } },
-            [_vm._v("Busca productos")]
-          )
-        ])
-      ]
-    )
-  ])
+          }
+        },
+        [
+          _c("div", { staticClass: "input-form" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.word,
+                  expression: "word"
+                }
+              ],
+              staticClass: "text-center",
+              staticStyle: { color: "white", "font-weight": "bold" },
+              attrs: {
+                type: "text",
+                placeholder: "Buscar producto",
+                autocomplete: "off",
+                name: "word",
+                id: "word"
+              },
+              domProps: { value: _vm.word },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "esc", 27, $event.key, [
+                      "Esc",
+                      "Escape"
+                    ])
+                  ) {
+                    return null
+                  }
+                  return _vm.closeSearch($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.word = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.matchingProducts.length
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "closeSearch text-decoration-none text-white",
+                    on: { click: _vm.closeSearch }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "label",
+              { staticStyle: { color: "white" }, attrs: { for: "word" } },
+              [_vm._v("Busca productos")]
+            )
+          ])
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

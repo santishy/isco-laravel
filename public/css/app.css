@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+.closeSearch {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: -14px;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -11909,6 +11917,11 @@ a.text-dark:focus {
     font-size: 1.2em;
     padding: 2px;
   }
+}
+
+.matchingProductHover:hover {
+  background: #F1FFE8;
+  color: white !important;
 }
 
 .loader {
