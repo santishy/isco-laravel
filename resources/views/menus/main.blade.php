@@ -7,6 +7,7 @@
         <span class="badge">{{$shopping_cart->articulos()->count()}}</span>
         <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
     </a>
+    
     <nav style="z-index:10000 !important" class="menu">
         <ul style="z-index:10000 !important">
             <li class="col-md-5 search-component text-center">
