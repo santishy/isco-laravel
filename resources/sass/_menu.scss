@@ -297,7 +297,10 @@
     padding: 0px;
     width: 100vw;
     height: 100vh;
-    @include center-vertical-horizontal;
+    //@include center-vertical-horizontal;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2em;
     flex-direction:column;
     li{
       padding: 0px;
