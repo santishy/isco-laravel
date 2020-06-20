@@ -208,7 +208,7 @@ class Slider{
 			el.addEventListener('click',function(e){
 			this.nextElementSibling.classList.add('active');
 			})
-		})
+		});
 		elements = document.querySelectorAll('.atras');
 		elements.forEach(function(el,i){
 			el.addEventListener('click',function(e){
