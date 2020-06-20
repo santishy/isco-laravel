@@ -3138,6 +3138,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -41190,7 +41191,7 @@ var render = function() {
             _c("div", { staticClass: "row no-gutters" }, [
               _c("div", { staticClass: "col-md-4 px-0 py-0" }, [
                 _c("img", {
-                  staticClass: "img-fluid product-image",
+                  staticClass: "img-fluid ",
                   attrs: { loading: "lazy", src: product.url_img },
                   on: {
                     error: function($event) {

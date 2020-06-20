@@ -7,15 +7,15 @@
         <span class="badge">{{$shopping_cart->articulos()->count()}}</span>
         <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
     </a>
-    
-    <nav style="z-index:10000 !important" class="menu">
-        <ul style="z-index:10000 !important">
+
+    <nav style="z-index:100 !important" class="menu">
+        <ul style="z-index:100 !important">
             <li class="col-md-5 search-component text-center">
               <search-component></search-component>
               <matching-products class="mt-2"></matching-products>
             </li>
             <li><a href="http://{{url('/')}}">Inicio</a></li>
-            <li style="z-index:10000 !important">
+            <li>
                 <a href="#" class="submenu">Productos <SPAN class="glyphicon glyphicon-chevron-down"></SPAN></a>
                 <ul>
                     <li class="atras">Menú Principal</li>

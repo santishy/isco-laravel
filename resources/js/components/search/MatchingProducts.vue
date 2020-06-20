@@ -8,7 +8,8 @@
     <div v-for="product in matchingProducts" class="card border-top-0 border-left-0 border-right-0 matchingProductHover">
       <div class="row no-gutters">
         <div class="col-md-4 px-0 py-0">
-          	<img loading="lazy" class="img-fluid product-image"  :src="product.url_img" @error="onerror(product)">
+          	<!-- <img loading="lazy" class="img-fluid product-image"  :src="product.url_img" @error="onerror(product)"> -->
+            	<img loading="lazy" class="img-fluid "  :src="product.url_img" @error="onerror(product)">
         </div>
         <div class="col-md-8">
           <div class="card-body ">
