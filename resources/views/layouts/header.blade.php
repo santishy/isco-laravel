@@ -79,7 +79,7 @@
                             <i  class="fa fa-whatsapp fa-2x" aria-hidden="true" style="margin-right: 5px;color: green"></i><strong> 3322351553</strong>
                         </div>
             </div>
-
+        
         </header>
         @yield('menu')
         @yield('slider')

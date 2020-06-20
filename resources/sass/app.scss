@@ -5,6 +5,7 @@
 // Variables
 @import 'variables';
 
+
 .closeSearch{
   cursor: pointer;
   position: absolute;
@@ -33,7 +34,7 @@
   border-radius: 50%;
   margin: 72px auto;
   position: relative;
-  
+
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -813,10 +814,24 @@ div.spinner-visible
 	width: 150px;
 }
 @media screen and (max-width:760px){
+  // .search-component{
+  //   display: none !important;
+  // }
+  .closeSearch{
+    color:black;
+    left:-100%;
+  }
 	body,html{
 		max-width: 100%;
 		overflow-x:hidden;
 	}
+  #word{
+    color:black !important;
+  }
+  .search-component{
+    width: 80% !important;
+
+  }
 	.column{
 			flex-direction: column !important;
 	}

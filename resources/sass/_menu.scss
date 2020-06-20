@@ -243,14 +243,14 @@
   .icon-menu-fa{
     z-index: 1000;
     @include center-vertical-horizontal;
-
+    font-size: 2em;
     position: fixed;
     top:15px;
     right: 25px;
     height: 40px;
-       border-radius: 50%;
+       //border-radius: 50%;
     width: 40px;
-    border: solid 2px  black;
+    //border: solid 2px  black;
     cursor: pointer;
 
   }

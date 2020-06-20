@@ -1,7 +1,7 @@
 <template>
   <div class=" d-flex submenu justify-content-center align-items-center">
       <!-- <form action="{{url('search/')}}"  method="post"  id="formSearch"> -->
-      <form id="formSearch"class="col-12" style="height:100%" @submit.prevent="search">
+      <form id="formSearch"class="col-md-12 col-sm-12" style="height:100%" @submit.prevent="search">
           <div class="input-form">
               <input type="text"
                      v-model="word"
@@ -12,7 +12,7 @@
                      id="word"
                      style="color:white;font-weight:bold;
 ">
-              <a @click="closeSearch" v-if="matchingProducts.length" class="closeSearch text-decoration-none text-white">
+              <a @click="closeSearch" v-if="matchingProducts.length" class="closeSearch text-decoration-none ">
                 <i class="fas fa-times"></i>
               </a>
               <label style="color:white" for="word">Busca productos</label>
@@ -34,7 +34,6 @@ export default {
   },
   methods:{
     ...mapMutations(['setMatchingProducts','setSearching']),
-
     async search(e){
       e.preventDefault();
       this.setMatchingProducts([]);

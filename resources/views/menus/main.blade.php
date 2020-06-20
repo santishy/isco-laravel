@@ -1,6 +1,6 @@
 @section('menu')
 <div class="icon-menu-fa">
-    <img height="25"src="{{asset('images/menu.svg')}}">
+    <i class="fas fa-bars"></i>
 </div>
 <div id="container-menu" class="container-menu sticky-top">
     <a id="viewShoppingCart" href="{{url('pagos/'.$shopping_cart->id)}}"class="viewShoppingCart">
@@ -9,7 +9,7 @@
     </a>
     <nav class="menu">
         <ul>
-            <li class="col-5">
+            <li class="col-md-5 search-component text-center">
               <search-component></search-component>
               <matching-products class="mt-2"></matching-products>
             </li>

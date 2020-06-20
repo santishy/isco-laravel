@@ -11800,13 +11800,12 @@ a.text-dark:focus {
             align-items: center;
     -webkit-box-pack: center;
             justify-content: center;
+    font-size: 2em;
     position: fixed;
     top: 15px;
     right: 25px;
     height: 40px;
-    border-radius: 50%;
     width: 40px;
-    border: solid 2px black;
     cursor: pointer;
   }
 
@@ -12832,10 +12831,23 @@ div.spinner-visible {
 }
 
 @media screen and (max-width: 760px) {
+  .closeSearch {
+    color: black;
+    left: -100%;
+  }
+
   body,
   html {
     max-width: 100%;
     overflow-x: hidden;
+  }
+
+  #word {
+    color: black !important;
+  }
+
+  .search-component {
+    width: 80% !important;
   }
 
   .column {

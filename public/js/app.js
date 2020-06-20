@@ -41270,7 +41270,7 @@ var render = function() {
       _c(
         "form",
         {
-          staticClass: "col-12",
+          staticClass: "col-md-12 col-sm-12",
           staticStyle: { height: "100%" },
           attrs: { id: "formSearch" },
           on: {
@@ -41327,7 +41327,7 @@ var render = function() {
               ? _c(
                   "a",
                   {
-                    staticClass: "closeSearch text-decoration-none text-white",
+                    staticClass: "closeSearch text-decoration-none ",
                     on: { click: _vm.closeSearch }
                   },
                   [_c("i", { staticClass: "fas fa-times" })]
