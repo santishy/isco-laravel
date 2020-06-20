@@ -200,6 +200,7 @@ class Slider{
 		document.querySelector('.icon-menu-fa').addEventListener('click',function(){
 			document.querySelector('.menu').classList.add('active');
 		});
+    
 		document.querySelector('.close').addEventListener('click',function(){
 			document.querySelector('.menu').classList.remove('active');
 		});
