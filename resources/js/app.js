@@ -198,9 +198,9 @@ class Slider{
 	if($('.icon-menu-fa').length>0)
 	{
 		document.querySelector('.icon-menu-fa').addEventListener('click',function(){
-			document.querySelector('.menu').classList.add('active');
+			document.querySelector('.menu').classList.toggle('active');
 		});
-    
+
 		document.querySelector('.close').addEventListener('click',function(){
 			document.querySelector('.menu').classList.remove('active');
 		});
