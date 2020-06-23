@@ -27,7 +27,7 @@
             <li>
                 <a href="#" class="submenu">Marcas <SPAN class="glyphicon glyphicon-chevron-down"></SPAN></a>
                 <ul>
-                    <li class="atras">Menú Principal</li>
+                    <li class="atras">Menú Principa l</li>
                     @foreach($vars['marcas'] as $marca)
                         <li><a href="{{ url('/marca/'.$marca->id_marca) }}">{{$marca->marca}}</a></li>
                     @endforeach
