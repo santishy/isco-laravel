@@ -44,7 +44,7 @@ export default {
         data:{word:this.word},
       }).then( res => {
         this.setMatchingProducts(res.data.data);
-
+        e.target.blur();
       }).catch( err => {
         console.log(err)
       });

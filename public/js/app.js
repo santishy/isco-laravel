@@ -3259,6 +3259,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
                 }).then(function (res) {
                   _this.setMatchingProducts(res.data.data);
+
+                  e.target.blur();
                 })["catch"](function (err) {
                   console.log(err);
                 });
