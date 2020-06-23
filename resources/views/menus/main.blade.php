@@ -2,14 +2,14 @@
 <div class="icon-menu-fa">
     <i class="fas fa-bars"></i>
 </div>
-<div id="container-menu" class="container-menu sticky-top">
+<div style="z-index:100 !important"  id="container-menu" class="container-menu sticky-top">
     <a id="viewShoppingCart" href="{{url('pagos/'.$shopping_cart->id)}}"class="viewShoppingCart">
         <span class="badge">{{$shopping_cart->articulos()->count()}}</span>
         <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
     </a>
 
-    <nav style="z-index:100 !important" class="menu">
-        <ul style="z-index:100 !important">
+    <nav  class="menu">
+        <ul style="z-index:100 !important;">
             <li class="col-md-5 search-component text-center">
               <search-component></search-component>
               <matching-products class="mt-2"></matching-products>
