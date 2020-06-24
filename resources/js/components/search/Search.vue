@@ -48,6 +48,8 @@ export default {
       }).catch( err => {
         console.log(err)
       });
+      console.log(e.target[0])
+      e.target[0].blur();
       this.setSearching();
     },
     closeSearch(){

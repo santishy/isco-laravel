@@ -3267,9 +3267,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               case 5:
                 request = _context.sent;
+                console.log(e.target[0]);
+                e.target[0].blur();
                 this.setSearching();
 
-              case 7:
+              case 9:
               case "end":
                 return _context.stop();
             }
