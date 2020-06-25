@@ -12244,7 +12244,7 @@ table thead th {
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
-  background: #FAFADF;
+  background: #F9FFE8;
 }
 
 .header .header-container {
@@ -12830,15 +12830,42 @@ div.spinner-visible {
 }
 
 @media screen and (max-width: 760px) {
+  .sign-in {
+    font-size: 0.8em;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    background: #0372DA;
+    color: white;
+  }
+
+  .sign-in div a {
+    color: white;
+  }
+
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    padding: 0px;
+  }
+
   .closeSearch {
     color: black;
-    left: -100%;
+    left: 96%;
   }
 
   body,
   html {
     max-width: 100%;
     overflow-x: hidden;
+  }
+
+  .matching-products {
+    max-height: 80vh;
   }
 
   #word {
@@ -12885,17 +12912,18 @@ div.spinner-visible {
   }
 
   .header {
-    padding: 10px;
     -webkit-box-pack: start;
             justify-content: flex-start;
   }
 
   .container-logo {
-    width: 30%;
+    width: 100%;
+    padding: 0.5em;
+    border-bottom: 1px solid #dee2e6 !important;
   }
 
   .container-logo a {
-    width: 50%;
+    width: 40%;
   }
 
   .container-contact {

@@ -40,7 +40,7 @@
                 </a>
             </div>
 
-             <div class="d-flex justify-content-center">
+             <div class="d-flex justify-content-center sign-in">
               @guest
                     <div class="px-2">
                         <a class="text-blue-palette text-decoration-none" style="font-size:2em" href="{{ route('login') }}"> <i class="fas fa-sign-in-alt "></i> {{ __('LOGIN') }}</a>
@@ -79,7 +79,7 @@
                             <i  class="fa fa-whatsapp fa-2x" aria-hidden="true" style="margin-right: 5px;color: green"></i><strong> 3322351553</strong>
                         </div>
             </div>
-        
+
         </header>
         @yield('menu')
         @yield('slider')

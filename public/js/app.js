@@ -41332,10 +41332,15 @@ var render = function() {
               ? _c(
                   "a",
                   {
-                    staticClass: "closeSearch text-decoration-none ",
-                    on: { click: _vm.closeSearch }
+                    staticClass:
+                      "my-0 closeSearch text-decoration-none py-3 px-0"
                   },
-                  [_c("i", { staticClass: "fas fa-times" })]
+                  [
+                    _c("i", {
+                      staticClass: "fas fa-times",
+                      on: { click: _vm.closeSearch }
+                    })
+                  ]
                 )
               : _vm._e(),
             _vm._v(" "),

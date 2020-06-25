@@ -12,8 +12,8 @@
                      id="word"
                      style="color:white;font-weight:bold;
 ">
-              <a @click="closeSearch" v-if="matchingProducts.length" class="closeSearch text-decoration-none ">
-                <i class="fas fa-times"></i>
+              <a  v-if="matchingProducts.length" class="my-0 closeSearch text-decoration-none py-3 px-0">
+                <i @click="closeSearch" class="fas fa-times"></i>
               </a>
               <label style="color:white" for="word">Busca productos</label>
           </div>

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card text-white bg-dark mb-3" style="margin-top:4em;margin-bottom:4em !important;">
+        <div class="col-md-8 col-sm-10">
+            <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header">{{ __('Registrar') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">

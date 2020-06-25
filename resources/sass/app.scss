@@ -294,7 +294,7 @@ table thead th{
 	display: flex;
 	justify-content:center;
 	align-items:center;
-	background: #FAFADF;
+	background: #F9FFE8;
 // 	background: rgba(179,220,237,0.88);
 // background: -moz-linear-gradient(left, rgba(179,220,237,0.88) 0%, rgba(179,220,237,0.89) 0%, rgba(41,184,229,0.89) 50%, rgba(188,224,238,0.89) 100%);
 // background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179,220,237,0.88)), color-stop(0%, rgba(179,220,237,0.89)), color-stop(50%, rgba(41,184,229,0.89)), color-stop(100%, rgba(188,224,238,0.89)));
@@ -817,15 +817,35 @@ div.spinner-visible
   // .search-component{
   //   display: none !important;
   // }
+  .sign-in{
+    font-size: .8em;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    background: #0372DA;
+    color: white;
+    div a {
+      color:white;
+    }
+  }
+  .header{
+    flex-direction: column;
+    padding: 0px;
+  }
+
   .closeSearch{
     color:black;
-    left:-100%;
-    
+    left:96%;
+
   }
 	body,html{
 		max-width: 100%;
 		overflow-x:hidden;
 	}
+  .matching-products{
+    max-height:80vh;
+  }
   #word{
     color:black !important;
   }
@@ -859,14 +879,17 @@ div.spinner-visible
 
 	}
 	.header{
-		padding: 10px;
+
 		justify-content:flex-start;
 
 	}
+
 	.container-logo{
-		width: 30%;
+		width: 100%;
+    padding:.5em;
+    border-bottom: 1px solid #dee2e6 !important;
 		a{
-			width: 50%;
+			width: 40%;
 		}
 	}
 	.container-contact{
