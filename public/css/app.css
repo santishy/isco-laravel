@@ -11800,8 +11800,10 @@ a.text-dark:focus {
             align-items: center;
     -webkit-box-pack: center;
             justify-content: center;
-    font-size: 2em;
+    font-size: 1.5em;
     position: fixed;
+    background: white;
+    border: 0px;
     top: 15px;
     right: 25px;
     height: 40px;

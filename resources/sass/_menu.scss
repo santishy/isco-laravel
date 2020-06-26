@@ -243,8 +243,11 @@
   .icon-menu-fa{
     z-index: 1000;
     @include center-vertical-horizontal;
-    font-size: 2em;
+    font-size: 1.5em;
     position: fixed;
+    background: white;
+    border:0px;
+
     top:15px;
     right: 25px;
     height: 40px;
@@ -290,7 +293,7 @@
   .menu li a {
     color:#1a1a1a;
     padding-left: 0px;
-    
+
     padding-right: 0px;
     display: block;
   }

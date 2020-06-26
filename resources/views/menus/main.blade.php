@@ -1,5 +1,5 @@
 @section('menu')
-<div class="icon-menu-fa">
+<div class="icon-menu-fa border-0 shadow-sm rounded py-1 px-1">
     <i class="fas fa-bars"></i>
 </div>
 <div style="z-index:100 !important"  id="container-menu" class="container-menu sticky-top">
