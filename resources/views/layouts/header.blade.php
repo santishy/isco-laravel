@@ -71,12 +71,14 @@
               </div>
 
             <div class="container-contact">
-                <p class="no-margin">Llamanos por cualquier duda sobre tu pedido:</p>
-                        <a style="color:black;visited:black;text-decoration: none"href="tel:+018000014726" class="earphone" style="font-weight:bold">
+                <p class="no-margin">Comunicate también por:</p>
+                        {{-- <a href="https://wa.link/v2iqaa" style="color:black;visited:black;text-decoration: none"href="tel:+018000014726" class="earphone" style="font-weight:bold">
                             <strong><span >Tel 01 800 001 isco</span></strong>
-                        </a>
+                        </a> --}}
                         <div style="display: flex;justify-content:  center; align-items:center ;width: 100%;">
+                          <a href="https://wa.link/hoqrpb" class="text-decoration-none">
                             <i  class="fa fa-whatsapp fa-2x" aria-hidden="true" style="margin-right: 5px;color: green"></i><strong> 3322351553</strong>
+                          </a>
                         </div>
             </div>
 
