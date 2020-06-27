@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('inicio');
 // Route::get('/',function(){
 // 	return view('layouts.construccion');
 // });

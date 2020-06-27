@@ -3227,7 +3227,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3287,6 +3286,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }(),
     closeSearch: function closeSearch() {
       this.setMatchingProducts([]);
+      this.word = '';
     }
   }),
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])(['matchingProducts']))
@@ -41296,6 +41296,7 @@ var render = function() {
                   expression: "word"
                 }
               ],
+              ref: "search",
               staticClass: "text-center",
               staticStyle: { color: "white", "font-weight": "bold" },
               attrs: {

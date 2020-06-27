@@ -10,6 +10,7 @@
                      placeholder="Buscar producto"
                      autocomplete="off" name="word"
                      id="word"
+                     ref="search"
                      style="color:white;font-weight:bold;
 ">
               <a  v-if="matchingProducts.length" class="my-0 closeSearch text-decoration-none py-3 px-0">
@@ -18,8 +19,6 @@
               <label style="color:white" for="word">Busca productos</label>
           </div>
       </form>
-
-
   </div>
 </template>
 
@@ -54,6 +53,7 @@ export default {
     },
     closeSearch(){
       this.setMatchingProducts([]);
+      this.word='';
     }
   },
   computed:{

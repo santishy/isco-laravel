@@ -14,7 +14,7 @@
               <search-component></search-component>
               <matching-products class="mt-2"></matching-products>
             </li>
-            <li><a href="http://{{url('/')}}">Inicio</a></li>
+            <li><a href="{{route('inicio')}}">Inicio</a></li>
             <li>
                 <a href="#" class="submenu">Productos <SPAN class="glyphicon glyphicon-chevron-down"></SPAN></a>
                 <ul>
