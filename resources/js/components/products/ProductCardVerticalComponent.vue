@@ -7,7 +7,7 @@
         <p class="card-text">{{product.description}}</p>
       </div>
       <div style="background:#373759" class="card-footer border-0 px-0 py-0 text-center">
-        <a href="" style="display:block;" class="text-white font-weight-bold text-decoration-none p-2">Ir a comprar</a>
+        <a :href="product.vinculo" style="display:block;" class="text-white font-weight-bold text-decoration-none p-2">Ir a comprar</a>
       </div>
     </div>
   </div>

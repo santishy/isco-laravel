@@ -11578,6 +11578,8 @@ a.text-dark:focus {
   display: none;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  -webkit-box-pack: center;
+          justify-content: center;
   flex-wrap: wrap;
   background-color: white;
   z-index: 10000;
@@ -11591,6 +11593,7 @@ a.text-dark:focus {
 
 .menu li > ul li {
   width: 25%;
+  text-align: center;
   margin: 0px !important;
 }
 
@@ -11631,10 +11634,8 @@ a.text-dark:focus {
 }
 
 .menu ul li ul li a {
-  text-align: left;
+  text-align: center;
   padding: 10px;
-  display: -webkit-box;
-  display: flex;
   -webkit-box-align: center;
           align-items: center;
 }

@@ -20,7 +20,7 @@
                 <ul>
                     <li class="atras">Menú Principal</li>
                     @foreach($vars['secciones'] as $seccion)
-                        <li><a href="{{url('/productos/'.$seccion->id_seccion)}}">{{$seccion->seccion}}</a></li>
+                        <li><a class="text-center" href="{{url('/productos/'.$seccion->id_seccion)}}">{{$seccion->seccion}}</a></li>
                     @endforeach
                 </ul>
             </li>
@@ -29,7 +29,7 @@
                 <ul>
                     <li class="atras">Menú Principa l</li>
                     @foreach($vars['marcas'] as $marca)
-                        <li><a href="{{ url('/marca/'.$marca->id_marca) }}">{{$marca->marca}}</a></li>
+                        <li><a href="{{ url('/marca/'.$marca->id_marca) }}" class="text-center">{{$marca->marca}}</a></li>
                     @endforeach
                 </ul>
             </li>

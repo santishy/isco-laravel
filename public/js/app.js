@@ -41063,38 +41063,32 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0, true)
+          _c(
+            "div",
+            {
+              staticClass: "card-footer border-0 px-0 py-0 text-center",
+              staticStyle: { background: "#373759" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "text-white font-weight-bold text-decoration-none p-2",
+                  staticStyle: { display: "block" },
+                  attrs: { href: product.vinculo }
+                },
+                [_vm._v("Ir a comprar")]
+              )
+            ]
+          )
         ]
       )
     }),
     0
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "card-footer border-0 px-0 py-0 text-center",
-        staticStyle: { background: "#373759" }
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "text-white font-weight-bold text-decoration-none p-2",
-            staticStyle: { display: "block" },
-            attrs: { href: "" }
-          },
-          [_vm._v("Ir a comprar")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
