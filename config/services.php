@@ -35,8 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'paypal' => [
-        'clientid' => env('PAYPAL_CLIENT_ID'),
-        'secret' => env('PAYPAL_CLIENT_SECRET')
+        'clientid' => env('PAYPAL_CLIENT_ID','AUosvEzvStLLnWkFQgb3Qp27r9aboDkJiFCbTa-YVah_CMfZvgzZLcmmt_0qurVYx0yj4UDlh7G1HHa-'),
+        'secret' => env('PAYPAL_CLIENT_SECRET','EPz3MBShrrVC74X55JDid6-6lgdaIBrSi3Z_i7q4oG2pnzvnGppTvHLNxtf3cyMUTGa-We2mZTlUwGJB')
     ],
     'mercadopago' =>[
       'base_uri' => env('MERCADO_PAGO_BASE_URI'),
