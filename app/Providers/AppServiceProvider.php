@@ -63,10 +63,10 @@ class AppServiceProvider extends ServiceProvider
             \Session::put('item-products',$secciones);
             \Session::put('brand-products',$marcas);
             $vars['marcas']=$marcas;
-            $vars['lineas']=Line::orderBy('linea','asc')->get();
+            $vars['lineas']=Line::orderBy('linea','asc')->where('status',1)->get();
             $vars['lines']=$vars['lineas']->take(10);
             //$vars['lines']=Line::limit(10);
-            $vars['series']=Serie::orderBy('name','asc')->get();
+            $vars['series']=Serie::orderBy('name','asc')->where('status',1)->get();
             $vars['products']=$secciones->take(10);
             $view->with('vars',$vars);
               /*$shopping_cart_id=\Session::get('shopping_cart_id');

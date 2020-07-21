@@ -137,16 +137,21 @@ class Soap extends Model
     {
       ini_set('max_execution_time', -1);
       $dolar=Dolar::priceDolar();
+    
       foreach ($items as $item) {
         // code...
         if($item->moneda=='USD'){
             $item->moneda='MN';
             $item->precio=$item->precio*$dolar;
         }
-        $brand=Brand::firstOrCreate(['marca'=>$item->marca]);
-        $line=Line::firstOrCreate(['linea'=>$item->linea]);
-        $serie=Serie::firstOrCreate(['name'=>$item->serie]);
-        $section=Section::firstOrCreate(['seccion'=>$item->seccion]);
+        $brand=Brand::updateOrCreate(['marca'=>$item->marca,
+                                      'status' => 1 ]);
+        $line=Line::updateOrCreate(['linea'=>$item->linea,
+                                    'status' => 1]);
+        $serie=Serie::updateOrCreate(['name'=>$item->serie,
+                                      'status' => 1]);
+        $section=Section::updateOrCreate(['seccion'=>$item->seccion,
+                                          'status' => 1]);
         $product = Articulo::updateOrCreate(['sku'=>$item->sku],
         ['proveedor'=>'pchmayoreo','sku'=>$item->sku,'descripcion'=>$item->descripcion,
         'id_serie'=>$serie->id,'skuFabricante'=>$item->skuFabricante,'id_marca'=>$brand->id_marca,

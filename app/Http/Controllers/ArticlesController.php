@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Soap;
 use App\Articulo;
 use App\Section;
+use App\Brand;
+use App\Serie;
+use App\Line;
 use App\Inventory;
 use App\Events\ClickArticle;
 use Artisaninweb\SoapWrapper\SoapWrapper;
@@ -28,13 +31,17 @@ class ArticlesController extends Controller
 
         $webservice = new Soap(new SoapWrapper);
         $data = collect($webservice->consume());
-
+        Section::where('id_seccion','>',0)->update(['status' => 0]);
+        Line::where('id_linea','>',0)->update(['status' => 0]);
+        Brand::where('id_marca','>',0)->update(['status' => 0]);
+        Serie::where('id','>',0)->update(['status' => 0]);
         //cache::forever('data',$data);
 // comentar esta linea
         //$webservice->obtenerListaArticulos();
 // descomentar estas otras
         foreach($data->chunk(400) as $chunk)
         {
+
           UpdatingWebservice::dispatch($chunk);
         }
         return "Actualizado";
