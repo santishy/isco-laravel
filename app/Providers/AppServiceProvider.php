@@ -54,7 +54,14 @@ class AppServiceProvider extends ServiceProvider
                 return true;
             return false;
         });
-        view()->composer(['menus.main','layouts.footer','layouts.app'],function($view){
+        view()->composer(['menus.main',
+                          'layouts.footer',
+                          'layouts.app',
+                          'dashboard.utilities.create',
+                          'dashboard.utilities.edit',
+                          'dashboard.utilities.index'
+                        ],
+        function($view){
             $secciones=Section::orderBy('seccion','asc')->where('status','=',1)->get();
             $marcas=Brand::orderBy('marca','asc')->where('status','=',1)->get();
             //$vars['productsCount']=
