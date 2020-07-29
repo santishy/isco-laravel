@@ -31,6 +31,7 @@ class ArticlesController extends Controller
 
         $webservice = new Soap(new SoapWrapper);
         $data = collect($webservice->consume());
+        Articulo::where('id_articulo','>','0')->update(['id_utilidad' => 0]);
         Section::where('id_seccion','>',0)->update(['status' => 0]);
         Line::where('id_linea','>',0)->update(['status' => 0]);
         Brand::where('id_marca','>',0)->update(['status' => 0]);
